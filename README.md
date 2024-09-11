@@ -43,6 +43,7 @@ Supplementary info on what is inside /data/  folder:
   - [Pyhton Client Package](https://github.com/hacf-fr/meteofrance-api?tab=readme-ov-file)
   - [meteoviz-streamlit-app ](https://github.com/anquetos/meteoviz-streamlit-app)
   - [smOl query example](https://github.com/bflo/MeteoFranceAPIQuery/blob/main/MeteoFranceAPIQuery.ipynb)
+- [Different datasets main page](https://donneespubliques.meteofrance.fr/?fond=rubrique&id_rubrique=30)
 
 ### Copernicus
 
