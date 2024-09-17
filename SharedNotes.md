@@ -13,7 +13,13 @@ Pas de vocal pour l'instant :p
   On peux tout les deux regarder plotly dash et Graphana et choisir lequel des 2 on utilise (en gardant l'autre en plan B). 
   Il faudrait définir qui fait quoi. On peut chacun se concentrer sur un phénomène naturel que l'on choisit au début. Un de nous deux peut aussi même déjà penser à la visualization pourquoi pas même si c'est un peu prématuré 
 
-  
+## 17th of September
+# Alberto
+Jour 7. Toujours pas de vocal. Je crois que Lucas n'est plus. Il vivra toujours dans notre mémoire.
+
+- J'ai une branche Alberto que j'ai alimenté avec un src/test.py qui permet de lancer un dashboard dash. Il suffit d'executer le fichier puis d'aller sur http://127.0.0.1:8050/ . Pour l'instant, j'ai récupèré les données des lignes aériennes des geojason, parsé, puis fait un scatter mapbox des données.
+- J'ai un compte météo france qui marche. Pas essayé l'api encore.
+- Ok je viens de lire. Je regarderai pour Copernicus alors. 
 
   
 
