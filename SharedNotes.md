@@ -17,7 +17,7 @@ Pas de vocal pour l'instant :p
 # Alberto
 Jour 7. Toujours pas de vocal. Je crois que Lucas n'est plus. Il vivra toujours dans notre mémoire.
 
-- J'ai une branche Alberto que j'ai alimenté avec un src/test.py qui permet de lancer un dashboard dash. Il suffit d'executer le fichier puis d'aller sur http://127.0.0.1:8050/ . Pour l'instant, j'ai récupèré les données des lignes aériennes des geojason, parsé, puis fait un scatter mapbox des données.
+- J'ai une branche 'alberto' que j'ai alimenté avec un src/test.py qui permet de lancer un dashboard dash. Il suffit d'executer le fichier puis d'aller sur http://127.0.0.1:8050/ . Pour l'instant, j'ai récupèré les données des lignes aériennes des geojason, parsé, puis fait un scatter mapbox des données. J'ai mis deux tabs pour organiser un peu.
 - J'ai un compte météo france qui marche. Pas essayé l'api encore.
 - Ok je viens de lire. Je regarderai pour Copernicus alors.
 - Pour la météo et EDF sur l'API il y a le vent moyent et les rafales. En plus on pourrait penser à utiliser :
