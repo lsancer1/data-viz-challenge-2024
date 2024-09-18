@@ -1,0 +1,10 @@
+
+# no versioning for now
+# conda create --name viz-challenge-2024 python==3.10
+
+pudb
+dash
+pandas
+attrdictionary
+yml 
+pyyaml

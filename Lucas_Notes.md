@@ -30,3 +30,31 @@ Pretty basic. The GeoJson files don't have extra information.
 - Import jsons data and plot all points in a Cosrica map - check what the coordinates correspond to
 - Whenever we will have different "maps" layout we will need to deal with coordinates system that can vary
 - Should start to have "clear" idea of who do what
+
+## 18th September 
+
+- not able to do much in 1h30 , need to start at the latest at 18h30 on Wednesdays.... :'(
+
+- Play with Alberto code and set my repo in a proper way, conda env, configs, utils.
+
+- Defining guideline and propositon to split work on shared notes 
+
+- Shared notes
+
+  One should care about the reseaux data fully and the implementation in dashboard, then we split the environmental risks between us 2. We should define tasks from now. 
+
+  Peut etre faire un tableau avec, Données Réseaux Affichées, API pour données Environmentale, Données Environmentale, Seuil d'alerte, Niveau de Guidelines. 
+
+### Schedule
+
+- **11th, 18h30**
+- **18th, 21h00**
+- 25th, 18h30
+- 02nd, 18h30
+- 09th, 18h30
+- _After the session of the 09, define extension work_
+- 11th 18h30
+- 12th half a day
+- _Optional Extensions from 12 to 16_
+- 16th, 18h30
+
