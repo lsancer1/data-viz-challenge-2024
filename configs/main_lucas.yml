@@ -1,0 +1,35 @@
+
+# config lucas
+
+# all data to be plot in dashboard
+# URL  http://127.0.0.1:8050/ 
+dashboard:
+
+  data:
+
+    reseaux: 
+      
+      folder: /Users/lsancere/mount/ada/lsancere/Ada_Codes/data-viz-challenge-2024/data/edf_corse/reseaux/
+
+      keptfiles: [ 
+      lignes-basse-tension-bt-aerien,
+      lignes-haute-tension-hta-aerien,
+      lignes-haute-tension-htb-aerien,
+      pylones-htb
+      ]
+
+    cams:
+
+      folder: /Users/lsancere/mount/ada/lsancere/Ada_Codes/data-viz-challenge-2024/data/cams/
+
+      keptfiles: [ 
+      cams_dust,
+      cams_pm10,
+      cams_pm25,
+      cams_pmwildfire
+      ]
+
+
+
+ # next cat
+

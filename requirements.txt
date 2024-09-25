@@ -8,3 +8,10 @@ pandas
 attrdictionary
 yml 
 pyyaml
+meteofrance-ap
+pytest
+scipy
+netcdf4
+h5netcdf
+
+python -m pip install xarray

@@ -1,0 +1,21 @@
+# config alberto
+
+# all data to be plot in dashboard
+# URL  http://127.0.0.1:8050/ 
+dashboard:
+
+  data:
+
+    cams: 
+      
+      folder: /Users/alonso-pinar_a/soft/data-viz-challenge-2024/data/cams/
+
+      keptfiles: [ 
+      cams_dust,
+      cams_pm10,
+      cams_pm25,
+      cams_pmwildfire
+      ]
+
+
+ # next cat

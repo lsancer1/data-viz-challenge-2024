@@ -25,7 +25,7 @@ from utils.json_manager import extract_rescoordinates
 
 # Import parameters values from config file by generating a dict.
 # The lists will be imported as tuples.
-with open("./../configs/main.yml", "r") as f:
+with open("./../configs/main_lucas.yml", "r") as f:
     config = yaml.load(f, Loader=yaml.FullLoader)
 # Create a config dict from which we can access the keys with dot syntax
 config = attributedict(config)

@@ -25,11 +25,11 @@ Pretty basic. The GeoJson files don't have extra information.
 
 ### TDL Next Time
 
-- [Dash 20min tutorial](https://dash.plotly.com/tutorial) and or  Graphana basic tuto such as [fundamentals docs](https://grafana.com/docs/grafana/latest/fundamentals/) or [Getting started with Grafana dashboard design](https://grafana.com/go/webinar/getting-started-with-grafana-dashboard-design/?pg=videos&plcmt=ondemand) from the webinar section [here](https://grafana.com/videos/)
+- [Dash 20min tutorial](https://dash.plotly.com/tutorial) and or  Graphana basic tuto such as [fundamentals docs](https://grafana.com/docs/grafana/latest/fundamentals/) or [Getting started with Grafana dashboard design](https://grafana.com/go/webinar/getting-started-with-grafana-dashboard-design/?pg=videos&plcmt=ondemand) from the webinar section [here](https://grafana.com/videos/) -> WE START WITH DASH 
 - Start to retrieve basic info from METEO FRANCE
-- Import jsons data and plot all points in a Cosrica map - check what the coordinates correspond to
-- Whenever we will have different "maps" layout we will need to deal with coordinates system that can vary
-- Should start to have "clear" idea of who do what
+- Import jsons data and plot all points in a Cosrica map - check what the coordinates correspond to :heavy_check_mark:
+- Whenever we will have different "maps" layout we will need to deal with coordinates system that can vary SEE IN FUTURE 
+- Should start to have "clear" idea of who do what :heavy_check_mark:
 
 ## 18th September 
 
@@ -50,11 +50,42 @@ Pretty basic. The GeoJson files don't have extra information.
 - **11th, 18h30**
 - **18th, 21h00**
 - 25th, 18h30
+- 28th, 10h 
 - 02nd, 18h30
 - 09th, 18h30
 - _After the session of the 09, define extension work_
 - 11th 18h30
-- 12th half a day
 - _Optional Extensions from 12 to 16_
 - 16th, 18h30
 
+## 25th September
+
+- for the retrieval informal part we will focus on the 30 rule:
+
+| Données Réseaux Affichées | API pour données Environnementales | Données Environnementales   | Seuil d'alerte                             | Autres       |
+| ------------------------- | ---------------------------------- | --------------------------- | ------------------------------------------ | ------------ |
+| Hta et Htb aérien         | Météo France                       | Température, Humidité, Vent | T > 30°C + Humidité < 30% + Vent > 30 km/h | ------------ |
+
+and Alberto will tackle other natural hazards and their impacts. I focujs on this hazard and on making the dashboard look pretty. 
+
+- Program: 
+  - start on checking METEO FRANCE API , writte first code
+  - approaching to the end continue with making dashbpard pretty
+  - notes and leave
+  - leave at 10h30PM (first 9h40, 10h10, 10h30)
+- alias ll="ls -l -G"
+- [How to use the API - generate token](https://portail-api.meteofrance.fr/web/en/faq)
+- List of APIs I susbscribed to [portal](https://portail-api.meteofrance.fr/web/fr)  then my account then My API
+- Work on `forecast_requests.py` need to make it work for next time -> wee directly focus on real time
+- All the important ressources are in the beginning of the code
+
+#### Meteo France API
+
+Name: **lucas.sancere**
+
+mdp: shortversion
+
+#### TDL Next Day
+
+- Continue to work on  `forecast_requests.py`
+- Work on making the dashboard nicer (starting with blackbackground)
