@@ -1,3 +1,5 @@
+# Logbook
+
 ## 11th of September
 
 - create main notes with data links and goals :heavy_check_mark:
@@ -45,19 +47,6 @@ Pretty basic. The GeoJson files don't have extra information.
 
   Peut etre faire un tableau avec, Données Réseaux Affichées, API pour données Environmentale, Données Environmentale, Seuil d'alerte, Niveau de Guidelines. 
 
-### Schedule
-
-- **11th, 18h30**
-- **18th, 21h00**
-- 25th, 18h30
-- 28th, 10h 
-- 02nd, 18h30
-- 09th, 18h30
-- _After the session of the 09, define extension work_
-- 11th 18h30
-- _Optional Extensions from 12 to 16_
-- 16th, 18h30
-
 ## 25th September
 
 - for the retrieval informal part we will focus on the 30 rule:
@@ -89,3 +78,28 @@ mdp: shortversion
 
 - Continue to work on  `forecast_requests.py`
 - Work on making the dashboard nicer (starting with blackbackground)
+
+## September 29th
+
+- Never checkout from dev-lucas branch as going back to this take a long time. Edit the main branch directly in the browser
+- Able to make a request to API working, now we can focus on extracted the data we want
+- Corsica coordinates:
+  - "area": [43.25, 8.15, 41.15, 10.15]
+  - max latitude; min longitude; min latitude: max longitude
+
+#### TDL Next Day
+
+- We focus on creating a streamlit tab that we can discuss next thursday with Alberto. So first create the tabe with the Corsica map, second insert the poles data there, third try to export the observation/forecast. Forecast makes more sense but check if it is hard or not to work with the forecast and if we can have the tings usufull for the rule of 30.
+
+# Schedule
+
+- **11th, 18h30**
+- **18th, 21h00**
+- **25th, 18h30**
+- **29th, 12h30** 
+- 02nd, 18h30
+- 09th, 18h30
+- _After the session of the 09, define extension work_
+- 11th 18h30
+- _Optional Extensions from 12 to 16_
+- 16th, 18h30

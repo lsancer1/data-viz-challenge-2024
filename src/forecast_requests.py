@@ -1,4 +1,5 @@
 import pytest
+from io import StringIO
 
 from meteofrance_api import MeteoFranceClient
 from meteofrance_api.helpers import readeable_phenomenoms_dict
@@ -12,7 +13,9 @@ from hacf_model import PictureOfTheDay
 from hacf_model import Place
 from hacf_model import Rain
 from hacf_model import WarningDictionary
+import constants
 
+import csv 
 import json
 import requests
 import time
@@ -46,20 +49,20 @@ TOKEN_URL = "https://portail-api.meteofrance.fr/token"
 
 #Temporary token for test
 # No need normally and dead after one hour
-TOKEN = (
-    'eyJ4NXQiOiJOelU0WTJJME9XRXhZVGt6WkdJM1kySTFaakZqWVRJeE4yUTNNalEyTkRRM09HRmtZalkzTURkbE9UZ3paakUxTURRNF' +
-'ltSTVPR1kyTURjMVkyWTBNdyIsImtpZCI6Ik56VTRZMkkwT1dFeFlUa3paR0kzWTJJMVpqRmpZVEl4TjJRM01qUTJOR' +
-'FEzT0dGa1lqWTNNRGRsT1RnelpqRTFNRFE0WW1JNU9HWTJNRGMxWTJZME13X1JTMjU2IiwidHlwIjoiYXQrand0IiwiYWxnIjoiUlMyNTYifQ.eyJzdWIiOiJjNDdiOGI3MC00Y' +
-'mIxLTQ4M2MtODg3Ni05ODEzYjAzMGI3NWQiLCJhdXQiOiJBUFBMSUNBVElPTiIsImF1ZCI6ImhaSU9HSjRoOUxKM2N' +
-'iWmVmZkk5T0loWTI0Z2EiLCJuYmYiOjE3MjcyOTIzMjMsImF6cCI6ImhaSU9HSjRoOUxKM2NiWmVmZkk5T0loWTI0Z2' +
-'EiLCJzY29wZSI6ImRlZmF1bHQiLCJpc3MiOiJodHRwczpcL1wvcG9ydGFpbC1hcGkubWV0ZW9mcmFuY2UuZnJcL29hd' +
-'XRoMlwvdG9rZW4iLCJleHAiOjE3MjcyOTU5MjMsImlhdCI6MTcyNzI5MjMyMywianRpIjoiOTYyODczMmYtZmNmZC00Z' +
-'Dc2LTg3MzktNGZlMjE0NTk2ZjNkIiwiY2xpZW50X2lkIjoiaFpJT0dKNGg5TEozY2JaZWZmSTlPSWhZMjRnYSJ9.gN8kD' +
-'j1gHMggiT7BTk4xelavHN8xEaqyW9AkxeUKB_oaBRuh1m7GPp8YFcdfzMOa4Do8Zn966_bzkeSWk1lsH6Lmd7jEUKrHP4' +
-'qUwCipQ06aJEtLSOYyWrnxWvRaTrMwqEICki9Cn_XwaIyOphtfcjHnI66Mhydag0LAvc4ah8YcnLhoJ-QZ2FECEkIgjOS' +
-'19t6-tFHKXREqmxU5jbH_O3pAHXsDd_km1YF-iSO3tFV5FA5qzoz5vJWoDie2FgHLFEa5X4NV2L_CN1FOtXe3OwkKg29Y' +
-'XeDQEdGC9Ebq_E7LQbe5sXZuuPmnRJrFPLNOU8ceBzqwZxmqxrI82FR3eQ'
-)
+# TOKEN = (
+#     'eyJ4NXQiOiJOelU0WTJJME9XRXhZVGt6WkdJM1kySTFaakZqWVRJeE4yUTNNalEyTkRRM09HRmtZalkzTURkbE9UZ3paakUxTURRNF' +
+# 'ltSTVPR1kyTURjMVkyWTBNdyIsImtpZCI6Ik56VTRZMkkwT1dFeFlUa3paR0kzWTJJMVpqRmpZVEl4TjJRM01qUTJOR' +
+# 'FEzT0dGa1lqWTNNRGRsT1RnelpqRTFNRFE0WW1JNU9HWTJNRGMxWTJZME13X1JTMjU2IiwidHlwIjoiYXQrand0IiwiYWxnIjoiUlMyNTYifQ.eyJzdWIiOiJjNDdiOGI3MC00Y' +
+# 'mIxLTQ4M2MtODg3Ni05ODEzYjAzMGI3NWQiLCJhdXQiOiJBUFBMSUNBVElPTiIsImF1ZCI6ImhaSU9HSjRoOUxKM2N' +
+# 'iWmVmZkk5T0loWTI0Z2EiLCJuYmYiOjE3MjcyOTIzMjMsImF6cCI6ImhaSU9HSjRoOUxKM2NiWmVmZkk5T0loWTI0Z2' +
+# 'EiLCJzY29wZSI6ImRlZmF1bHQiLCJpc3MiOiJodHRwczpcL1wvcG9ydGFpbC1hcGkubWV0ZW9mcmFuY2UuZnJcL29hd' +
+# 'XRoMlwvdG9rZW4iLCJleHAiOjE3MjcyOTU5MjMsImlhdCI6MTcyNzI5MjMyMywianRpIjoiOTYyODczMmYtZmNmZC00Z' +
+# 'Dc2LTg3MzktNGZlMjE0NTk2ZjNkIiwiY2xpZW50X2lkIjoiaFpJT0dKNGg5TEozY2JaZWZmSTlPSWhZMjRnYSJ9.gN8kD' +
+# 'j1gHMggiT7BTk4xelavHN8xEaqyW9AkxeUKB_oaBRuh1m7GPp8YFcdfzMOa4Do8Zn966_bzkeSWk1lsH6Lmd7jEUKrHP4' +
+# 'qUwCipQ06aJEtLSOYyWrnxWvRaTrMwqEICki9Cn_XwaIyOphtfcjHnI66Mhydag0LAvc4ah8YcnLhoJ-QZ2FECEkIgjOS' +
+# '19t6-tFHKXREqmxU5jbH_O3pAHXsDd_km1YF-iSO3tFV5FA5qzoz5vJWoDie2FgHLFEa5X4NV2L_CN1FOtXe3OwkKg29Y' +
+# 'XeDQEdGC9Ebq_E7LQbe5sXZuuPmnRJrFPLNOU8ceBzqwZxmqxrI82FR3eQ'
+# )
 
 
 
@@ -122,9 +125,74 @@ class Client(object):
         self.session.headers.update({'Authorization': 'Bearer %s' % token})
 
 
+
+
+    def get_stations_list(self) -> requests.Response:
+        """Get the list of observation stations from the API.
+
+        Returns:
+            requests.Response: Response from the API with the data in csv.
+        """
+        self.session.headers.update({'Accept': 'application/json'})
+        request = self.request(
+            method='GET',
+            url=constants.STATION_LIST_URL
+        )
+
+        return request
+    
+
+    def get_hourly_observation(self, id_station: str, date: str) -> requests.Response:
+        """Get all available parameters for the requested station and for the 
+        date/time closest to the requested date according to available data.
+
+        Args:
+            id_station (str): station id number ;
+            date (str): requested date (ISO 8601 format with
+        TZ UTC AAAA-MM-JJThh:00:00Z).
+
+        Returns:
+            requests.Response: Response from the API with the data in json.
+        """
+        self.session.headers.update({'Accept': 'application/json'})
+        payload={
+            'id_station': id_station,
+            'date': date,
+            'format': 'json'
+        }
+        request = self.request(
+            method='GET',
+            url=constants.HOURLY_OBSERVATION_URL,
+            params=payload
+        )
+
+        return request
+
+
+
     #### HERE
     # should start by a function more directly in the meteo france reco to see if the request works
     #### HERE
+    # def search_places(
+    #     self,
+    #     search_query: str,
+    # ) -> Place:
+    #     """
+    #     """
+    #     self.session.headers.update({'Accept': 'application/json'})
+    #     # Construct the list of the GET parameters
+    #     params = {"q": search_query}
+    #     if latitude is not None:
+    #         params["lat"] = latitude
+    #     if longitude is not None:
+    #         params["lon"] = longitude
+
+    #     # Send the API resuest
+    #     resp = self.request("GET", "https://api.meteofrance.fr/places", params=params)
+    #     return [Place(place_data) for place_data in resp.json()]
+
+
+
 
 
     # Place
@@ -470,9 +538,20 @@ def main():
 
     client = Client()
     # Issue a series of API requests an example.  For use this test, you must first subscribe to the arome api with your application
-    client.session.headers.update({'Accept': 'application/json'})
+    # client.session.headers.update({'Accept': 'application/json'})
 
-    # Search a location from name.
+    # test function to make the client work
+    stations_list = client.get_stations_list()
+    zstationlist_txt = stations_list.text
+
+    # Use StringIO to simulate reading from a file
+    zstationlist_file = StringIO(zstationlist_txt)
+    # Use csv.DictReader to parse
+    stationreader = csv.DictReader(zstationlist_file, delimiter=';')
+    stationlist_dict = [row for row in stationreader]
+
+
+    # Search a location from names
     list_places = client.search_places(city)
     my_place = list_places[0]
 
