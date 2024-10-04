@@ -51,4 +51,4 @@ st.write(current_lang['title'])
 st.markdown(current_lang['description'])
 
 
-st.image("https://i.imgur.com/jCQC1cT.png", caption="Nous...", height=400)
+st.image("https://i.imgur.com/jCQC1cT.png", caption="Nous...", width=400)
