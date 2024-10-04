@@ -129,22 +129,48 @@ aqi_legend_10 = pd.DataFrame(aqi_levels_10)
 ## Streamlit app
 #############################################################
 
+# Language translations
+translations = {
+    'en': {
+        'title': "Air pollution levels over time",
+        'mode_selection': "Select view mode:",
+        'data_selection': 'Select data:',
+        'month_selection': 'Select month:',
+        'day_selection': 'Select day:',
+        'animate_checkbox': 'Animate over days',
+        'no_data_warning': "No data available for the selected date.",
+    },
+    'fr': {
+        'title': "Niveaux de pollution de l'air au fil du temps",
+        'mode_selection': "Sélectionnez le mode d'affichage :",
+        'data_selection': 'Sélectionnez les données :',
+        'month_selection': 'Sélectionnez le mois :',
+        'day_selection': 'Sélectionnez le jour :',
+        'animate_checkbox': 'Animer au fil des jours',
+        'no_data_warning': "Aucune donnée disponible pour la date sélectionnée.",
+    }
+}
+
+# Language selection
+language = st.sidebar.selectbox('Select language:', ['French', 'English'])
+lang_code = 'fr' if language == 'French' else 'en'
+
+# Tabs
 tab1, tab2 = st.tabs(['Historic air pollution levels', 'Forecast air pollution levels'])
 
 if 'active_tab' not in st.session_state:
     st.session_state['active_tab'] = 'Historic air pollution levels'
     
-
 with tab1:
     st.session_state['active_tab'] = 'Historic air pollution levels'
-    st.title("Air pollution levels over time")
+    st.title(translations[lang_code]['title'])
 
     st.sidebar.header("HISTORIC - Filter Options")
 
     # Mode Selection: Raw Data or AQI Data
-    mode = st.sidebar.radio("Select view mode:", ("Raw data", "AQI data"), key='firstTab')
+    mode = st.sidebar.radio(translations[lang_code]['mode_selection'], ("Raw data", "AQI data"), key='firstTab')
 
-    selected_data = st.sidebar.selectbox('Select data:', available_data)
+    selected_data = st.sidebar.selectbox(translations[lang_code]['data_selection'], available_data)
     
     # Function to get available months
     def get_available_months(selected_data):
@@ -157,7 +183,7 @@ with tab1:
     
     available_months, month_options = get_available_months(selected_data)
     
-    selected_month_name = st.sidebar.selectbox('Select month:', month_options)
+    selected_month_name = st.sidebar.selectbox(translations[lang_code]['month_selection'], month_options)
     selected_month_index = month_options.index(selected_month_name)
     selected_month = available_months[selected_month_index]
     
@@ -172,10 +198,10 @@ with tab1:
     
     available_days = get_available_days(selected_data, selected_month)
     day_options = [int(day) for day in available_days]
-    selected_day = st.sidebar.select_slider('Select day:', options=day_options, value=int(day_options[0]))
+    selected_day = st.sidebar.select_slider(translations[lang_code]['day_selection'], options=day_options, value=int(day_options[0]))
     
     # Animate checkbox
-    animate = st.sidebar.checkbox('Animate over days')
+    animate = st.sidebar.checkbox(translations[lang_code]['animate_checkbox'])
     
     #############################################################
     ## Function to generate static map

@@ -11,7 +11,7 @@ import streamlit as st
 
 # Language translations dictionary
 translations = {
-    'french': {
+    'français': {
         'title': "# Bien le bonjour! 👋",
         'sidebar_message': "Veuillez choisir une donnée:",
         'description': """
@@ -38,7 +38,7 @@ translations = {
 }
 
 # Language selector in the sidebar
-language = st.sidebar.selectbox("Select Language", ['english', 'french'])
+language = st.sidebar.selectbox("Select Language", ['français', 'english'])
 
 # Get the appropriate translations based on the selected language
 current_lang = translations[language]
