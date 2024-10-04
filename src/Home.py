@@ -11,26 +11,26 @@ import streamlit as st
 
 # Language translations dictionary
 translations = {
-    'français': {
+    'Français': {
         'title': "# Bien le bonjour! 👋",
-        'sidebar_message': "Veuillez choisir une donnée:",
+        'sidebar_message': "Veuillez choisir un onglet",
         'description': """
             Ce tableau de bord permet de visualiser quelques aspects liés aux risques
             en Corse. On a identifié deux risques majeurs :
-            - Pollution de l'air
-            - Risques du réseau électrique
+            - Pollution de l'air (voir Air Quality)
+            - Risques du réseau électrique (voir Environmental Risks)
 
             👈 Dans la **barre latérale** on peut explorer un peu plus ces aspects!
         """,
     },
-    'english': {
-        'title': "# Hello, welcome! 👋",
-        'sidebar_message': "Please choose a dataset:",
+    'English': {
+        'title': "# Welcome! 👋",
+        'sidebar_message': "Please choose a dataset tab",
         'description': """
             This dashboard allows you to explore several aspects related to risks
             in Corsica. We have identified two major risks:
-            - Air pollution
-            - Electrical grid risks
+            - Air Quality
+            - Environmental Risks on electric network 
 
             👈 In the **sidebar**, you can explore these aspects further!
         """,
@@ -38,7 +38,7 @@ translations = {
 }
 
 # Language selector in the sidebar
-language = st.sidebar.selectbox("Select Language", ['français', 'english'])
+language = st.sidebar.selectbox("Select Language", ['Français', 'English'])
 
 # Get the appropriate translations based on the selected language
 current_lang = translations[language]

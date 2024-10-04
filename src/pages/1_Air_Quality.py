@@ -132,40 +132,54 @@ aqi_legend_10 = pd.DataFrame(aqi_levels_10)
 # Language translations
 translations = {
     'en': {
-        'title': "Air pollution levels over time",
+        'tab1name': "Historic air pollution levels",
+        'tab1options': "HISTORIC - Option",
+        'title1': "Air pollution levels over time",
         'mode_selection': "Select view mode:",
         'data_selection': 'Select data:',
         'month_selection': 'Select month:',
         'day_selection': 'Select day:',
         'animate_checkbox': 'Animate over days',
         'no_data_warning': "No data available for the selected date.",
+
+        'tab2name': "Forecast air pollution levels",
+        'tab2options': "Forecast - Options",
+        'title2': "Forecast air pollution levels",
+        'datasetrmk': "Choose your dataset and visualize the forecast"
     },
     'fr': {
-        'title': "Niveaux de pollution de l'air au fil du temps",
+        'tab1name': "Historique des niveaux de pollution de l'air",
+        'tab1options': "Historique - Options",
+        'title1': "Historique des niveaux de pollution de l'air",
         'mode_selection': "Sélectionnez le mode d'affichage :",
         'data_selection': 'Sélectionnez les données :',
         'month_selection': 'Sélectionnez le mois :',
         'day_selection': 'Sélectionnez le jour :',
         'animate_checkbox': 'Animer au fil des jours',
         'no_data_warning': "Aucune donnée disponible pour la date sélectionnée.",
+
+        'tab2name': "Prévisions des niveaux de pollution de l'air",
+        'tab2options': "Prévisions - Options",
+        'title2': "Prévisions des niveaux de pollution de l'air",
+        'datasetrmk': "Choisissez votre jeu de données et visualisez les prévisions"
     }
 }
 
 # Language selection
-language = st.sidebar.selectbox('Select language:', ['French', 'English'])
-lang_code = 'fr' if language == 'French' else 'en'
+language = st.sidebar.selectbox('Select language:', ['Français', 'English'])
+lang_code = 'fr' if language == 'Français' else 'en'
 
 # Tabs
 tab1, tab2 = st.tabs(['Historic air pollution levels', 'Forecast air pollution levels'])
 
 if 'active_tab' not in st.session_state:
-    st.session_state['active_tab'] = 'Historic air pollution levels'
+    st.session_state['active_tab'] = translations[lang_code]['tab1name']
     
 with tab1:
-    st.session_state['active_tab'] = 'Historic air pollution levels'
-    st.title(translations[lang_code]['title'])
+    st.session_state['active_tab'] = translations[lang_code]['tab1name']
+    st.title(translations[lang_code]['title1'])
 
-    st.sidebar.header("HISTORIC - Filter Options")
+    st.sidebar.header(translations[lang_code]['tab1options'])
 
     # Mode Selection: Raw Data or AQI Data
     mode = st.sidebar.radio(translations[lang_code]['mode_selection'], ("Raw data", "AQI data"), key='firstTab')
@@ -563,10 +577,10 @@ with tab1:
                     """)
             
 with tab2:
-    st.title("Forecasted air pollution levels")
-    st.write("Choose your dataset and visualize the forecast.")
+    st.title(translations[lang_code]['title2'])
+    st.write(translations[lang_code]['datasetrmk'])
     
-    st.session_state['active_tab'] = 'Forecast air pollution levels'
+    st.session_state['active_tab'] = translations[lang_code]['title2']
     
     variable_options = [
         "Dust",
@@ -575,10 +589,10 @@ with tab2:
         "PM from wildfires"
     ]
     
-    st.sidebar.header("FORECAST - Filter Options")
+    st.sidebar.header(translations[lang_code]['tab2options'])
     
     selected_variable = st.sidebar.selectbox(
-        "Select variable: ",
+        translations[lang_code]['data_selection'],
         options=variable_options,
     )
     
