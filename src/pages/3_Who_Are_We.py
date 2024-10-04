@@ -12,7 +12,7 @@ import streamlit as st
 # Language translations dictionary
 translations = {
     'Français': {
-        'title': "Qui sommes nous?",
+        'title': "# Qui sommes nous?",
         'description': """
         Nous sommes deux amis de longue date et doctorants dans notre temps libre!
 
@@ -25,7 +25,7 @@ translations = {
         """,
     },
     'English': {
-        'title': "Who are we?",
+        'title': "# Who are we?",
         'description': """
         We are two long-time friends and doctoral students in our free time!
 
@@ -51,4 +51,4 @@ st.write(current_lang['title'])
 st.markdown(current_lang['description'])
 
 
-st.image("https://imgur.com/a/g9kFEmN", caption="", use_column_width=True)
+st.image("https://i.imgur.com/jCQC1cT.png", caption="Nous...", use_column_width=True)

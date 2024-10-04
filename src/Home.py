@@ -30,7 +30,7 @@ translations = {
             This dashboard allows you to explore several aspects related to risks
             in Corsica. We have identified two major risks:
             - Air Quality
-            - Environmental Risks on electric network 
+            - Environmental Risks on Electric Network 
 
             👈 In the **sidebar**, you can explore these aspects further!
         """,
