@@ -106,7 +106,7 @@ pylones_coord = extract_rescoordinates(geojson_pylones)
 # Language translations
 translations = {
     'en': {
-        'title1': "Risk on overhead electricity network (poles)",
+        'tab1name': "Risk on overhead electricity network (poles)",
         'title1': "Environmental risks on the overhead electricity network",
         'tab1options': "Options",
 
