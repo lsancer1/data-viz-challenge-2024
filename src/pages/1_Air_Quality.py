@@ -149,6 +149,7 @@ translations = {
         'getdata_instructions': "Please click on 'Get Data' to load data"
 
     },
+    
     'fr': {
         'tab1name': "Historique des niveaux de pollution de l'air",
         'tab1options': "Historique - Options",
