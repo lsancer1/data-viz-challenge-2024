@@ -16,7 +16,7 @@ import yaml
 from attrdictionary import AttrDict as attributedict
 import os
 import zipfile
-from datetime import datetime
+from datetime import datetime, timedelta
 import cdsapi
 
 #############################################################
@@ -167,10 +167,14 @@ translations = {
 
 # Language selection
 language = st.sidebar.selectbox('Select language:', ['Français', 'English'])
-lang_code = 'fr' if language == 'Français' else 'en'
+if language == 'Français':
+    lang_code = 'fr'
+    tab1, tab2 = st.tabs(["Historique des niveaux de pollution de l'air", "Prévisions des niveaux de pollution de l'air"])
+else:
+    lang_code = 'en'
+    tab1, tab2 = st.tabs(['Historic air pollution levels', 'Forecast air pollution levels'])
 
 # Tabs
-tab1, tab2 = st.tabs(['Historic air pollution levels', 'Forecast air pollution levels'])
 
 if 'active_tab' not in st.session_state:
     st.session_state['active_tab'] = translations[lang_code]['tab1name']
@@ -613,8 +617,10 @@ with tab2:
     # Define variable_name before the button
     variable_name = variable_options_dico[selected_variable]
     variable_in_dataset = subvariable_options_dico[variable_name]
-
-    date = datetime.today().strftime('%Y-%m-%d') + "/" + datetime.today().strftime('%Y-%m-%d')
+    
+    yesterday = datetime.today() - timedelta(days=1)
+    date = yesterday.strftime('%Y-%m-%d') + "/" + yesterday.strftime('%Y-%m-%d')
+    #date = datetime.today().strftime('%Y-%m-%d') + "/" + datetime.today().strftime('%Y-%m-%d')
 
     # Move the sidebar header here
     st.sidebar.header("Filter Options")
@@ -780,9 +786,12 @@ with tab2:
                 "data_format": "netcdf_zip",
                 "area": [43.25, 8.15, 41.15, 10.15]
             }
+            print('Ok launched')
             response = c.retrieve(cams_dataset_name, request).download()
+            print('Ok downloaded')
 
             with st.spinner('Extracting data...'):
+                print('Extracting data')
                 zip_file = zipfile.ZipFile(folder_path + '/' + response)
                 netcdf_files = [name for name in zip_file.namelist() if name.endswith('.nc')]
                 #netcdf_files = [name for name in os.listdir( folder_path ) if name.endswith('.nc')]
@@ -790,6 +799,7 @@ with tab2:
                 zip_file.extractall( folder_path )
                 ds = xr.open_dataset(netcdf_filename)
                 selected_data = ds
+                print('Data extracted')
 
                 # Store variables in session state
                 st.session_state['selected_data'] = selected_data
