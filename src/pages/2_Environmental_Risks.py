@@ -32,24 +32,24 @@ currently = 'cloud'
 if currently == 'cloud':
 
     folder_path = os.getcwd()
-    pathtofolder = os.path.join(folder_path, 'data/reseaux/')
+    pathtofolder = os.path.join(folder_path, 'data/edf_corse/reseaux/')
     pathtoconfig = os.path.join(folder_path, 'configs/')
     
     with open( pathtoconfig + "main_lucas.yml", "r") as f:
         config = yaml.load(f, Loader=yaml.FullLoader)
     
     config = attributedict(config)
-    keptfiles = list(config.dashboard.data.cams.keptfiles)
+    keptfiles = list(config.dashboard.data.reseaux.keptfiles)
 
     
 else:
     folder_path = os.getcwd()
-    with open("../configs/main_alberto.yml", "r") as f:
+    with open("../configs/main_lucas.yml", "r") as f:
         config = yaml.load(f, Loader=yaml.FullLoader)
     
     config = attributedict(config)
-    pathtofolder = config.dashboard.data.cams.folder
-    keptfiles = list(config.dashboard.data.cams.keptfiles)
+    pathtofolder = config.dashboard.data.reseaux.folder
+    keptfiles = list(config.dashboard.data.reseaux.keptfiles)
 
 
 
