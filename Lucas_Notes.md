@@ -21,6 +21,8 @@
     IdentitiesOnly yes
   ```
 
+- maybe the solution of all my problems: https://stackoverflow.com/questions/47770917/sublime-text-3-misinterpreting-indentation-when-code-is-pasted 
+
 #### Env additions
 
 - pip install streamlit

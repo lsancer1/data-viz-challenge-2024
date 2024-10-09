@@ -23,7 +23,7 @@ import cdsapi
 ## Load configs parameter
 #############################################################
 
-currently = 'local'
+currently = 'cloud'
 
 if currently == 'cloud':
 
@@ -145,8 +145,8 @@ translations = {
         'tab2name': "Forecast air pollution levels",
         'tab2options': "Forecast - Options",
         'title2': "Forecast air pollution levels",
-        'datasetrmk': "Choose your dataset and visualize the forecast"
-        'getdata_instructions':"Please click on 'Get Data' to load data"
+        'datasetrmk': "Choose your dataset and visualize the forecast",
+        'getdata_instructions': "Please click on 'Get Data' to load data"
 
     },
     'fr': {
@@ -164,7 +164,7 @@ translations = {
         'tab2options': "Prévisions - Options",
         'title2': "Prévisions des niveaux de pollution de l'air",
         'datasetrmk': "Choisissez votre jeu de données et visualisez les prévisions",
-        'getdata_instructions':"Veuillez sélectionner l'option 'Get Data' pour charger les données"
+        'getdata_instructions': "Veuillez sélectionner l'option 'Get Data' pour charger les données"
 
     }
 }
