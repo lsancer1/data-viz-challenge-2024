@@ -2,9 +2,29 @@
 
 <center> <h1>Data Viz Challenge</h1> </center>
 
-# General
+
+# Open App
+
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://data-viz-challenge-2024.streamlit.app/)
+
+
+# DataViz Contact and Instructions
+
+**Phase 2** : Concours
+
+• Date : du 2 septembre au 18 octobre midi
+• Lieu : virtuel
+• Objet : les équipes devront produire leur projet et l’envoyer aux adresses e-mail suivantes
+avant l’heure et la date limite de remise des projets (pièce jointe ou lien de téléchargement) :
+chaire-territoires@univ-corse.fr et bisgambiglia_pa@univ-corse.fr, accompagné d’un
+descriptif de 2-6 lignes du livrable. Les candidats devront indiquer s’ils répondent, ou non, à
+l’un des défis suggérés. Pour les rendus dynamiques, type API, etc. un « readme » est également
+demandé ainsi qu’une vidéo de démonstration.
 
 [CHALLENGE](https://chaire-territoires.universita.corsica/article.php?id_site=73&id_art=7022&lang=fr)
+
+
+# General
 
 [Ideas Document](https://docs.google.com/document/d/1goIOnfw7DgGOCrfaB56elmai3LYjU27jQNenf__UQvA/edit)
 

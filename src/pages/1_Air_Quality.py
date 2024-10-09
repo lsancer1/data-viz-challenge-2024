@@ -3,7 +3,7 @@
 """
 Created on Fri Sep 27 15:46:31 2024
 
-@author: alonso-pinar_a
+@author: alonso-pinar_a, lucas-sancere
 """
 
 import streamlit as st
@@ -23,7 +23,7 @@ import cdsapi
 ## Load configs parameter
 #############################################################
 
-currently = 'cloud'
+currently = 'local'
 
 if currently == 'cloud':
 
@@ -146,6 +146,8 @@ translations = {
         'tab2options': "Forecast - Options",
         'title2': "Forecast air pollution levels",
         'datasetrmk': "Choose your dataset and visualize the forecast"
+        'getdata_instructions':"Please click on 'Get Data' to load data"
+
     },
     'fr': {
         'tab1name': "Historique des niveaux de pollution de l'air",
@@ -161,7 +163,9 @@ translations = {
         'tab2name': "Prévisions des niveaux de pollution de l'air",
         'tab2options': "Prévisions - Options",
         'title2': "Prévisions des niveaux de pollution de l'air",
-        'datasetrmk': "Choisissez votre jeu de données et visualisez les prévisions"
+        'datasetrmk': "Choisissez votre jeu de données et visualisez les prévisions",
+        'getdata_instructions':"Veuillez sélectionner l'option 'Get Data' pour charger les données"
+
     }
 }
 
@@ -175,10 +179,15 @@ else:
     tab1, tab2 = st.tabs(['Historic air pollution levels', 'Forecast air pollution levels'])
 
 # Tabs
-
 if 'active_tab' not in st.session_state:
     st.session_state['active_tab'] = translations[lang_code]['tab1name']
+
+
+#############################################################
+## Tab1 
+#############################################################
     
+
 with tab1:
     st.session_state['active_tab'] = translations[lang_code]['tab1name']
     st.title(translations[lang_code]['title1'])
@@ -225,7 +234,7 @@ with tab1:
     ## Function to generate static map
     #############################################################
     
-    def generate_map(selected_data, selected_month, selected_day, mode):
+    def generate_map_tab1(selected_data, selected_month, selected_day, mode):
         
         dataset = datasets[selected_data]
         times = pd.to_datetime(dataset.time.values)
@@ -530,7 +539,7 @@ with tab1:
     if animate:
         fig = generate_animated_map(selected_data, selected_month, mode)
     else:
-        fig = generate_map(selected_data, selected_month, selected_day, mode)
+        fig = generate_map_tab1(selected_data, selected_month, selected_day, mode)
     
     #############################################################
     ## Layout with Two Columns: Map and AQI Legend
@@ -579,7 +588,12 @@ with tab1:
                     st.markdown("""
                         This view displays the raw aerosol concentration data without categorization into AQI levels.
                     """)
-            
+
+#############################################################
+## Tab2 
+#############################################################
+    
+
 with tab2:
     st.title(translations[lang_code]['title2'])
     st.write(translations[lang_code]['datasetrmk'])
@@ -625,7 +639,7 @@ with tab2:
     # Move the sidebar header here
     st.sidebar.header("Filter Options")
     
-    def generate_map(selected_data, selected_hour, mode):
+    def generate_map_tab2(selected_data, selected_hour, mode):
         
         dataset = selected_data
         times = dataset.time.values
@@ -829,7 +843,7 @@ with tab2:
 
         # Generate and display the map
         if variable_in_dataset in list(selected_data.keys()):
-            fig = generate_map(selected_data, selected_hour, mode)
+            fig = generate_map_tab2(selected_data, selected_hour, mode)
     
             # Layout with two columns: map and AQI legend
             if fig:
@@ -889,8 +903,8 @@ with tab2:
                             forecast_interpretation = map_aqi_25(fmax)
                             st.markdown(f"La qualité de l'air en Corse est prévue : **{forecast_interpretation}** dans {converted_time} heures. \n\n")
         else:
-            st.write("Please click on 'Get Data' to load data.")
+            st.write(translations[lang_code]['getdata_instructions'])
     else:
-        st.write("Please click on 'Get Data' to load data.")
+        st.write(translations[lang_code]['getdata_instructions'])
 
 

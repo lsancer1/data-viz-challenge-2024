@@ -3,7 +3,7 @@
 """
 Created on Mon Sep 30 08:34:55 2024
 
-@author: alonso-pinar_a
+@authors: alonso-pinar_a, lucas-sancere
 """
 
 import streamlit as st

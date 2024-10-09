@@ -2,14 +2,32 @@
 
 
 
+
+
+
+
+## October 9th
+
+
+
+#### Env additions
+
+- pip install streamlit
+- pip install cdsapi 
+
+#### List of bugs in the Air Quality tab for now
+
+- Raw data view text is not changing when selecting AQI data 
+- Names of menu options are only in English (January, Dust and so on)
+- Forecast not working because token needs to be added  :heavy_check_mark:
+- Get data not displaying anything
+
 ## October 4th
 
 - [Streamlit Secrets management](https://docs.streamlit.io/develop/concepts/connections/secrets-management)
 - [Create a multipage app](https://docs.streamlit.io/get-started/tutorials/create-a-multipage-app)
 
-id_ed25519
-
-
+- id_ed25519
 
 ## September 29th
 
