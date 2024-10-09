@@ -84,7 +84,19 @@ htb_aerien_coord = extract_rescoordinates(geojson_htb_aerien)
 pylones_coord = extract_rescoordinates(geojson_pylones)
 
 
+# @st.cache_data
+# def load_data():
+# 	with open(bt_aerien_path) as f:
+#     	geojson_bt_aerien = json.load(f)
+# 	with open(hta_aerien_path) as f:
+# 	    geojson_hta_aerien = json.load(f)
+# 	with open(htb_aerien_path) as f:
+# 	    geojson_htb_aerien = json.load(f)
+# 	with open(pylones_path) as f:
+# 	    geojson_pylones = json.load(f)
+#     return geojson_bt_aerien, geojson_hta_aerien, geojson_htb_aerien, geojson_pylones
 
+# geojson_bt_aerien, geojson_hta_aerien, geojson_htb_aerien, geojson_pylones = load_data()
 
 #############################################################
 ## Streamlit app
@@ -94,14 +106,14 @@ pylones_coord = extract_rescoordinates(geojson_pylones)
 # Language translations
 translations = {
     'en': {
-        # 'tab1name': "Environmental risks on the overhead electricity network",
+        'title1': "Risk on overhead electricity network (poles)",
         'title1': "Environmental risks on the overhead electricity network",
         'tab1options': "Options",
 
 
     },
     'fr': {
-        # 'tab1name': "Risques environementaux sur le réseau electrique aérien",
+        'tab1name': "Risques sur le réseau electrique aérien",
         'title1': "Risques environementaux sur le réseau electrique aérien",
         'tab1options': "Options",
 
