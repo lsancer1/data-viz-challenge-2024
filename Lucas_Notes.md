@@ -1,14 +1,25 @@
 # Logbook
 
-
-
-
-
-
-
 ## October 9th
 
+- Need to create 2 ssh configs to push now from the laptop..
 
+  ```bash
+  # Configuration for the first account (lucas-sancere)
+  Host github-lucas-sancere
+    AddKeysToAgent yes
+    UseKeychain yes
+    HostName github.com
+    User git
+    IdentityFile ~/.ssh/key-bozekmac-1
+  
+  # Configuration for the second account (lsancer1)
+  Host github-lsancer1
+    HostName github.com
+    User git
+    IdentityFile ~/.ssh/id_ed25519
+    IdentitiesOnly yes
+  ```
 
 #### Env additions
 
@@ -17,7 +28,7 @@
 
 #### List of bugs in the Air Quality tab for now
 
-- Raw data view text is not changing when selecting AQI data 
+- Raw data view text on the right column is not changing when selecting AQI data 
 - Names of menu options are only in English (January, Dust and so on)
 - Forecast not working because token needs to be added  :heavy_check_mark:
 - Get data not displaying anything

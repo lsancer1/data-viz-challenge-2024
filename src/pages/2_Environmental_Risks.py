@@ -117,9 +117,9 @@ else:
     lang_code = 'en'
     tab1  = st.tabs(["Risk on overhead electricity network (poles)"])
 
-# # Tabs
-# if 'active_tab' not in st.session_state:
-#     st.session_state['active_tab'] = translations[lang_code]['tab1name']
+# Tabs
+if 'active_tab' not in st.session_state:
+    st.session_state['active_tab'] = translations[lang_code]['tab1name']
     
 
 #############################################################
@@ -243,7 +243,10 @@ with tab1:
 	    st.plotly_chart(fig, use_container_width=True)
 
 	with col2:
-		# Do nothing for now 
+        st.header("Raw data view")
+        st.markdown("""
+            This view displays the raw aerosol concentration data without categorization into AQI levels.
+        """)
 
          
 
