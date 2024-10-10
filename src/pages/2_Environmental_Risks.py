@@ -124,14 +124,14 @@ translations = {
 language = st.sidebar.selectbox('Select language:', ['Français', 'English'])
 if language == 'Français':
     lang_code = 'fr'
-    # tab1,  = st.tabs(["Risques sur le réseau electrique aérien"] )
+    tab1,  = st.tabs(["Risques sur le réseau electrique aérien"] )
 else:
     lang_code = 'en'
-    # tab1,  = st.tabs(["Risk on overhead electricity network (poles)"])
+    tab1,  = st.tabs(["Risk on overhead electricity network (poles)"])
 
 # Tabs
-# if 'active_tab' not in st.session_state:
-#     st.session_state['active_tab'] = translations[lang_code]['tab1name']
+if 'active_tab' not in st.session_state:
+    st.session_state['active_tab'] = translations[lang_code]['tab1name']
     
 
 #############################################################
@@ -139,110 +139,110 @@ else:
 #############################################################
 
 
+with tab1:
+	st.session_state['active_tab'] = translations[lang_code]['tab1name']
+	st.title(translations[lang_code]['title1'])
 
-st.session_state['active_tab'] = translations[lang_code]['tab1name']
-st.title(translations[lang_code]['title1'])
+	st.sidebar.header(translations[lang_code]['tab1options'])
 
-st.sidebar.header(translations[lang_code]['tab1options'])
+	#insert the function we will need to read the API
 
-#insert the function we will need to read the API
-
-######
-######
-######
-
-#############################################################
-## Function to generate static map
-#############################################################
-
-def generate_map_tab1(bt_aerien_coord, hta_aerien_coord, htb_aerien_coord,pylones_coord):
-	 # Step 1: Combine your data into one DataFrame
-
-	data = []
-	for point in bt_aerien_coord:
-	 	data.append({'Latitude': point['lat'], 'Longitude': point['lon'], 'Category': 'BT aérien', 'Statut': point['statut']})
-	for point in hta_aerien_coord:
-	 	data.append({'Latitude': point['lat'], 'Longitude': point['lon'], 'Category': 'HTA aérien', 'Statut': point['statut']})
-	for point in htb_aerien_coord:
-	 	data.append({'Latitude': point['lat'], 'Longitude': point['lon'], 'Category': 'HTB aérien', 'Statut': point['statut']})
-	for point in pylones_coord:
-	 	data.append({'Latitude': point['lat'], 'Longitude': point['lon'], 'Category': 'Pylones', 'Statut': point['statut']})
-
-	# Create a DataFrame
-	df = pd.DataFrame(data)
-
-	# Define your custom color map
-	custom_colors = {
-		'BT aérien': 'blue',   
-		'HTA aérien': 'red',    
-		'HTB aérien': 'orange',  
-		'Pylones': 'black'  
-	}
-
-	# plot
-	fig = px.scatter_mapbox(
-		 df,
-		 lat='Latitude',
-		 lon='Longitude',
-		 color='Category',  # Differentiate points by 'Category'
-		 hover_name='Statut',  # Display 'Statut' on hover
-		 mapbox_style='open-street-map',
-		 zoom=7,
-		 center={"lat": 42.16, "lon": 9.13},
-		 title="Aerial Points Map",
-		 height=800,
-		 width=800,
-		 color_discrete_map=custom_colors  # Apply custom color map
-	 )
-
-	return fig
-
-	# Customize the colorbar
-	# fig.update_layout(
-	# 	mapbox_style="open-street-map",
-	# 	mapbox=dict(
-	#     	zoom=7,
-	#     	center={"lat": 42.16, "lon": 9.13}  # Center map on the data
-	# 	),
-	# 	height=800,
-	# 	width=800
-	# 	)
-
-	# Also an option for pylones
-	# go.Scattermapbox(
-	# 	lat=[point['lat'] for point in pylones_coord],
-	# 	lon=[point['lon'] for point in pylones_coord],
-	# 	mode='markers',
-	# 	marker=go.scattermapbox.Marker(
-	#     	size=10,
-	#     	color='black'  # Set a different color for the second set of points
-	# 	),
-	# 	text=[point['statut'] for point in pylones_coord],
-	# ) return fig
+	######
+	######
+	######
 
 	#############################################################
-	## Generate and Display the Map
+	## Function to generate static map
 	#############################################################
 
-	fig = generate_map_tab1(bt_aerien_coord, hta_aerien_coord, htb_aerien_coord, pylones_coord)
+	def generate_map_tab1(bt_aerien_coord, hta_aerien_coord, htb_aerien_coord,pylones_coord):
+   	 # Step 1: Combine your data into one DataFrame
+
+		data = []
+		for point in bt_aerien_coord:
+		 	data.append({'Latitude': point['lat'], 'Longitude': point['lon'], 'Category': 'BT aérien', 'Statut': point['statut']})
+		for point in hta_aerien_coord:
+		 	data.append({'Latitude': point['lat'], 'Longitude': point['lon'], 'Category': 'HTA aérien', 'Statut': point['statut']})
+		for point in htb_aerien_coord:
+		 	data.append({'Latitude': point['lat'], 'Longitude': point['lon'], 'Category': 'HTB aérien', 'Statut': point['statut']})
+		for point in pylones_coord:
+		 	data.append({'Latitude': point['lat'], 'Longitude': point['lon'], 'Category': 'Pylones', 'Statut': point['statut']})
+
+		# Create a DataFrame
+		df = pd.DataFrame(data)
+
+		# Define your custom color map
+		custom_colors = {
+			'BT aérien': 'blue',   
+			'HTA aérien': 'red',    
+			'HTB aérien': 'orange',  
+			'Pylones': 'black'  
+		}
+
+		# plot
+		fig = px.scatter_mapbox(
+			 df,
+			 lat='Latitude',
+			 lon='Longitude',
+			 color='Category',  # Differentiate points by 'Category'
+			 hover_name='Statut',  # Display 'Statut' on hover
+			 mapbox_style='open-street-map',
+			 zoom=7,
+			 center={"lat": 42.16, "lon": 9.13},
+			 title="Aerial Points Map",
+			 height=800,
+			 width=800,
+			 color_discrete_map=custom_colors  # Apply custom color map
+		 )
+
+		return fig
+
+		# Customize the colorbar
+		# fig.update_layout(
+		# 	mapbox_style="open-street-map",
+		# 	mapbox=dict(
+		#     	zoom=7,
+		#     	center={"lat": 42.16, "lon": 9.13}  # Center map on the data
+		# 	),
+		# 	height=800,
+		# 	width=800
+		# 	)
+
+		# Also an option for pylones
+		# go.Scattermapbox(
+		# 	lat=[point['lat'] for point in pylones_coord],
+		# 	lon=[point['lon'] for point in pylones_coord],
+		# 	mode='markers',
+		# 	marker=go.scattermapbox.Marker(
+		#     	size=10,
+		#     	color='black'  # Set a different color for the second set of points
+		# 	),
+		# 	text=[point['statut'] for point in pylones_coord],
+		# ) return fig
+
+		#############################################################
+		## Generate and Display the Map
+		#############################################################
+
+		fig = generate_map_tab1(bt_aerien_coord, hta_aerien_coord, htb_aerien_coord, pylones_coord)
 
 
-	#############################################################
-	## Layout with Two Columns: Map and Legend
-	#############################################################
+		#############################################################
+		## Layout with Two Columns: Map and Legend
+		#############################################################
 
-	if fig:
-		# Create two columns with a 3:1 ratio (map:legend)
-		col1, col2 = st.columns([3, 1])
+		if fig:
+			# Create two columns with a 3:1 ratio (map:legend)
+			col1, col2 = st.columns([3, 1])
 
-	with col1:
-		st.plotly_chart(fig, use_container_width=True)
+		with col1:
+			st.plotly_chart(fig, use_container_width=True)
 
-	with col2:
-		st.header("Raw data view")
-		st.markdown("""
-		This view displays the raw aerosol concentration data without categorization into AQI levels.
-		""")
+		with col2:
+			st.header("Raw data view")
+			st.markdown("""
+			This view displays the raw aerosol concentration data without categorization into AQI levels.
+			""")
 
          
 
