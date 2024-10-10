@@ -2,6 +2,8 @@
 
 ## October 9th
 
+- Use prints and manage app to debug!!
+
 - Need to create 2 ssh configs to push now from the laptop..
 
   ```bash
@@ -36,6 +38,12 @@
 - Names of menu options are only in English (January, Dust and so on)
 - Forecast not working because token needs to be added  :heavy_check_mark:
 - Get data not displaying anything
+
+#### TDL Next Day
+
+- Define the planning of the week left...
+- Focus on the new tab and make the thing coherent in french 
+- Don't focus on forecast data from copernic before having all the rest done. It can eitherr be fixed by Alberto or removed fully. 
 
 ## October 4th
 

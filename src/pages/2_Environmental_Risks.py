@@ -129,9 +129,9 @@ else:
     lang_code = 'en'
     tab1  = st.tabs(["Risk on overhead electricity network (poles)",""])
 
-# Tabs
-if 'active_tab' not in st.session_state:
-    st.session_state['active_tab'] = translations[lang_code]['tab1name']
+# # Tabs
+# if 'active_tab' not in st.session_state:
+#     st.session_state['active_tab'] = translations[lang_code]['tab1name']
     
 
 #############################################################
