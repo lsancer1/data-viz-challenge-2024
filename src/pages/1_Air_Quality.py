@@ -198,6 +198,8 @@ with tab1:
     # Mode Selection: Raw Data or AQI Data
     mode = st.sidebar.radio(translations[lang_code]['mode_selection'], ("Raw data", "AQI data"), key='firstTab')
 
+    print('mode')
+
     selected_data = st.sidebar.selectbox(translations[lang_code]['data_selection'], available_data)
     
     # Function to get available months

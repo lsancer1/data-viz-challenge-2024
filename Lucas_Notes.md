@@ -1,5 +1,9 @@
 # Logbook
 
+
+
+- https://discuss.streamlit.io/t/manage-app-button-has-disappeared/43915/11 
+
 ## October 9th
 
 - Use prints and manage app to debug!!
