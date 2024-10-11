@@ -118,10 +118,10 @@ translations = {
         'dataset_pm10': "Particules PM10",
         'dataset_pm2_5': "Particules PM2.5",
         'dataset_pmw': "Particules de feux de forêts",
-        'dataset2_dust': "Dust",
-        'dataset2_pm10': "PM10 Particles",
-        'dataset2_pm2_5': "PM2.5 Particles",
-        'dataset2_pmw': "PM from wildfires"
+        'dataset2_dust': "Poussières",
+        'dataset2_pm10': "Particules PM10",
+        'dataset2_pm2_5': "articules PM2.5",
+        'dataset2_pmw': "Particules de feux de forêts"
     }
 }
 
