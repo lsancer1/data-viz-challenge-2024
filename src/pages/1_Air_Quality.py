@@ -88,7 +88,11 @@ translations = {
         'dataset_dust': "Dust",
         'dataset_pm10': "PM10 Particles",
         'dataset_pm2_5': "PM2.5 Particles",
-        'dataset_pmw': "PM from wildfires"
+        'dataset_pmw': "PM from wildfires",
+        'dataset2_dust': "Dust",
+        'dataset2_pm10': "PM10 Particles",
+        'dataset2_pm2_5': "PM2.5 Particles",
+        'dataset2_pmw': "PM from wildfires"
     },
     
     'fr': {
@@ -110,10 +114,14 @@ translations = {
         'datasetrmk': "Choisissez votre jeu de données et visualisez les prévisions",
         'getdata_instructions': "Veuillez sélectionner l'option 'Get Data' pour charger les données",
 
-        'dataset_dust': "Poussière",
+        'dataset_dust': "Poussières",
         'dataset_pm10': "Particules PM10",
         'dataset_pm2_5': "Particules PM2.5",
-        'dataset_pmw': "Particules de feux de forêts"
+        'dataset_pmw': "Particules de feux de forêts",
+        'dataset2_dust': "Dust",
+        'dataset2_pm10': "PM10 Particles",
+        'dataset2_pm2_5': "PM2.5 Particles",
+        'dataset2_pmw': "PM from wildfires"
     }
 }
 
@@ -632,10 +640,10 @@ with tab2:
     st.session_state['active_tab'] = translations[lang_code]['title2']
     
     variable_options = [
-        translations[lang_code]['dataset_dust'], 
-        translations[lang_code]['dataset_pm10'], 
-        translations[lang_code]['dataset_pm2_5'], 
-        translations[lang_code]['dataset_pmw']
+        translations[lang_code]['dataset2_dust'], 
+        translations[lang_code]['dataset2_pm10'], 
+        translations[lang_code]['dataset2_pm2_5'], 
+        translations[lang_code]['dataset2_pmw']
     ]
     
     st.sidebar.header(translations[lang_code]['tab2options'])
@@ -646,10 +654,10 @@ with tab2:
     )
     
     variable_options_dico = {
-        translations[lang_code]['dataset_dust']: "dust",
-        translations[lang_code]['dataset_pm10']: "particulate_matter_10um",
-        translations[lang_code]['dataset_pm2_5']: "pm2.5_total_organic_matter",
-        translations[lang_code]['dataset_pmw']: "pm10_wildfires"
+        translations[lang_code]['dataset2_dust']: "dust",
+        translations[lang_code]['dataset2_pm10']: "particulate_matter_10um",
+        translations[lang_code]['dataset2_pm2_5']: "pm2.5_total_organic_matter",
+        translations[lang_code]['dataset2_pmw']: "pm10_wildfires"
     }
     
     subvariable_options_dico = {
