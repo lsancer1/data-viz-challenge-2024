@@ -6,6 +6,8 @@ Created on Fri Sep 27 15:46:31 2024
 @author: alonso-pinar_a, lucas-sancere
 """
 
+# part 1 imports
+
 import streamlit as st
 import plotly.express as px
 import xarray as xr
@@ -19,8 +21,32 @@ import zipfile
 from datetime import datetime, timedelta
 import cdsapi
 
+# part 2 imports
+
 import json
 from utils.json_manager import extract_rescoordinates
+
+# part 3 imports
+
+from io import StringIO
+
+from meteofrance_api import MeteoFranceClient
+from meteofrance_api.helpers import readeable_phenomenoms_dict
+from meteofrance_api import client
+
+from hacf_model import CurrentPhenomenons
+from hacf_model import Forecast
+from hacf_model import Full
+from hacf_model import Observation
+from hacf_model import PictureOfTheDay
+from hacf_model import Place
+from hacf_model import Rain
+from hacf_model import WarningDictionary
+import constants
+import csv 
+import requests
+import time
+
 
 
 #############################################################
@@ -50,6 +76,15 @@ else:
     config = attributedict(config)
     pathtofolder = config.dashboard.data.reseaux.folder
     keptfiles = list(config.dashboard.data.reseaux.keptfiles)
+
+
+#############################################################
+## Token related
+#############################################################
+
+
+APPLICATION_ID = st.secrets['ID_Sancere_2024_09_25']
+TOKEN_URL = st.secrets['MF_TOKEN_URL']
 
 
 
@@ -142,6 +177,76 @@ pylones_coord = extract_rescoordinates(geojson_pylones)
 if 'active_tab' not in st.session_state:
     st.session_state['active_tab'] = translations[lang_code]['tab1name']
     
+
+
+
+#############################################################
+## Functions and Classes
+############################################################
+
+
+class Client(object):
+
+    def __init__(self):
+        self.session = requests.Session()
+
+    def request(self, method, url, **kwargs):
+        # First request will always need to obtain a token first
+        if 'Authorization' not in self.session.headers:
+            self.obtain_token()
+        # Optimistically attempt to dispatch reqest
+        response = self.session.request(method, url, **kwargs)
+        if self.token_has_expired(response):
+            # We got an 'Access token expired' response => refresh token
+            self.obtain_token()
+            # Re-dispatch the request that previously failed
+            response = self.session.request(method, url, **kwargs)
+
+        return response
+
+
+    def token_has_expired(self, response):
+
+        status = response.status_code
+        content_type = response.headers['Content-Type']
+        if status == 401 and 'application/json' in content_type:
+            repJson = response.text
+            if 'Invalid JWT token' in repJson['description']:
+                return True
+
+        return False
+
+
+
+    def obtain_token(self):
+        # Obtain new token
+        data = {'grant_type': 'client_credentials'}
+        headers = {'Authorization': 'Basic ' + APPLICATION_ID}
+        access_token_response = requests.post(TOKEN_URL, data=data, verify=False, allow_redirects=False, headers=headers)
+        token = access_token_response.json()['access_token']
+        # Update session with fresh token
+        self.session.headers.update({'Authorization': 'Bearer %s' % token})
+
+
+
+
+    def get_stations_list(self) -> requests.Response:
+        """Get the list of observation stations from the API.
+
+        Returns:
+            requests.Response: Response from the API with the data in csv.
+        """
+        self.session.headers.update({'Accept': 'application/json'})
+        request = self.request(
+            method='GET',
+            url=constants.STATION_LIST_URL
+        )
+
+        return request
+
+
+
+
 
 #############################################################
 ## Tab1 

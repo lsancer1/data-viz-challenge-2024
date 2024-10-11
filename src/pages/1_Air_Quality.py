@@ -19,6 +19,8 @@ import zipfile
 from datetime import datetime, timedelta
 import cdsapi
 
+
+
 #############################################################
 ## Load configs parameter
 #############################################################
@@ -122,7 +124,7 @@ translations = {
         'dataset_pmw': "Particules de feux de forêts",
         'dataset2_dust': "Poussières",
         'dataset2_pm10': "Particules PM10",
-        'dataset2_pm2_5': "articules PM2.5",
+        'dataset2_pm2_5': "Particules PM2.5",
         'dataset2_pmw': "Particules de feux de forêts"
     }
 }
