@@ -72,6 +72,7 @@ translations = {
         'title1': "Air pollution levels over time",
         'mode_selection': "Select view mode:",
         'data_selection': 'Select data:',
+        'data_selection2': 'Select data:',
         'month_selection': 'Select month:',
         'month_names': "['January','February','March','April','May','June', \
         'July','August','September','October','November','December']",
@@ -101,6 +102,7 @@ translations = {
         'title1': "Historique des niveaux de pollution de l'air",
         'mode_selection': "Sélectionnez le mode d'affichage :",
         'data_selection': 'Sélectionnez les données :',
+        'data_selection2': 'Sélectionnez les données :',
         'month_selection': 'Sélectionnez le mois :',
         'month_names': " ['Janvier','Février','Mars','Avril','Mai','Juin', \
         'Juillet','Août','Septembre','Octobre','Novembre','Décembre'] ",
@@ -649,7 +651,7 @@ with tab2:
     st.sidebar.header(translations[lang_code]['tab2options'])
     
     selected_variable = st.sidebar.selectbox(
-        translations[lang_code]['data_selection'],
+        translations[lang_code]['data_selection2'],
         options=variable_options,
     )
     
