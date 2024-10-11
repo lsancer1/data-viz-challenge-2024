@@ -54,58 +54,8 @@ else:
 
 
 #############################################################
-## Load files
+## Translations
 #############################################################
-
-ext = '.geojson'
-
-bt_aerien_path = pathtofolder + keptfiles[0] + ext
-hta_aerien_path = pathtofolder + keptfiles[1] + ext 
-htb_aerien_path = pathtofolder + keptfiles[2] + ext
-pylones_path = pathtofolder + keptfiles[3] + ext
-
-
-# with open(bt_aerien_path) as f:
-#     geojson_bt_aerien = json.load(f)
-
-# with open(hta_aerien_path) as f:
-#     geojson_hta_aerien = json.load(f)
-
-# with open(htb_aerien_path) as f:
-#     geojson_htb_aerien = json.load(f)
-
-# with open(pylones_path) as f:
-#     geojson_pylones = json.load(f)
-
-
-@st.cache_data
-def load_data():
-	
-	with open(bt_aerien_path) as f:
-		geojson_bt_aerien = json.load(f)
-	with open(hta_aerien_path) as f:
-		geojson_hta_aerien = json.load(f)
-	with open(htb_aerien_path) as f:
-		geojson_htb_aerien = json.load(f)
-	with open(pylones_path) as f:
-		geojson_pylones = json.load(f)
-
-	return geojson_bt_aerien, geojson_hta_aerien, geojson_htb_aerien, geojson_pylones
-
-geojson_bt_aerien, geojson_hta_aerien, geojson_htb_aerien, geojson_pylones = load_data()
-
-
-bt_aerien_coord = extract_rescoordinates(geojson_bt_aerien)
-hta_aerien_coord = extract_rescoordinates(geojson_hta_aerien)
-htb_aerien_coord = extract_rescoordinates(geojson_htb_aerien)
-pylones_coord = extract_rescoordinates(geojson_pylones)
-
-
-
-#############################################################
-## Streamlit app
-#############################################################
-
 
 # Language translations
 translations = {
@@ -132,6 +82,61 @@ if language == 'Français':
 else:
     lang_code = 'en'
     tab1,  = st.tabs(["Risk on overhead electricity network (poles)"])
+
+
+
+#############################################################
+## Load files
+#############################################################
+
+ext = '.geojson'
+
+bt_aerien_path = pathtofolder + keptfiles[0] + ext
+hta_aerien_path = pathtofolder + keptfiles[1] + ext 
+htb_aerien_path = pathtofolder + keptfiles[2] + ext
+pylones_path = pathtofolder + keptfiles[3] + ext
+
+
+# with open(bt_aerien_path) as f:
+#     geojson_bt_aerien = json.load(f)
+
+# with open(hta_aerien_path) as f:
+#     geojson_hta_aerien = json.load(f)
+
+# with open(htb_aerien_path) as f:
+#     geojson_htb_aerien = json.load(f)
+
+# with open(pylones_path) as f:
+#     geojson_pylones = json.load(f)
+
+
+@st.cache_data
+def load_data():
+
+	with open(bt_aerien_path) as f:
+		geojson_bt_aerien = json.load(f)
+	with open(hta_aerien_path) as f:
+		geojson_hta_aerien = json.load(f)
+	with open(htb_aerien_path) as f:
+		geojson_htb_aerien = json.load(f)
+	with open(pylones_path) as f:
+		geojson_pylones = json.load(f)
+
+	return geojson_bt_aerien, geojson_hta_aerien, geojson_htb_aerien, geojson_pylones
+
+geojson_bt_aerien, geojson_hta_aerien, geojson_htb_aerien, geojson_pylones = load_data()
+
+
+bt_aerien_coord = extract_rescoordinates(geojson_bt_aerien)
+hta_aerien_coord = extract_rescoordinates(geojson_hta_aerien)
+htb_aerien_coord = extract_rescoordinates(geojson_htb_aerien)
+pylones_coord = extract_rescoordinates(geojson_pylones)
+
+
+
+#############################################################
+## Streamlit app
+#############################################################
 
 # Tabs
 if 'active_tab' not in st.session_state:
@@ -167,8 +172,8 @@ with tab1:
 		 	data.append({'Latitude': point['lat'], 'Longitude': point['lon'], 'Category': 'BT aérien', 'Statut': point['statut']})
 		for point in hta_aerien_coord:
 		 	data.append({'Latitude': point['lat'], 'Longitude': point['lon'], 'Category': 'HTA aérien', 'Statut': point['statut']})
-		for point in htb_aerien_coord:
-		 	data.append({'Latitude': point['lat'], 'Longitude': point['lon'], 'Category': 'HTB aérien', 'Statut': point['statut']})
+		# for point in htb_aerien_coord:
+		#  	data.append({'Latitude': point['lat'], 'Longitude': point['lon'], 'Category': 'HTB aérien', 'Statut': point['statut']})
 		for point in pylones_coord:
 		 	data.append({'Latitude': point['lat'], 'Longitude': point['lon'], 'Category': 'Pylones', 'Statut': point['statut']})
 
@@ -180,7 +185,7 @@ with tab1:
 			'BT aérien': 'blue',   
 			'HTA aérien': 'red',    
 			'HTB aérien': 'orange',  
-			'Pylones': 'black'  
+			'Pylones': 'orange'  
 		}
 
 		# plot

@@ -58,6 +58,76 @@ config = attributedict(config)
 pathtofolder = config.dashboard.data.cams.folder
 keptfiles = list(config.dashboard.data.cams.keptfiles)
 
+
+
+#############################################################
+## Translations
+#############################################################
+
+# Language translations
+translations = {
+    'en': {
+        'tab1name': "Historic air pollution levels",
+        'tab1options': "HISTORIC - Option",
+        'title1': "Air pollution levels over time",
+        'mode_selection': "Select view mode:",
+        'data_selection': 'Select data:',
+        'month_selection': 'Select month:',
+        'month_names': "['January','February','March','April','May','June', \
+        'July','August','September','October','November','December']",
+        'day_selection': 'Select day:',
+        'animate_checkbox': 'Animate over days',
+        'no_data_warning': "No data available for the selected date.",
+
+        'tab2name': "Forecast air pollution levels",
+        'tab2options': "Forecast - Options",
+        'title2': "Forecast air pollution levels",
+        'datasetrmk': "Choose your dataset and visualize the forecast",
+        'getdata_instructions': "Please click on 'Get Data' to load data",
+
+        'dataset_dust': "Dust",
+        'dataset_pm10': "PM10 Particles",
+        'dataset_pm2_5': "PM2.5 Particles",
+        'dataset_pmw': "PM from wildfires"
+    },
+    
+    'fr': {
+        'tab1name': "Historique des niveaux de pollution de l'air",
+        'tab1options': "Historique - Options",
+        'title1': "Historique des niveaux de pollution de l'air",
+        'mode_selection': "Sélectionnez le mode d'affichage :",
+        'data_selection': 'Sélectionnez les données :',
+        'month_selection': 'Sélectionnez le mois :',
+        'month_names': " ['Janvier','Février','Mars','Avril','Mai','Juin', \
+        'Juillet','Août','Septembre','Octobre','Novembre','Décembre'] ",
+        'day_selection': 'Sélectionnez le jour :',
+        'animate_checkbox': 'Animer au fil des jours',
+        'no_data_warning': "Aucune donnée disponible pour la date sélectionnée.",
+
+        'tab2name': "Prévisions des niveaux de pollution de l'air",
+        'tab2options': "Prévisions - Options",
+        'title2': "Prévisions des niveaux de pollution de l'air",
+        'datasetrmk': "Choisissez votre jeu de données et visualisez les prévisions",
+        'getdata_instructions': "Veuillez sélectionner l'option 'Get Data' pour charger les données",
+
+        'dataset_dust': "Poussière",
+        'dataset_dust': "Particules PM10",
+        'dataset_dust': "Particules PM2.5",
+        'dataset_dust': "Particules de feux de forêts"
+    }
+}
+
+# Language selection
+language = st.sidebar.selectbox('Select language:', ['Français', 'English'])
+if language == 'Français':
+    lang_code = 'fr'
+    tab1, tab2 = st.tabs(["Historique des niveaux de pollution de l'air", "Prévisions des niveaux de pollution de l'air"])
+else:
+    lang_code = 'en'
+    tab1, tab2 = st.tabs(['Historic air pollution levels', 'Forecast air pollution levels'])
+
+
+
 #############################################################
 ## Load data
 #############################################################
@@ -73,12 +143,17 @@ def load_data():
 
 dust_data, pm10_data, pm25_data, pmwildfires_data = load_data()
 
-available_data = ['Dust', 'PM10 particles', 'PM2.5 particles', 'PM wildfires']
+available_data = [
+    translations[lang_code]['dataset_dust'], 
+    translations[lang_code]['dataset_pm10'], 
+    translations[lang_code]['dataset_pm2_5'], 
+    translations[lang_code]['dataset_pmw']
+    ]
 datasets = {
-    'Dust': dust_data,
-    'PM10 particles': pm10_data,
-    'PM2.5 particles': pm25_data,
-    'PM wildfires': pmwildfires_data
+    translations[lang_code]['dataset_dust']: dust_data,
+    translations[lang_code]['dataset_pm10']: pm10_data,
+    translations[lang_code]['dataset_pm2_5']: pm25_data,
+    translations[lang_code]['dataset_pmw']: pmwildfires_data
 }
 
 def map_aqi_25(aerosol_value):
@@ -129,56 +204,6 @@ aqi_legend_10 = pd.DataFrame(aqi_levels_10)
 ## Streamlit app
 #############################################################
 
-# Language translations
-translations = {
-    'en': {
-        'tab1name': "Historic air pollution levels",
-        'tab1options': "HISTORIC - Option",
-        'title1': "Air pollution levels over time",
-        'mode_selection': "Select view mode:",
-        'data_selection': 'Select data:',
-        'month_selection': 'Select month:',
-        'day_selection': 'Select day:',
-        'animate_checkbox': 'Animate over days',
-        'no_data_warning': "No data available for the selected date.",
-
-        'tab2name': "Forecast air pollution levels",
-        'tab2options': "Forecast - Options",
-        'title2': "Forecast air pollution levels",
-        'datasetrmk': "Choose your dataset and visualize the forecast",
-        'getdata_instructions': "Please click on 'Get Data' to load data"
-
-    },
-    
-    'fr': {
-        'tab1name': "Historique des niveaux de pollution de l'air",
-        'tab1options': "Historique - Options",
-        'title1': "Historique des niveaux de pollution de l'air",
-        'mode_selection': "Sélectionnez le mode d'affichage :",
-        'data_selection': 'Sélectionnez les données :',
-        'month_selection': 'Sélectionnez le mois :',
-        'day_selection': 'Sélectionnez le jour :',
-        'animate_checkbox': 'Animer au fil des jours',
-        'no_data_warning': "Aucune donnée disponible pour la date sélectionnée.",
-
-        'tab2name': "Prévisions des niveaux de pollution de l'air",
-        'tab2options': "Prévisions - Options",
-        'title2': "Prévisions des niveaux de pollution de l'air",
-        'datasetrmk': "Choisissez votre jeu de données et visualisez les prévisions",
-        'getdata_instructions': "Veuillez sélectionner l'option 'Get Data' pour charger les données"
-
-    }
-}
-
-# Language selection
-language = st.sidebar.selectbox('Select language:', ['Français', 'English'])
-if language == 'Français':
-    lang_code = 'fr'
-    tab1, tab2 = st.tabs(["Historique des niveaux de pollution de l'air", "Prévisions des niveaux de pollution de l'air"])
-else:
-    lang_code = 'en'
-    tab1, tab2 = st.tabs(['Historic air pollution levels', 'Forecast air pollution levels'])
-
 # Tabs
 if 'active_tab' not in st.session_state:
     st.session_state['active_tab'] = translations[lang_code]['tab1name']
@@ -199,8 +224,6 @@ with tab1:
     mode = st.sidebar.radio(translations[lang_code]['mode_selection'], ("Raw data", "AQI data"), key='firstTab')
 
     print(mode)
-
-    st.write(f"Selected mode: {mode}")
 
     selected_data = st.sidebar.selectbox(translations[lang_code]['data_selection'], available_data)
     
@@ -609,10 +632,10 @@ with tab2:
     st.session_state['active_tab'] = translations[lang_code]['title2']
     
     variable_options = [
-        "Dust",
-        "10PM Particles",
-        "2.5PM Particles",
-        "PM from wildfires"
+        translations[lang_code]['dataset_dust'], 
+        translations[lang_code]['dataset_pm10'], 
+        translations[lang_code]['dataset_pm2_5'], 
+        translations[lang_code]['dataset_pmw']
     ]
     
     st.sidebar.header(translations[lang_code]['tab2options'])
@@ -623,10 +646,10 @@ with tab2:
     )
     
     variable_options_dico = {
-        "Dust": "dust",
-        "10PM Particles": "particulate_matter_10um",
-        "2.5PM Particles": "pm2.5_total_organic_matter",
-        "PM from wildfires": "pm10_wildfires"
+        translations[lang_code]['dataset_dust']: "dust",
+        translations[lang_code]['dataset_pm10']: "particulate_matter_10um",
+        translations[lang_code]['dataset_pm2_5']: "pm2.5_total_organic_matter",
+        translations[lang_code]['dataset_pmw']: "pm10_wildfires"
     }
     
     subvariable_options_dico = {
