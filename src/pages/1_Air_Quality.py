@@ -653,6 +653,7 @@ with tab2:
     selected_variable = st.sidebar.selectbox(
         translations[lang_code]['data_selection2'],
         options=variable_options,
+        key=secondwidget,
     )
     
     variable_options_dico = {
