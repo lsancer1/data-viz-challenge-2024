@@ -8,7 +8,7 @@ pandas
 attrdictionary
 yml 
 pyyaml
-meteofrance-ap
+meteofrance-api
 pytest
 scipy
 netcdf4
