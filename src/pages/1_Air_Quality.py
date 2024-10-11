@@ -111,9 +111,9 @@ translations = {
         'getdata_instructions': "Veuillez sélectionner l'option 'Get Data' pour charger les données",
 
         'dataset_dust': "Poussière",
-        'dataset_dust': "Particules PM10",
-        'dataset_dust': "Particules PM2.5",
-        'dataset_dust': "Particules de feux de forêts"
+        'dataset_pm10': "Particules PM10",
+        'dataset_pm2_5': "Particules PM2.5",
+        'dataset_pmw': "Particules de feux de forêts"
     }
 }
 
