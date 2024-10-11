@@ -198,7 +198,9 @@ with tab1:
     # Mode Selection: Raw Data or AQI Data
     mode = st.sidebar.radio(translations[lang_code]['mode_selection'], ("Raw data", "AQI data"), key='firstTab')
 
-    print('mode')
+    print(mode)
+
+    st.write(f"Selected mode: {mode}")
 
     selected_data = st.sidebar.selectbox(translations[lang_code]['data_selection'], available_data)
     
@@ -239,6 +241,8 @@ with tab1:
     
     def generate_map_tab1(selected_data, selected_month, selected_day, mode):
         
+        print(mode)
+ 
         dataset = datasets[selected_data]
         times = pd.to_datetime(dataset.time.values)
         selected_date = pd.Timestamp(year=2023, month=selected_month, day=int(selected_day))
@@ -560,7 +564,13 @@ with tab1:
             variable_name = list(dataset.keys())[0]
 
             if variable_name =='dust' or variable_name == 'pm10' or variable_name == 'pmwildfire':
-                if mode == "AQI Data":
+                if mode == "Raw data":
+                    # Optionally, display information or leave blank in Raw Data mode
+                    st.header("Raw data view")
+                    st.markdown("""
+                        This view displays the raw aerosol concentration data without categorization into AQI levels.
+                    """)
+                else:
                     st.header("AQI Levels")
                     # Generate AQI legend using HTML with colored boxes and inline styles
                     aqi_legend_md = ""
@@ -569,14 +579,14 @@ with tab1:
                         aqi_legend_md += f"{level['Color_name']} ( {level['Range']} ) \n\n"
                     
                     st.markdown(aqi_legend_md)
-                else:
+            else:
+                if mode == "Raw data":
                     # Optionally, display information or leave blank in Raw Data mode
                     st.header("Raw data view")
                     st.markdown("""
                         This view displays the raw aerosol concentration data without categorization into AQI levels.
                     """)
-            else:
-                if mode == "AQI Data":
+                else:
                     st.header("AQI Levels")
                     # Generate AQI legend using HTML with colored boxes and inline styles
                     aqi_legend_md = ""
@@ -585,12 +595,7 @@ with tab1:
                         aqi_legend_md += f"{level['Color_name']} ( {level['Range']} ) \n\n"
                     
                     st.markdown(aqi_legend_md)
-                else:
-                    # Optionally, display information or leave blank in Raw Data mode
-                    st.header("Raw data view")
-                    st.markdown("""
-                        This view displays the raw aerosol concentration data without categorization into AQI levels.
-                    """)
+
 
 #############################################################
 ## Tab2 
