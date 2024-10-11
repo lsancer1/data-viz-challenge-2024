@@ -201,52 +201,52 @@ with tab1:
 
 		return fig
 
-		# Customize the colorbar
-		# fig.update_layout(
-		# 	mapbox_style="open-street-map",
-		# 	mapbox=dict(
-		#     	zoom=7,
-		#     	center={"lat": 42.16, "lon": 9.13}  # Center map on the data
-		# 	),
-		# 	height=800,
-		# 	width=800
-		# 	)
+	# Customize the colorbar
+	# fig.update_layout(
+	# 	mapbox_style="open-street-map",
+	# 	mapbox=dict(
+	#     	zoom=7,
+	#     	center={"lat": 42.16, "lon": 9.13}  # Center map on the data
+	# 	),
+	# 	height=800,
+	# 	width=800
+	# 	)
 
-		# Also an option for pylones
-		# go.Scattermapbox(
-		# 	lat=[point['lat'] for point in pylones_coord],
-		# 	lon=[point['lon'] for point in pylones_coord],
-		# 	mode='markers',
-		# 	marker=go.scattermapbox.Marker(
-		#     	size=10,
-		#     	color='black'  # Set a different color for the second set of points
-		# 	),
-		# 	text=[point['statut'] for point in pylones_coord],
-		# ) return fig
+	# Also an option for pylones
+	# go.Scattermapbox(
+	# 	lat=[point['lat'] for point in pylones_coord],
+	# 	lon=[point['lon'] for point in pylones_coord],
+	# 	mode='markers',
+	# 	marker=go.scattermapbox.Marker(
+	#     	size=10,
+	#     	color='black'  # Set a different color for the second set of points
+	# 	),
+	# 	text=[point['statut'] for point in pylones_coord],
+	# ) return fig
 
-		#############################################################
-		## Generate and Display the Map
-		#############################################################
+	#############################################################
+	## Generate and Display the Map
+	#############################################################
 
-		fig = generate_map_tab1(bt_aerien_coord, hta_aerien_coord, htb_aerien_coord, pylones_coord)
+	fig = generate_map_tab1(bt_aerien_coord, hta_aerien_coord, htb_aerien_coord, pylones_coord)
 
 
-		#############################################################
-		## Layout with Two Columns: Map and Legend
-		#############################################################
+	#############################################################
+	## Layout with Two Columns: Map and Legend
+	#############################################################
 
-		if fig:
-			# Create two columns with a 3:1 ratio (map:legend)
-			col1, col2 = st.columns([3, 1])
+	if fig:
+		# Create two columns with a 3:1 ratio (map:legend)
+		col1, col2 = st.columns([3, 1])
 
-		with col1:
-			st.plotly_chart(fig, use_container_width=True)
+	with col1:
+		st.plotly_chart(fig, use_container_width=True)
 
-		with col2:
-			st.header("Raw data view")
-			st.markdown("""
-			This view displays the raw aerosol concentration data without categorization into AQI levels.
-			""")
+	with col2:
+		st.header("Raw data view")
+		st.markdown("""
+		This view displays the raw aerosol concentration data without categorization into AQI levels.
+		""")
 
          
 
