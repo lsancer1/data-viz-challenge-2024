@@ -65,17 +65,34 @@ htb_aerien_path = pathtofolder + keptfiles[2] + ext
 pylones_path = pathtofolder + keptfiles[3] + ext
 
 
-with open(bt_aerien_path) as f:
-    geojson_bt_aerien = json.load(f)
+# with open(bt_aerien_path) as f:
+#     geojson_bt_aerien = json.load(f)
 
-with open(hta_aerien_path) as f:
-    geojson_hta_aerien = json.load(f)
+# with open(hta_aerien_path) as f:
+#     geojson_hta_aerien = json.load(f)
 
-with open(htb_aerien_path) as f:
-    geojson_htb_aerien = json.load(f)
+# with open(htb_aerien_path) as f:
+#     geojson_htb_aerien = json.load(f)
 
-with open(pylones_path) as f:
-    geojson_pylones = json.load(f)
+# with open(pylones_path) as f:
+#     geojson_pylones = json.load(f)
+
+
+@st.cache_data
+def load_data():
+	
+	with open(bt_aerien_path) as f:
+		geojson_bt_aerien = json.load(f)
+	with open(hta_aerien_path) as f:
+		geojson_hta_aerien = json.load(f)
+	with open(htb_aerien_path) as f:
+		geojson_htb_aerien = json.load(f)
+	with open(pylones_path) as f:
+		geojson_pylones = json.load(f)
+
+	return geojson_bt_aerien, geojson_hta_aerien, geojson_htb_aerien, geojson_pylones
+
+geojson_bt_aerien, geojson_hta_aerien, geojson_htb_aerien, geojson_pylones = load_data()
 
 
 bt_aerien_coord = extract_rescoordinates(geojson_bt_aerien)
@@ -84,19 +101,6 @@ htb_aerien_coord = extract_rescoordinates(geojson_htb_aerien)
 pylones_coord = extract_rescoordinates(geojson_pylones)
 
 
-# @st.cache_data
-# def load_data():
-# 	with open(bt_aerien_path) as f:
-#     	geojson_bt_aerien = json.load(f)
-# 	with open(hta_aerien_path) as f:
-# 	    geojson_hta_aerien = json.load(f)
-# 	with open(htb_aerien_path) as f:
-# 	    geojson_htb_aerien = json.load(f)
-# 	with open(pylones_path) as f:
-# 	    geojson_pylones = json.load(f)
-#     return geojson_bt_aerien, geojson_hta_aerien, geojson_htb_aerien, geojson_pylones
-
-# geojson_bt_aerien, geojson_hta_aerien, geojson_htb_aerien, geojson_pylones = load_data()
 
 #############################################################
 ## Streamlit app
