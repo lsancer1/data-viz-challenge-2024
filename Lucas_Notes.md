@@ -5,16 +5,17 @@
 ## October 16th
 
 - Log for the display of forecast map st.write(layermap)
+
   - request5000
   - change bbox paramters to have it directly as a string without bracket
   - request400
   - change bbox and height and width to correspond to provided examples
   - request200!!! works
   - to get image try request.content 
+  - it is a bit more than that but got it
 
-- 
-- 
-- 
+  
+
 - Package problem:
 
 ```bash

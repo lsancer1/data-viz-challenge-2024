@@ -449,9 +449,10 @@ with tab1:
 	example_mapheight=256
 	example_mapwidth=256
 
-	
- 
-	corsica_bbox =  "43.25,8.15,41.15,10.15"
+
+	corsica_bbox_ori =  "43.25,8.15,41.15,10.15"
+
+	corsica_bbox_arome =  "15.5,-12,55.4,16"
 	forecastlayers = {
 		"temperature": "TEMPERATURE__SPECIFIC_HEIGHT_LEVEL_ABOVE_GROUND",
 		"windspeed": "WIND_SPEED__SPECIFIC_HEIGHT_LEVEL_ABOVE_GROUND",
