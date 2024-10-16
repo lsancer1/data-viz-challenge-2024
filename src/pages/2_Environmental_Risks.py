@@ -48,6 +48,13 @@ import requests
 import time
 
 
+# part 4 imports
+
+from PIL import Image
+from io import BytesIO
+
+
+
 
 #############################################################
 ## Load configs parameter
@@ -474,10 +481,13 @@ with tab1:
 
 	with col1:
 		st.plotly_chart(fig, use_container_width=True)
-		
-		st.write(layermap.content)
 
-         # st.plotly_chart(layermap, use_container_width=True)
+		img = Image.open(BytesIO(layermap.content))
+
+		# Display the image in Streamlit
+		st.image(img, caption="Weather Forecast Map", use_column_width=True)
+
+		# st.plotly_chart(layermap, use_container_width=True)
 
 	with col2:
 		st.header("Exploration")
