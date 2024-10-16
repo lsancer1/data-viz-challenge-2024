@@ -438,23 +438,29 @@ with tab1:
 	#############################################################
 
 	# hardcoded parameters for the forecast
-	corsicabbox =  "43.25,8.15,41.15,10.15"
+	example_bbox = "37.5,-12,55.4,16"
+	example_mapheight=256
+	example_mapwidth=256
+
+	
+
+	corsica_bbox =  "43.25,8.15,41.15,10.15"
 	forecastlayers = {
 		"temperature": "TEMPERATURE__SPECIFIC_HEIGHT_LEVEL_ABOVE_GROUND",
 		"windspeed": "WIND_SPEED__SPECIFIC_HEIGHT_LEVEL_ABOVE_GROUND",
 		"humidity": "RELATIVE_HUMIDITY__SPECIFIC_HEIGHT_LEVEL_ABOVE_GROUND"
 	}
-	mapheight=800
-	mapwidth=800
+	cosrica_mapheight=800
+	cosrica_mapwidth=800
 
 	# load client 
 	client = Client()
 
 	layermap = client.get_wms_map(		
 	    layers = forecastlayers["temperature"],
-		bbox = corsicabbox,
-		height = str(mapheight),
-		width = str(mapwidth)
+		bbox = example_bbox,
+		height = str(example_mapheight),
+		width = str(example_mapwidth)
 		)
 
 
