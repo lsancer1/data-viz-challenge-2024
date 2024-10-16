@@ -249,7 +249,7 @@ class Client(object):
     	service: str = "WMS",
     	version: str = "1.3.0",
     	language: str = "eng"
-    	) -> requests.text.Response:
+    	) -> requests.Response:
 
 	    """
 	    Returns the metadata of the WMS service 
@@ -275,7 +275,7 @@ class Client(object):
     	service: str = "WCS",
     	version: str = "2.0.1",
     	language: str = "eng"
-    	) -> requests.text.Response:
+    	) -> requests.Response:
 
 	    """
 	    Returns the metadata of the WCS service 
