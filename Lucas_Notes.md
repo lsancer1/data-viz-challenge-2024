@@ -1,8 +1,8 @@
 # Logbook
 
-
-
 ## October 16th
+
+- **Proposed a planning for the final RUSH! See at the end of the file!**
 
 - Log for the display of forecast map st.write(layermap)
 
@@ -209,15 +209,22 @@ Pretty basic. The GeoJson files don't have extra information.
 - Whenever we will have different "maps" layout we will need to deal with coordinates system that can vary SEE IN FUTURE 
 - Should start to have "clear" idea of who do what :heavy_check_mark:
 
-# Schedule
+# Schedule for final rush
+
+- The 17th Before midnight GER / Before 8 AM AUS, check the constraints and all what need to do another time to sned the application 
+- The 18th Before 10h GER / 18h AUS, work on the app
+- AT 10h GER / 18h AUS STOP working on the app, create a copy of the repo and archive it in private, delete all the commits of the repo, create a README with explanations for the app, do the small video they are asking for
+- AT 11h GER / 19h AUS send everything qnd follow requirements
+
+# Schedule 
 
 - **11th, 18h30**
 - **18th, 21h00**
 - **25th, 18h30**
 - **29th, 12h30** 
 - **04th, 21h00**
-- 09th, 18h30
-- _After the session of the 09, define extension work_
-- 11th 18h30
-- _Optional Extensions from 12 to 16_
-- 16th, 18h30
+- **09th, 18h30**
+- **11th very short**
+- **16th, 15h30**
+- 17th 18h
+- 18h MONRING
