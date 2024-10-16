@@ -87,6 +87,10 @@ translations = {
         'title2': "Forecast air pollution levels",
         'datasetrmk': "Choose your dataset and visualize the forecast",
         'getdata_instructions': "Please click on 'Get Data' to load data",
+        'raw_data_view_header': "Raw Data View",
+        'raw_data_view_text': "This view displays the raw aerosol concentration data \
+         without categorization into AQI levels.",
+        'aqi_levels_view_headers': "AQI Levels",
 
         'dataset_dust': "Dust",
         'dataset_pm10': "PM10 Particles",
@@ -117,6 +121,10 @@ translations = {
         'title2': "Prévisions des niveaux de pollution de l'air",
         'datasetrmk': "Choisissez votre jeu de données et visualisez les prévisions",
         'getdata_instructions': "Veuillez sélectionner l'option 'Get Data' pour charger les données",
+        'raw_data_view_header': "Visualisation des données brutes",
+        'raw_data_view_text': "Cette vue affiche les données brutes de concentration d'aérosols \
+         sans catégorisation en niveaux AQI.",
+        'aqi_levels_view_headers': "Niveaux AQI",
 
         'dataset_dust': "Poussières",
         'dataset_pm10': "Particules PM10",
@@ -901,30 +909,27 @@ with tab2:
                 with col2:
                     if variable_name in ['dust', 'pm10', 'pmwildfire']:
                         if mode == "AQI data":
-                            st.header("AQI Levels")
+                            st.header(translations[lang_code]['aqi_levels_view_headers']) 
                             aqi_legend_md = ""
                             for level in aqi_levels_10:
-                                aqi_legend_md += f"**{level['Level']}**:\n\n"
-                                aqi_legend_md += f"{level['Color_name']} ({level['Range']})\n\n"
+                                aqi_legend_md += f"**{level['Level']}**:\n"
+                                aqi_legend_md += f"{level['Color_name']} ({level['Range']})\n"
                             st.markdown(aqi_legend_md)
                         else:
-                            st.header("Raw data view")
-                            st.markdown("""
-                                This view displays the raw aerosol concentration data without categorization into AQI levels.
-                            """)
+                            st.header(translations[lang_code]['raw_data_view_header'])
+                            st.markdown(translations[lang_code]['raw_data_view_text'])
                     else:
                         if mode == "AQI data":
-                            st.header("AQI Levels")
+                            st.header(translations[lang_code]['aqi_levels_view_headers']) 
                             aqi_legend_md = ""
                             for level in aqi_levels_25:
-                                aqi_legend_md += f"**{level['Level']}**:\n\n"
-                                aqi_legend_md += f"{level['Color_name']} ({level['Range']})\n\n"
+                                aqi_legend_md += f"**{level['Level']}**:\n"
+                                aqi_legend_md += f"{level['Color_name']} ({level['Range']})\n"
                             st.markdown(aqi_legend_md)
                         else:
-                            st.header("Raw data view")
-                            st.markdown("""
-                                This view displays the raw aerosol concentration data without categorization into AQI levels.
-                            """)
+                            st.header(translations[lang_code]['raw_data_view_header'])
+                            st.markdown(translations[lang_code]['raw_data_view_text'])
+
                 with l1[0]:
                     forecast_max = []
                     forecast_interpretation = []
