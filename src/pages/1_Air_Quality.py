@@ -69,12 +69,13 @@ keptfiles = list(config.dashboard.data.cams.keptfiles)
 # Language translations
 translations = {
     'en': {
-        'tab1name': "Historic air pollution levels",
-        'tab1options': "HISTORIC - Option",
+        'tab1name': "Recorded air pollution levels",
+        'tab1options': "Records - Option",
         'title1': "Air pollution levels over time",
         'mode_selection': "Select view mode:",
         'data_selection': 'Select data:',
         'data_selection2': 'Select data:',
+        'hour_selection': "Select number of hours from now to display forecast",
         'month_selection': 'Select month:',
         'month_names': "['January','February','March','April','May','June', \
         'July','August','September','October','November','December']",
@@ -115,6 +116,7 @@ translations = {
         'mode_selection': "Sélectionnez le mode d'affichage :",
         'data_selection': 'Sélectionnez les données :',
         'data_selection2': 'Sélectionnez les données :',
+        'hour_selection': "Sélectionnez le nombre d'heures séparant de la prévision",
         'month_selection': 'Sélectionnez le mois :',
         'month_names': " ['Janvier','Février','Mars','Avril','Mai','Juin', \
         'Juillet','Août','Septembre','Octobre','Novembre','Décembre'] ",
@@ -880,8 +882,8 @@ with tab2:
         selected_variable = st.session_state['selected_variable']
 
         # Mode Selection: Raw Data or AQI Data
-        mode = st.sidebar.radio("Select view mode:", ("Raw data", "AQI data"), key='secondTab')
-
+        mode = st.sidebar.radio(translations[lang_code]['mode_selection'], ("Raw data", "AQI data"), key='secondTab')
+        
         # Function to get available hours
         def get_available_hours(selected_data):
             times = selected_data.time.values
@@ -891,7 +893,7 @@ with tab2:
             return times_in_hours, hours_options
 
         available_hours, hours_options = get_available_hours(selected_data)
-        selected_hour = st.sidebar.selectbox('Select hour:', hours_options, index=0)
+        selected_hour = st.sidebar.selectbox(translations[lang_code]['hour_selection'], hours_options, index=0)
 
         # Generate and display the map
         if variable_in_dataset in list(selected_data.keys()):
@@ -912,8 +914,8 @@ with tab2:
                             st.header(translations[lang_code]['aqi_levels_view_headers']) 
                             aqi_legend_md = ""
                             for level in aqi_levels_10:
-                                aqi_legend_md += f"**{level['Level']}**:\n\n"
-                                aqi_legend_md += f"{level['Color_name']} ({level['Range']})\n"
+                                aqi_legend_md += f"**{level['Level']}**:\n"
+                                aqi_legend_md += f"{level['Color_name']} ({level['Range']})\n\n"
                             st.markdown(aqi_legend_md)
                         else:
                             st.header(translations[lang_code]['raw_data_view_header'])
@@ -923,8 +925,8 @@ with tab2:
                             st.header(translations[lang_code]['aqi_levels_view_headers']) 
                             aqi_legend_md = ""
                             for level in aqi_levels_25:
-                                aqi_legend_md += f"**{level['Level']}**:\n\n"
-                                aqi_legend_md += f"{level['Color_name']} ({level['Range']})\n"
+                                aqi_legend_md += f"**{level['Level']}**:\n"
+                                aqi_legend_md += f"{level['Color_name']} ({level['Range']})\n\n"
                             st.markdown(aqi_legend_md)
                         else:
                             st.header(translations[lang_code]['raw_data_view_header'])
