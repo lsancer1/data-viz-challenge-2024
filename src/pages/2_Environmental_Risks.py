@@ -244,13 +244,23 @@ class Client(object):
         return request
 
 
-    def forecast_exploration(self) -> requests.Response:
+    def forecast_exploration(
+    	self,
+    	service: str = "WMS",
+    	version: str = "1.3.0",
+    	language: str = "eng"
+    	) -> requests.Response:
 	    """Exploratory function for now 
+
 	    """
 	    self.session.headers.update({'Accept': 'application/json'})
 	    request = self.request(
 	    	method='GET',
-	    	url=constants.AROME_WMS_CAPABILITIES_URL
+	    	url=constants.AROME_WMS_CAPABILITIES_URL,
+	    	params = {
+	    	"service": service, 
+	    	"version": version, 
+	    	"language": language}
 	    	)
 
 	    return request
@@ -356,7 +366,9 @@ with tab1:
 	## Generate and Display Forecast
 	#############################################################
 
-	exploration = Client.forecast_exploration("WMS","1.3.0","eng")
+	client = Client()
+	
+	exploration = client.forecast_exploration()
 	print('exploration')
 
 
