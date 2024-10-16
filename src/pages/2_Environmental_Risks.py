@@ -464,7 +464,7 @@ with tab1:
 		"humidity": "RELATIVE_HUMIDITY__SPECIFIC_HEIGHT_LEVEL_ABOVE_GROUND"
 	}
 	cosrica_mapheight=800
-	cosrica_mapwidth=1600
+	cosrica_mapwidth=400
 
 	# load client 
 	client = Client()
@@ -514,7 +514,7 @@ with tab1:
 
 	with col2:
 		st.header("Exploration")
-		st.write(layermap)
+		# st.write(layermap)
 
          
 
