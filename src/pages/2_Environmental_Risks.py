@@ -438,7 +438,7 @@ with tab1:
 	#############################################################
 
 	# hardcoded parameters for the forecast
-	corsicabbox =  "43.25, 8.15, 41.15, 10.15"
+	corsicabbox =  "43.25,8.15,41.15,10.15"
 	forecastlayers = {
 		"temperature": "TEMPERATURE__SPECIFIC_HEIGHT_LEVEL_ABOVE_GROUND",
 		"windspeed": "WIND_SPEED__SPECIFIC_HEIGHT_LEVEL_ABOVE_GROUND",
