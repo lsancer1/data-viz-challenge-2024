@@ -295,8 +295,8 @@ class Client(object):
 
 	    return request.text
 
-	
-	def get_wms_map(
+
+    def get_wms_map(
 		self,
 		layers: str,
 		bbox: str,
@@ -307,11 +307,12 @@ class Client(object):
 		crs: str = "EPSG:4326",
 		format: str = "image/png",
 		transparent: str = "true"
-		)
-		"""
-		"""
-		self.session.headers.update({'Accept': 'application/json'})
-		pass 
+		):
+	    """
+	    """
+	    self.session.headers.update({'Accept': 'application/json'})
+
+	    pass 
 
 
 
