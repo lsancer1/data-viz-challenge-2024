@@ -367,9 +367,9 @@ with tab1:
 	#############################################################
 
 	client = Client()
-	
+
 	exploration = client.forecast_exploration()
-	print('exploration')
+	print(exploration)
 
 
 	#############################################################
@@ -384,10 +384,8 @@ with tab1:
 		st.plotly_chart(fig, use_container_width=True)
 
 	with col2:
-		st.header("Raw data view")
-		st.markdown("""
-		This view displays the raw aerosol concentration data without categorization into AQI levels.
-		""")
+		st.header("Exploration")
+		st.write(exploration)
 
          
 
