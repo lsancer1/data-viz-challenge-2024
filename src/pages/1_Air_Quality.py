@@ -99,7 +99,13 @@ translations = {
         'dataset2_dust': "Dust",
         'dataset2_pm10': "PM10 Particles",
         'dataset2_pm2_5': "PM2.5 Particles",
-        'dataset2_pmw': "PM from wildfires"
+        'dataset2_pmw': "PM from wildfires",
+
+        'air_quality_description': "Air quality in Corsica is predicted to be:",
+        'in': "in",
+        'hours': "hours"
+
+
     },
     
     'fr': {
@@ -121,7 +127,7 @@ translations = {
         'title2': "Prévisions des niveaux de pollution de l'air",
         'datasetrmk': "Choisissez votre jeu de données et visualisez les prévisions",
         'getdata_instructions': "Veuillez sélectionner l'option 'Get Data' pour charger les données",
-        'raw_data_view_header': "Visualisation des données brutes",
+        'raw_data_view_header': "Données brutes",
         'raw_data_view_text': "Cette vue affiche les données brutes de concentration d'aérosols \
          sans catégorisation en niveaux AQI.",
         'aqi_levels_view_headers': "Niveaux AQI",
@@ -133,7 +139,11 @@ translations = {
         'dataset2_dust': "Poussières",
         'dataset2_pm10': "Particules PM10",
         'dataset2_pm2_5': "Particules PM2.5",
-        'dataset2_pmw': "Particules de feux de forêts"
+        'dataset2_pmw': "Particules de feux de forêts",
+
+        'air_quality_description': "La qualité de l' air en Corse est prévue :",
+        'in': "dans",
+        'hours': "heures"
     }
 }
 
@@ -931,7 +941,7 @@ with tab2:
                             fmax = float(selected_data[variable_in_dataset].sel(time=elt_time).max().values)
                             forecast_max.append( fmax )
                             forecast_interpretation = map_aqi_10(fmax)
-                            st.markdown(f"La qualité de l'air en Corse est prévue : **{forecast_interpretation}** dans {converted_time} heures. \n\n")
+                            st.markdown(f"{translations[lang_code]['air_quality_description']} **{forecast_interpretation}** {translations[lang_code]['in']} {converted_time} {translations[lang_code]['hours']}. \n\n")
     
                     else:
                         for elt_time in selected_data.time:
@@ -940,7 +950,7 @@ with tab2:
                             fmax = float(selected_data[variable_in_dataset].sel(time=elt_time).max().values)
                             forecast_max.append( fmax )
                             forecast_interpretation = map_aqi_25(fmax)
-                            st.markdown(f"La qualité de l'air en Corse est prévue : **{forecast_interpretation}** dans {converted_time} heures. \n\n")
+                            st.markdown(f"{translations[lang_code]['air_quality_description']} **{forecast_interpretation}** {translations[lang_code]['in']} {converted_time} {translations[lang_code]['hours']}. \n\n")
         else:
             st.write(translations[lang_code]['getdata_instructions'])
     else:
