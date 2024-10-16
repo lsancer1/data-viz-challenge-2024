@@ -464,7 +464,7 @@ with tab1:
 		"humidity": "RELATIVE_HUMIDITY__SPECIFIC_HEIGHT_LEVEL_ABOVE_GROUND"
 	}
 	cosrica_mapheight=800
-	cosrica_mapwidth=400
+	cosrica_mapwidth=600
 
 	# load client 
 	client = Client()
@@ -505,10 +505,10 @@ with tab1:
 		st.image(temp_img, caption="Temperature Forecast Map", use_column_width=True)
 
 		wind_img = Image.open(BytesIO(wind_layermap.content))
-		st.image(temp_img, caption="Wind Forecast Map", use_column_width=True)
+		st.image(wind_img, caption="Wind Forecast Map", use_column_width=True)
 
 		humi_img = Image.open(BytesIO(humi_layermap.content))
-		st.image(temp_img, caption="Humidity Forecast Map", use_column_width=True)
+		st.image(humi_img, caption="Humidity Forecast Map", use_column_width=True)
 
 		# st.plotly_chart(layermap, use_container_width=True)
 
