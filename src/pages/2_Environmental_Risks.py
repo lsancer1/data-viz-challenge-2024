@@ -454,8 +454,8 @@ with tab1:
 
 	minx_corsica="41.5"
 	maxx_corsica="43.4"
-	miny_corsica="8"
-	maxy_corsica="10"
+	miny_corsica="9"
+	maxy_corsica="9.5"
 	corsica_bbox_arome = minx_corsica+","+miny_corsica+","+maxx_corsica+","+ maxy_corsica 
 
 	forecastlayers = {
