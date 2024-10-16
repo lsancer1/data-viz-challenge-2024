@@ -2,7 +2,43 @@
 
 
 
+## October 16th
+
+```bash
+INFO: pip is looking at multiple versions of meteofrance-api to determine which version is compatible with other requirements. This could take a while.
+
+ERROR: Cannot install -r /mount/src/data-viz-challenge-2024/src/requirements.txt (line 42), -r /mount/src/data-viz-challenge-2024/src/requirements.txt (line 72) and urllib3==2.2.3 because these package versions have conflicting dependencies.
+
+The conflict is caused by:
+
+    The user requested urllib3==2.2.3
+
+    requests 2.32.3 depends on urllib3<3 and >=1.21.1
+
+    meteofrance-api 1.3.0 depends on urllib3<2.0.0 and >=1.26.18
+
+To fix this you could try to:
+
+1. loosen the range of package versions you've specified
+
+2. remove package versions to allow pip attempt to solve the dependency conflict
+
+ERROR: ResolutionImpossible: for help visit https://pip.pypa.io/en/latest/topics/dependency-resolution/#dealing-with-dependency-conflicts
+
+[notice] A new release of pip is available: 24.0 -> 24.2
+
+[notice] To update, run: pip install --upgrade pip
+
+Checking if Streamlit is installed
+```
+
+
+
+## October 10th
+
 - https://discuss.streamlit.io/t/manage-app-button-has-disappeared/43915/11 
+- https://discuss.streamlit.io/t/manage-app-button-has-disappeared/43915/11 
+- s**sh-add ~/.ssh/id_ed25519** NEED TO ADD THE SSH KEY !!‚
 
 ## October 9th
 
@@ -28,8 +64,8 @@
   ```
 
 - maybe the solution of all my problems: https://stackoverflow.com/questions/47770917/sublime-text-3-misinterpreting-indentation-when-code-is-pasted 
+
 - https://forum.sublimetext.com/t/inconsistent-indentation-in-python/64637/2
-- 
 
 #### Env additions
 
