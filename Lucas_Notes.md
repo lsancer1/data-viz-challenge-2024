@@ -34,7 +34,7 @@ Checking if Streamlit is installed
 
 
 
-## October 10th
+## October 11th
 
 - https://discuss.streamlit.io/t/manage-app-button-has-disappeared/43915/11 
 - https://discuss.streamlit.io/t/manage-app-button-has-disappeared/43915/11 
