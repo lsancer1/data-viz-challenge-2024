@@ -145,13 +145,7 @@ client = Client()
 
 wcs_exploration = client.get_wcs_metadata()
 
-
-
-
-
-
-
-
+st.write(wcs_exploration)
 
 
 
