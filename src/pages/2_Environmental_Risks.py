@@ -469,9 +469,11 @@ with tab1:
 	with col1:
 		st.plotly_chart(fig, use_container_width=True)
 
+		st.plotly_chart(layermap, use_container_width=True)
+
 	with col2:
 		st.header("Exploration")
-		# st.write(exploration.text)
+		st.write(layermap)
 
          
 
