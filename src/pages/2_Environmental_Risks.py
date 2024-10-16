@@ -452,10 +452,10 @@ with tab1:
 
 	corsica_bbox_ori =  "43.25,8.15,41.15,10.15"
 
-	minx_corsica="40.5"
+	minx_corsica="41.5"
 	maxx_corsica="43.4"
-	miny_corsica="5"
-	maxy_corsica="12"
+	miny_corsica="8"
+	maxy_corsica="10"
 	corsica_bbox_arome = minx_corsica+","+miny_corsica+","+maxx_corsica+","+ maxy_corsica 
 
 	forecastlayers = {
