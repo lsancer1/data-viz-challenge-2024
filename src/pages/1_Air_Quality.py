@@ -690,8 +690,8 @@ with tab2:
     date = yesterday.strftime('%Y-%m-%d') + "/" + yesterday.strftime('%Y-%m-%d')
     #date = datetime.today().strftime('%Y-%m-%d') + "/" + datetime.today().strftime('%Y-%m-%d')
 
-    # Move the sidebar header here
-    st.sidebar.header("Filter Options")
+    # # Move the sidebar header here
+    # st.sidebar.header("Filter Options")
     
     def generate_map_tab2(selected_data, selected_hour, mode):
         
