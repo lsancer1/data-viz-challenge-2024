@@ -4,6 +4,8 @@
 
 ## October 16th
 
+- Package problem:
+
 ```bash
 INFO: pip is looking at multiple versions of meteofrance-api to determine which version is compatible with other requirements. This could take a while.
 
@@ -31,8 +33,20 @@ ERROR: ResolutionImpossible: for help visit https://pip.pypa.io/en/latest/topics
 
 Checking if Streamlit is installed
 ```
+- RESOLVED
 
+- Test news settings in SUBLIME text to avoid having the indentation f****ing problem:
 
+```yaml
+	// Calculates indentation automatically when pressing enter
+	"auto_indent": true,
+	// true default 
+
+	// Makes auto indent a little smarter, e.g., by indenting the next line
+	// after an if statement in C. Requires auto_indent to be enabled.
+	"smart_indent": false,
+	// true default 
+```
 
 ## October 11th
 

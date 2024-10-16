@@ -244,13 +244,17 @@ class Client(object):
         return request
 
 
-    def forecast_exploration(
+    def get_wms_metadata(
     	self,
     	service: str = "WMS",
     	version: str = "1.3.0",
     	language: str = "eng"
-    	) -> requests.Response:
-	    """Exploratory function for now 
+    	) -> requests.text.Response:
+
+	    """
+	    Returns the metadata of the WMS service 
+	    (proposed layers, associated projections, author, etc.)
+
 
 	    """
 	    self.session.headers.update({'Accept': 'application/json'})
@@ -263,7 +267,53 @@ class Client(object):
 	    	"language": language}
 	    	)
 
-	    return request
+	    return request.text
+
+
+    def get_wcs_metadata(
+    	self,
+    	service: str = "WCS",
+    	version: str = "2.0.1",
+    	language: str = "eng"
+    	) -> requests.text.Response:
+
+	    """
+	    Returns the metadata of the WCS service 
+	    (proposed layers, associated projections, author, etc.)
+
+
+	    """
+	    self.session.headers.update({'Accept': 'application/json'})
+	    request = self.request(
+	    	method='GET',
+	    	url=constants.AROME_WCS_CAPABILITIES_URL,
+	    	params = {
+	    	"service": service, 
+	    	"version": version, 
+	    	"language": language}
+	    	)
+
+	    return request.text
+
+	
+	def get_wms_map(
+		self,
+		layers: str,
+		bbox: str,
+		height: str,
+		width: str,
+		service: str = "WMS",
+		version: str = "1.3.0",
+		crs: str = "EPSG:4326",
+		format: str = "image/png",
+		transparent: str = "true"
+		)
+		"""
+		"""
+		self.session.headers.update({'Accept': 'application/json'})
+		pass 
+
+
 
 
 
@@ -368,8 +418,8 @@ with tab1:
 
 	client = Client()
 
-	exploration = client.forecast_exploration()
-	print(exploration.text)
+	wcs_exploration = client.get_wcs_metadata()
+	print(wcs_exploration)
 
 
 	#############################################################
@@ -385,7 +435,7 @@ with tab1:
 
 	with col2:
 		st.header("Exploration")
-		st.write(exploration.text)
+		# st.write(exploration.text)
 
          
 
