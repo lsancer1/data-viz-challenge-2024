@@ -607,37 +607,27 @@ with tab1:
             variable_name = list(dataset.keys())[0]
 
             if variable_name =='dust' or variable_name == 'pm10' or variable_name == 'pmwildfire':
-                if mode == "Raw data":
-                    # Optionally, display information or leave blank in Raw Data mode
-                    st.header("Raw data view")
-                    st.markdown("""
-                        This view displays the raw aerosol concentration data without categorization into AQI levels.
-                    """)
-                else:
-                    st.header("AQI Levels")
-                    # Generate AQI legend using HTML with colored boxes and inline styles
-                    aqi_legend_md = ""
-                    for level in aqi_levels_10:
-                        aqi_legend_md += f"**{level['Level']}**: \n\n"
-                        aqi_legend_md += f"{level['Color_name']} ( {level['Range']} ) \n\n"
-                    
-                    st.markdown(aqi_legend_md)
-            else:
-                if mode == "Raw data":
-                    # Optionally, display information or leave blank in Raw Data mode
-                    st.header("Raw data view")
-                    st.markdown("""
-                        This view displays the raw aerosol concentration data without categorization into AQI levels.
-                    """)
-                else:
-                    st.header("AQI Levels")
-                    # Generate AQI legend using HTML with colored boxes and inline styles
+                if mode == "AQI data":
+                    st.header(translations[lang_code]['aqi_levels_view_headers']) 
                     aqi_legend_md = ""
                     for level in aqi_levels_25:
-                        aqi_legend_md += f"**{level['Level']}**: \n\n"
-                        aqi_legend_md += f"{level['Color_name']} ( {level['Range']} ) \n\n"
-                    
+                        aqi_legend_md += f"**{level['Level']}**:\n\n"
+                        aqi_legend_md += f"{level['Color_name']} ({level['Range']})\n"
                     st.markdown(aqi_legend_md)
+                else:
+                    st.header(translations[lang_code]['raw_data_view_header'])
+                    st.markdown(translations[lang_code]['raw_data_view_text'])
+            else:
+                if mode == "AQI data":
+                    st.header(translations[lang_code]['aqi_levels_view_headers']) 
+                    aqi_legend_md = ""
+                    for level in aqi_levels_25:
+                        aqi_legend_md += f"**{level['Level']}**:\n\n"
+                        aqi_legend_md += f"{level['Color_name']} ({level['Range']})\n"
+                    st.markdown(aqi_legend_md)
+                else:
+                    st.header(translations[lang_code]['raw_data_view_header'])
+                    st.markdown(translations[lang_code]['raw_data_view_text'])
 
 
 #############################################################
@@ -874,7 +864,7 @@ with tab2:
 
     # Check if data is available in session state
     
-    if 'selected_data' in st.session_state and st.session_state['active_tab'] == 'Forecast air pollution levels':
+    if 'selected_data' in st.session_state and st.session_state['active_tab'] == translations[lang_code]['tab2name']:
         selected_data = st.session_state['selected_data']
         variable_name = st.session_state['variable_name']
         selected_variable = st.session_state['selected_variable']
@@ -912,7 +902,7 @@ with tab2:
                             st.header(translations[lang_code]['aqi_levels_view_headers']) 
                             aqi_legend_md = ""
                             for level in aqi_levels_10:
-                                aqi_legend_md += f"**{level['Level']}**:\n"
+                                aqi_legend_md += f"**{level['Level']}**:\n\n"
                                 aqi_legend_md += f"{level['Color_name']} ({level['Range']})\n"
                             st.markdown(aqi_legend_md)
                         else:
@@ -923,7 +913,7 @@ with tab2:
                             st.header(translations[lang_code]['aqi_levels_view_headers']) 
                             aqi_legend_md = ""
                             for level in aqi_levels_25:
-                                aqi_legend_md += f"**{level['Level']}**:\n"
+                                aqi_legend_md += f"**{level['Level']}**:\n\n"
                                 aqi_legend_md += f"{level['Color_name']} ({level['Range']})\n"
                             st.markdown(aqi_legend_md)
                         else:
