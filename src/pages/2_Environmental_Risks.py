@@ -222,7 +222,11 @@ class Client(object):
         # Obtain new token
         data = {'grant_type': 'client_credentials'}
         headers = {'Authorization': 'Basic ' + APPLICATION_ID}
-        access_token_response = requests.post(TOKEN_URL, data=data, verify=False, allow_redirects=False, headers=headers)
+        access_token_response = requests.post(TOKEN_URL, 
+        									  data=data, 
+        									  verify=False, 
+        									  allow_redirects=False, 
+        									  headers=headers)
         token = access_token_response.json()['access_token']
         # Update session with fresh token
         self.session.headers.update({'Authorization': 'Bearer %s' % token})
@@ -307,13 +311,27 @@ class Client(object):
 		crs: str = "EPSG:4326",
 		format: str = "image/png",
 		transparent: str = "true"
-		):
+		) -> requests.Response:
 	    """
 	    """
 	    self.session.headers.update({'Accept': 'application/json'})
+	    request = self.request(
+	    	method='GET',
+	    	url=constants.AROME_WMS_MAP_URL,
+	    	params = {
+	    	"layers": layers,
+	        "bbox": bbox,
+	        "height": height,
+	        "width": width,
+	        "service": service,
+	        "version": version,
+	        "crs": crs,
+	        "format": format,
+	        "transparent": transparent,
+	    	}
+	    	)
 
-	    pass 
-
+	    return request 
 
 
 
@@ -332,8 +350,6 @@ with tab1:
 	#insert the function we will need to read the API
 
 	######
-	######
-	######
 
 	#############################################################
 	## Function to generate static map
@@ -344,13 +360,17 @@ with tab1:
 
 		data = []
 		for point in bt_aerien_coord:
-		 	data.append({'Latitude': point['lat'], 'Longitude': point['lon'], 'Category': 'BT aérien', 'Statut': point['statut']})
+		 	data.append({'Latitude': point['lat'], 'Longitude': point['lon'], 
+		 	'Category': 'BT aérien', 'Statut': point['statut']})
 		for point in hta_aerien_coord:
-		 	data.append({'Latitude': point['lat'], 'Longitude': point['lon'], 'Category': 'HTA aérien', 'Statut': point['statut']})
+		 	data.append({'Latitude': point['lat'], 'Longitude': point['lon'], 
+		 	'Category': 'HTA aérien', 'Statut': point['statut']})
 		# for point in htb_aerien_coord:
-		#  	data.append({'Latitude': point['lat'], 'Longitude': point['lon'], 'Category': 'HTB aérien', 'Statut': point['statut']})
+		#  	data.append({'Latitude': point['lat'], 'Longitude': point['lon'], 
+		# 'Category': 'HTB aérien', 'Statut': point['statut']})
 		for point in pylones_coord:
-		 	data.append({'Latitude': point['lat'], 'Longitude': point['lon'], 'Category': 'Pylones', 'Statut': point['statut']})
+		 	data.append({'Latitude': point['lat'], 'Longitude': point['lon'], 
+		 	'Category': 'Pylones', 'Statut': point['statut']})
 
 		# Create a DataFrame
 		df = pd.DataFrame(data)
@@ -417,10 +437,25 @@ with tab1:
 	## Generate and Display Forecast
 	#############################################################
 
+	# hardcoded parameters for the forecast
+	corsicabbox =  [43.25, 8.15, 41.15, 10.15]
+	forecastlayers = {
+		"temperature": "TEMPERATURE__SPECIFIC_HEIGHT_LEVEL_ABOVE_GROUND",
+		"windspeed": "WIND_SPEED__SPECIFIC_HEIGHT_LEVEL_ABOVE_GROUND",
+		"humidity": "RELATIVE_HUMIDITY__SPECIFIC_HEIGHT_LEVEL_ABOVE_GROUND"
+	}
+	mapheight=800
+	mapwidth=800
+
+	# load client 
 	client = Client()
 
-	wcs_exploration = client.get_wcs_metadata()
-	print(wcs_exploration)
+	layermap = client.get_wms_map(		
+	    layers = forecastlayers["temperature"],
+		bbox = str(corsicabbox),
+		height = str(mapheight),
+		width = str(mapwidth)
+		)
 
 
 	#############################################################
