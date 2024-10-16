@@ -465,7 +465,7 @@ with tab1:
 
 	layermap = client.get_wms_map(		
 	    layers = forecastlayers["temperature"],
-		bbox = corsica_bbox,
+		bbox = example_bbox,
 		height = str(cosrica_mapheight),
 		width = str(cosrica_mapwidth)
 		)

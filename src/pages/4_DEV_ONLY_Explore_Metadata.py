@@ -143,9 +143,15 @@ class Client(object):
 
 client = Client()
 
-wcs_exploration = client.get_wcs_metadata()
+# WMS
 
-st.write(wcs_exploration)
+wms_exploration = client.get_wms_metadata()
+st.write(wms_exploration)
+
+# WCS 
+
+# wcs_exploration = client.get_wcs_metadata()
+# st.write(wcs_exploration)
 
 
 
