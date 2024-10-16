@@ -452,7 +452,12 @@ with tab1:
 
 	corsica_bbox_ori =  "43.25,8.15,41.15,10.15"
 
-	corsica_bbox_arome =  "15.5,-12,55.4,16"
+	minx_corsica="50.5"
+	maxx_corsica="55.4"
+	miny_corsica="-12"
+	maxy_corsica="16"
+	corsica_bbox_arome = minx_corsica+","+miny_corsica+","+maxx_corsica+","+ maxy_corsica 
+
 	forecastlayers = {
 		"temperature": "TEMPERATURE__SPECIFIC_HEIGHT_LEVEL_ABOVE_GROUND",
 		"windspeed": "WIND_SPEED__SPECIFIC_HEIGHT_LEVEL_ABOVE_GROUND",
@@ -466,7 +471,7 @@ with tab1:
 
 	layermap = client.get_wms_map(		
 	    layers = forecastlayers["temperature"],
-		bbox = example_bbox,
+		bbox = corsica_bbox_arome,
 		height = str(cosrica_mapheight),
 		width = str(cosrica_mapwidth)
 		)
