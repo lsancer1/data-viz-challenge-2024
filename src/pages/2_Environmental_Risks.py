@@ -229,8 +229,7 @@ class Client(object):
 
 
 
-
-    def get_stations_list(self) -> requests.Response:
+    def observations_get_stations_list(self) -> requests.Response:
         """Get the list of observation stations from the API.
 
         Returns:
@@ -245,6 +244,16 @@ class Client(object):
         return request
 
 
+    def forecast_exploration(self) -> requests.Response:
+	    """Exploratory function for now 
+	    """
+	    self.session.headers.update({'Accept': 'application/json'})
+	    request = self.request(
+	    	method='GET',
+	    	url=constants.AROME_WMS_CAPABILITIES_URL
+	    	)
+
+	    return request
 
 
 
@@ -311,6 +320,7 @@ with tab1:
 
 		return fig
 
+
 	# Customize the colorbar
 	# fig.update_layout(
 	# 	mapbox_style="open-street-map",
@@ -339,6 +349,15 @@ with tab1:
 	#############################################################
 
 	fig = generate_map_tab1(bt_aerien_coord, hta_aerien_coord, htb_aerien_coord, pylones_coord)
+	
+	
+
+	#############################################################
+	## Generate and Display Forecast
+	#############################################################
+
+	exploration = Client.forecast_exploration("WMS","1.3.0","eng")
+	print('exploration')
 
 
 	#############################################################
