@@ -369,7 +369,7 @@ with tab1:
 	client = Client()
 
 	exploration = client.forecast_exploration()
-	print(exploration)
+	print(exploration.text)
 
 
 	#############################################################
@@ -385,7 +385,7 @@ with tab1:
 
 	with col2:
 		st.header("Exploration")
-		st.write(exploration)
+		st.write(exploration.text)
 
          
 
