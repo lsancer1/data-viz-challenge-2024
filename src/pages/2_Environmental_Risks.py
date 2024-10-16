@@ -464,18 +464,31 @@ with tab1:
 		"humidity": "RELATIVE_HUMIDITY__SPECIFIC_HEIGHT_LEVEL_ABOVE_GROUND"
 	}
 	cosrica_mapheight=800
-	cosrica_mapwidth=800
+	cosrica_mapwidth=1600
 
 	# load client 
 	client = Client()
 
-	layermap = client.get_wms_map(		
+	temp_layermap = client.get_wms_map(		
 	    layers = forecastlayers["temperature"],
 		bbox = corsica_bbox_arome,
 		height = str(cosrica_mapheight),
 		width = str(cosrica_mapwidth)
 		)
 
+	wind_layermap = client.get_wms_map(		
+	    layers = forecastlayers["windspeed"],
+		bbox = corsica_bbox_arome,
+		height = str(cosrica_mapheight),
+		width = str(cosrica_mapwidth)
+		)
+
+	humi_layermap = client.get_wms_map(		
+	    layers = forecastlayers["humidity"],
+		bbox = corsica_bbox_arome,
+		height = str(cosrica_mapheight),
+		width = str(cosrica_mapwidth)
+		)
 
 	#############################################################
 	## Layout with Two Columns: Map and Legend
@@ -488,10 +501,14 @@ with tab1:
 	with col1:
 		st.plotly_chart(fig, use_container_width=True)
 
-		img = Image.open(BytesIO(layermap.content))
+		temp_img = Image.open(BytesIO(temp_layermap.content))
+		st.image(temp_img, caption="Temperature Forecast Map", use_column_width=True)
 
-		# Display the image in Streamlit
-		st.image(img, caption="Weather Forecast Map", use_column_width=True)
+		wind_img = Image.open(BytesIO(wind_layermap.content))
+		st.image(temp_img, caption="Wind Forecast Map", use_column_width=True)
+
+		humi_img = Image.open(BytesIO(humi_layermap.content))
+		st.image(temp_img, caption="Humidity Forecast Map", use_column_width=True)
 
 		# st.plotly_chart(layermap, use_container_width=True)
 
