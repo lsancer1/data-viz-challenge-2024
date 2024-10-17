@@ -465,10 +465,10 @@ with tab1:
 	maxy_corsica="9.7"
 	corsica_bbox_arome = minx_corsica+","+miny_corsica+","+maxx_corsica+","+maxy_corsica 
 
-	globalminx=int(minx_corsica)-15
-	globalmaxx=int(maxx_corsica)+5
-	globalminy=int(miny_corsica)-5
-	globalmaxy=int(maxy_corsica)+15
+	globalminx=float(minx_corsica)-15
+	globalmaxx=float(maxx_corsica)+5
+	globalminy=float(miny_corsica)-5
+	globalmaxy=float(maxy_corsica)+15
 
 	globla_bbox_arome = str(globalminx)+","+str(globalminy)+","+str(globalmaxx)+","+str(globalmaxy)
 
