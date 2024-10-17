@@ -459,10 +459,11 @@ with tab1:
 
 	corsica_bbox_ori =  "43.25,8.15,41.15,10.15"
 
-	minx_corsica="41.1"
-	maxx_corsica="44.4"
-	miny_corsica="8.4"
+	minx_corsica="41.8" #
+	maxx_corsica="43.4" # 
+	miny_corsica="9.4" # 
 	maxy_corsica="9.7"
+
 	corsica_bbox_arome = minx_corsica+","+miny_corsica+","+maxx_corsica+","+maxy_corsica 
 
 	globalminx=float(minx_corsica)
