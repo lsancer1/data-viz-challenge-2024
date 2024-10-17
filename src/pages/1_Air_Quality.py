@@ -330,7 +330,7 @@ with tab1:
         if lang_code == 'fr' :
             locale.setlocale(locale.LC_TIME, 'fr_FR')
         else:
-            locale.setlocale(locale.LC_TIME, 'en_EN')
+            locale.setlocale(locale.LC_TIME, 'en_US')
             
         data = datasets[selected_data]
         times = pd.to_datetime(data.time.values)
