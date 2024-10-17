@@ -460,7 +460,7 @@ with tab1:
 	corsica_bbox_ori =  "43.25,8.15,41.15,10.15"
 
 	miny_corsica="41.2" 
-	minx_corsica="8.3" 
+	minx_corsica="7.9" 
 	maxy_corsica="43.2"
 	maxx_corsica="10.2" 
 
@@ -548,14 +548,16 @@ with tab1:
 		st.image(temp_img, caption="Temperature Forecast Map", use_column_width=True)
 
 
+		help_img = Image.open(BytesIO(help_layermap.content))
+		st.image(help_img, caption="Elevation Map", use_column_width=True)	
+
 		# temp_globalimg = Image.open(BytesIO(tempglobal_layermap.content))
 		# st.image(temp_globalimg, caption="Temperature Forecast Map", use_column_width=True)
 
 
-		help_img = Image.open(BytesIO(help_layermap.content))
-		st.image(help_img, caption="Temperature Forecast Map", use_column_width=True)	
 
-					 
+
+
 		# # Resize temp_img to match Plotly figure dimensions
 		# temp_img_resized = temp_img.resize(plotly_img.size)
 
