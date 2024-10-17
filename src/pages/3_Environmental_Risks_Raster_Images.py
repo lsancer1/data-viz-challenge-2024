@@ -550,9 +550,29 @@ with tab1:
 		st.image(corsicamap_st_url, caption="Corsica Map", width=600)
 
 
-		# Step 2: Fetch and load the Corsica map using Pillow
-		corsica_map_response = requests.get(corsicamap_st_url, allow_redirects=True)
-		print('corsica_map_response:',corsica_map_response)
+
+		# Function to load an image using Pillow
+		def load_image(url):
+		    try:
+		        # Fetch the image from the URL
+		        response = requests.get(url, allow_redirects=True)
+		        print('corsica_map_response:',corsica_map_response)
+		        
+		        # Check if the response is successful
+		        if response.status_code == 200:
+		            return Image.open(BytesIO(response.content))  # Return the image as a Pillow object
+		        else:
+		            st.error(f"Failed to load image from {url}. Status code: {response.status_code}")
+		            return None
+		    except requests.exceptions.RequestException as e:
+		        st.error(f"Request failed: {e}")
+		        return None
+		    except UnidentifiedImageError:
+		        st.error("Image format not recognized or corrupt")
+		        return None
+
+		# Step 1: Load the Corsica map using Pillow
+		corsica_map = load_image(corsicamap_st_url)
 
 		# # Check if the request was successful
 		# if corsica_map_response.status_code == 200:
