@@ -549,7 +549,8 @@ with tab1:
 
 		st.image(corsicamap_st_url, caption="Corsica Map", width=600)
 
-
+		# I guess I have to set a delay for imgur before requesting the image again 
+		time.sleep(1) 
 
 		# Function to load an image using Pillow
 		def load_image(url):
@@ -566,9 +567,6 @@ with tab1:
 		            return None
 		    except requests.exceptions.RequestException as e:
 		        st.error(f"Request failed: {e}")
-		        return None
-		    except UnidentifiedImageError:
-		        st.error("Image format not recognized or corrupt")
 		        return None
 
 		# Step 1: Load the Corsica map using Pillow
