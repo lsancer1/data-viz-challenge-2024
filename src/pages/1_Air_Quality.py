@@ -632,7 +632,7 @@ with tab1:
                 # }
     
                 # Create the custom discrete colorscale for colorbar
-                aqi_thresholds = [0, 25, 50, 100, 300]  # Extend max to 300 for colorbar
+                aqi_thresholds = [0, 25, 50, 100, 300, 500]  # Extend max to 300 for colorbar
                 aqi_colors = [level['Color'] for level in aqi_levels_25]
     
                 # Normalize thresholds for Plotly colorscale (0 to 1)
@@ -706,7 +706,7 @@ with tab1:
                 st.header(translations[lang_code]['aqi_levels_view_headers']) 
                 st.markdown(translations[lang_code]['aqi_levels_view_text'])
                 aqi_legend_md = ""
-                for level in aqi_levels_25:
+                for level in aqi_levels_10:
                     aqi_legend_md += f"**{level['Level']}**:\n"
                     aqi_legend_md += f"{level['Color_name']} \n ({level['Range']})\n\n"
                 st.markdown(aqi_legend_md)
