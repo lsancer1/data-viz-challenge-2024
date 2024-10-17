@@ -453,16 +453,16 @@ with tab1:
 
 	# hardcoded parameters for the forecast
 	example_bbox = "37.5,-12,55.4,16"
-	example_mapheight=356
-	example_mapwidth=356
+	example_mapheight=300
+	example_mapwidth=300
 
 
 	corsica_bbox_ori =  "43.25,8.15,41.15,10.15"
 
 	miny_corsica="41.4" 
-	minx_corsica="8.4" 
+	minx_corsica="7.9" 
 	maxy_corsica="43.2"
-	maxx_corsica="9.7" 
+	maxx_corsica="10.2" 
 
 	corsica_bbox_arome = miny_corsica+","+minx_corsica+","+maxy_corsica+","+maxx_corsica 
 	print("corsica_bbox_arome",corsica_bbox_arome)
@@ -539,7 +539,7 @@ with tab1:
 		# st.plotly_chart(fig, use_container_width=True)
 		# st.image(temp_img, caption="Temperature Forecast Map", use_column_width=True)
 
-		st.image("https://i.imgur.com/MWch7ZP.png", caption="Corsica Map", width=600)
+		st.image("https://i.imgur.com/MWch7ZP.png", caption="Corsica Map", width=700)
 
 
 		# plotly_img = Image.open("plotly_fig.png") 
