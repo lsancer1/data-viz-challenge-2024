@@ -462,7 +462,7 @@ with tab1:
 	minx_corsica="41.8" #
 	maxx_corsica="43.4" # 
 	miny_corsica="8.4" # actually minx 
-	maxy_corsica="10.7"
+	maxy_corsica="10.7" # actually maxx
 
 	corsica_bbox_arome = minx_corsica+","+miny_corsica+","+maxx_corsica+","+maxy_corsica 
 
@@ -471,7 +471,8 @@ with tab1:
 	globalminy=float(miny_corsica)
 	globalmaxy=float(maxy_corsica)+2
 
-	globla_bbox_arome = str(globalminx)+","+str(globalminy)+","+str(globalmaxx)+","+str(globalmaxy)
+	global_bbox_arome = str(globalminx)+","+str(globalminy)+","+str(globalmaxx)+","+str(globalmaxy)
+	print('global_bbox_arome')
 
 	forecastlayers = {"temperature": "TEMPERATURE__SPECIFIC_HEIGHT_LEVEL_ABOVE_GROUND",
     			"windspeed": "WIND_SPEED__SPECIFIC_HEIGHT_LEVEL_ABOVE_GROUND",
@@ -508,7 +509,7 @@ with tab1:
 
 	tempglobal_layermap = client.get_wms_map(		
 	    layers = forecastlayers["temperature"],
-		bbox = globla_bbox_arome,
+		bbox = global_bbox_arome,
 		height = str(cosrica_mapheight),
 		width = str(cosrica_mapwidth)
 		)
