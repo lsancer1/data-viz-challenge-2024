@@ -50,8 +50,10 @@ import time
 
 # part 4 imports
 
-from PIL import Image
+from PIL import Image, ImageChops
 from io import BytesIO
+import plotly.io as pio
+
 
 
 
@@ -437,6 +439,11 @@ with tab1:
 	#############################################################
 
 	fig = generate_map_tab1(bt_aerien_coord, hta_aerien_coord, htb_aerien_coord, pylones_coord)
+
+	# Step 1: Save Plotly figure as an image
+	fig.write_image("plotly_fig.png", format='png')  # Save plotly figure to disk
+
+
 	
 	
 
@@ -499,10 +506,20 @@ with tab1:
 		col1, col2 = st.columns([3, 1])
 
 	with col1:
-		st.plotly_chart(fig, use_container_width=True)
+		# st.plotly_chart(fig, use_container_width=True)
+		# st.image(temp_img, caption="Temperature Forecast Map", use_column_width=True)
 
+		plotly_img = Image.open("plotly_fig.png") 
 		temp_img = Image.open(BytesIO(temp_layermap.content))
-		st.image(temp_img, caption="Temperature Forecast Map", use_column_width=True)
+
+		# Resize temp_img to match Plotly figure dimensions
+		temp_img_resized = temp_img.resize(plotly_img.size)
+
+		# Overlay images 
+		combined_img = ImageChops.add(plotly_img, temp_img_resized, scale=2.0) 
+
+		# Display combined image in Streamlit
+		st.image(combined_img, caption="Combined Map and Forecast Image", use_column_width=True)
 
 		wind_img = Image.open(BytesIO(wind_layermap.content))
 		st.image(wind_img, caption="Wind Forecast Map", use_column_width=True)

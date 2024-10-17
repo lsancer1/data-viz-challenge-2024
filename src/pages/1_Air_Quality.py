@@ -431,7 +431,7 @@ with tab1:
                     lenmode='fraction',
                     len=0.75,
                     yanchor='middle',
-                    y=0.5
+                    y=0.5            
                 )
             )
     
