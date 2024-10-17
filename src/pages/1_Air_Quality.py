@@ -92,6 +92,8 @@ translations = {
         'raw_data_view_text': "This view displays the raw aerosol concentration data \
          without categorization into AQI levels.",
         'aqi_levels_view_headers': "AQI Levels",
+        'aqi_levels_view_textr': "AQI (Air Quality Index) is an international index used to assess \
+         the level of air pollution", 
 
         'dataset_dust': "Dust",
         'dataset_pm10': "PM10 Particles",
@@ -104,7 +106,20 @@ translations = {
 
         'air_quality_description': "Air quality in Corsica is predicted to be:",
         'in': "in",
-        'hours': "hours"
+        'hours': "hours",
+
+        #AQI levels
+        'good': "Good",
+        'moderate': "Moderate",
+        'sensitive_groups': "Unhealthy for sensitive group",
+        'unhealthy': "Unhealthy",
+        'hazardous': "Hazardous",
+        'range': "Range",
+        'green': "Green",
+        'yellow': "Yellow",
+        'orange': "Orange",
+        'red': "Red",
+        'purple': "Purple"
 
 
     },
@@ -133,6 +148,8 @@ translations = {
         'raw_data_view_text': "Cette vue affiche les données brutes de concentration d'aérosols \
          sans catégorisation en niveaux AQI.",
         'aqi_levels_view_headers': "Niveaux AQI",
+        'aqi_levels_view_textr': "AQI (pour Air Quality Index) est un indice international utilisé pour évaluer \
+         le niveau de pollution de l'air",
 
         'dataset_dust': "Poussières",
         'dataset_pm10': "Particules PM10",
@@ -145,18 +162,35 @@ translations = {
 
         'air_quality_description': "La qualité de l' air en Corse est prévue :",
         'in': "dans",
-        'hours': "heures"
+        'hours': "heures",
+
+        #AQI levels
+        'good': "Bon",
+        'moderate': "Modéré",
+        'sensitive_groups': "Nocif pour les groupes sensibles",
+        'unhealthy': "Nocif",
+        'hazardous': "Dangereux",
+        'range': "Plage",
+        'green': "Vert",
+        'yellow': "Jaune",
+        'orange': "Orange",
+        'red': "Rouge",
+        'purple': "Violet"
+
+
+
     }
 }
 
 # Language selection
 language = st.sidebar.selectbox('Select language:', ['Français', 'English'])
 if language == 'Français':
-    lang_code = 'fr'
-    tab1, tab2 = st.tabs(["Historique des niveaux de pollution de l'air", "Prévisions des niveaux de pollution de l'air"])
+    lang_code = 'fr'   
 else:
     lang_code = 'en'
-    tab1, tab2 = st.tabs(['Historic air pollution levels', 'Forecast air pollution levels'])
+
+# Tab names
+tab1, tab2 = st.tabs([translations[lang_code]['tab1name'], translations[lang_code]['tab2name']])
 
 
 
@@ -213,18 +247,48 @@ def map_aqi_10(aerosol_value):
 
 # Define AQI levels with corresponding aerosol ranges and colors
 aqi_levels_25 = [
-    {"Level": "Good", "Range": "0-25", "Color": "#00E400", "Color_name":'Green'},           # Green
-    {"Level": "Moderate", "Range": "26-50", "Color": "#FFFF00" , "Color_name":'Yellow'},      # Yellow
-    {"Level": "Unhealthy for sensitive groups", "Range": "51-100", "Color": "#FF7E00" , "Color_name":'Orange'}, # Orange
-    {"Level": "Unhealthy", "Range": "101-300", "Color": "#FF0000" , "Color_name":'Red'}, # Red
-    {"Level": "Hazardous", "Range": "301+", "Color": "#8F3F97", "Color_name":'Purple'},    # Purple
+    {"Level": translations[lang_code]['good'], 
+    "Range": "0-25", 
+    "Color": "#00E400", 
+    "Color_name":translations[lang_code]['green']},           # Green
+    {"Level": translations[lang_code]['moderate'], 
+    "Range": "26-50", 
+    "Color": "#FFFF00", 
+    "Color_name":translations[lang_code]['yellow']},       # Yellow
+    {"Level": translations[lang_code]['sensitive_groups'],  
+    "Range": "51-100", 
+    "Color": "#FF7E00" , 
+     "Color_name":translations[lang_code]['orange']}, # Orange
+    {"Level": translations[lang_code]['unhealthy'], 
+    "Range": "101-300", 
+    "Color": "#FF0000" , 
+     "Color_name":translations[lang_code]['red']}, # Red
+    {"Level": translations[lang_code]['hazardous'], 
+    "Range": "301+", 
+    "Color": "#8F3F97", 
+     "Color_name":translations[lang_code]['purple']},    # Purple
 ]
 aqi_levels_10 = [
-    {"Level": "Good", "Range": "0-40", "Color": "#00E400", "Color_name":'Green'},           # Green
-    {"Level": "Moderate", "Range": "41-80", "Color": "#FFFF00" , "Color_name":'Yellow'},      # Yellow
-    {"Level": "Unhealthy for sensitive groups", "Range": "81-120", "Color": "#FF7E00" , "Color_name":'Orange'}, # Orange
-    {"Level": "Unhealthy", "Range": "121-300", "Color": "#FF0000" , "Color_name":'Red'}, # Red
-    {"Level": "Hazardous", "Range": "301+", "Color": "#8F3F97", "Color_name":'Purple'},    # Purple
+    {"Level": translations[lang_code]['good'], 
+    "Range": "0-40", 
+    "Color": "#00E400", 
+    "Color_name":translations[lang_code]['green']},           # Green
+    {"Level": translations[lang_code]['moderate'], 
+    "Range": "41-80", 
+    "Color": "#FFFF00" , 
+    "Color_name":translations[lang_code]['yellow']},       # Yellow
+    {"Level": translations[lang_code]['sensitive_groups'],  
+    "Range": "81-120", 
+    "Color": "#FF7E00" , 
+     "Color_name":translations[lang_code]['orange']}, , # Orange
+    {"Level": translations[lang_code]['unhealthy'], 
+    "Range": "121-300", 
+    "Color": "#FF0000" , 
+     "Color_name":translations[lang_code]['red']}, # Red
+    {"Level": translations[lang_code]['hazardous'],  
+    "Range": "301+", 
+    "Color": "#8F3F97", 
+     "Color_name":translations[lang_code]['purple']},    # Purple
 ]
 
 # Create a DataFrame for the AQI legend
@@ -616,6 +680,7 @@ with tab1:
         if variable_name =='dust' or variable_name == 'pm10' or variable_name == 'pmwildfire':
             if mode == "AQI data":
                 st.header(translations[lang_code]['aqi_levels_view_headers']) 
+                st.markdown(translations[lang_code]['aqi_levels_view_text'])
                 aqi_legend_md = ""
                 for level in aqi_levels_25:
                     aqi_legend_md += f"**{level['Level']}**:\n\n"
@@ -627,6 +692,7 @@ with tab1:
         else:
             if mode == "AQI data":
                 st.header(translations[lang_code]['aqi_levels_view_headers']) 
+                st.markdown(translations[lang_code]['aqi_levels_view_text'])
                 aqi_legend_md = ""
                 for level in aqi_levels_25:
                     aqi_legend_md += f"**{level['Level']}**:\n\n"
@@ -908,11 +974,12 @@ with tab2:
                 # First part of the page
                 if variable_name in ['dust', 'pm10', 'pmwildfire']:
                     if mode == "AQI data":
-                        st.header(translations[lang_code]['aqi_levels_view_headers']) 
+                        st.header(translations[lang_code]['aqi_levels_view_headers'])
+                        st.markdown(translations[lang_code]['aqi_levels_view_text']) 
                         aqi_legend_md = ""
                         for level in aqi_levels_10:
                             aqi_legend_md += f"**{level['Level']}**:\n"
-                            aqi_legend_md += f"{level['Color_name']} ({level['Range']})\n\n"
+                            aqi_legend_md += f"{level['Color_name']} \n ({level['Range']})\n"
                         st.markdown(aqi_legend_md)
                     else:
                         st.header(translations[lang_code]['raw_data_view_header'])
@@ -920,10 +987,11 @@ with tab2:
                 else:
                     if mode == "AQI data":
                         st.header(translations[lang_code]['aqi_levels_view_headers']) 
+                        st.markdown(translations[lang_code]['aqi_levels_view_text'])
                         aqi_legend_md = ""
                         for level in aqi_levels_25:
                             aqi_legend_md += f"**{level['Level']}**:\n"
-                            aqi_legend_md += f"{level['Color_name']} ({level['Range']})\n\n"
+                            aqi_legend_md += f"{level['Color_name']} \n ({level['Range']})\n"
                         st.markdown(aqi_legend_md)
                     else:
                         st.header(translations[lang_code]['raw_data_view_header'])
