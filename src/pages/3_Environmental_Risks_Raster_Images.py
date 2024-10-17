@@ -539,7 +539,7 @@ with tab1:
 		# st.plotly_chart(fig, use_container_width=True)
 		# st.image(temp_img, caption="Temperature Forecast Map", use_column_width=True)
 
-		st.image("https://i.imgur.com/MWch7ZP.png", caption="Corsica Map", width=600, use_container_width=True)
+		st.image("https://i.imgur.com/MWch7ZP.png", caption="Corsica Map", width=800)
 
 
 		# plotly_img = Image.open("plotly_fig.png") 
