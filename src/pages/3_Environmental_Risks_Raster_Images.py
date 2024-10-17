@@ -556,7 +556,7 @@ with tab1:
 		    try:
 		        # Fetch the image from the URL
 		        response = requests.get(url, allow_redirects=True)
-		        print('corsica_map_response:',corsica_map_response)
+		        print('corsica_map_response:',response)
 		        
 		        # Check if the response is successful
 		        if response.status_code == 200:
