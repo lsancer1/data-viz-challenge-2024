@@ -684,7 +684,7 @@ with tab1:
                 aqi_legend_md = ""
                 for level in aqi_levels_25:
                     aqi_legend_md += f"**{level['Level']}**:\n\n"
-                    aqi_legend_md += f"{level['Color_name']} ({level['Range']})\n"
+                    aqi_legend_md += f"{level['Color_name']} ({level['Range']})\n\n"
                 st.markdown(aqi_legend_md)
             else:
                 st.header(translations[lang_code]['raw_data_view_header'])
@@ -696,7 +696,7 @@ with tab1:
                 aqi_legend_md = ""
                 for level in aqi_levels_25:
                     aqi_legend_md += f"**{level['Level']}**:\n\n"
-                    aqi_legend_md += f"{level['Color_name']} ({level['Range']})\n"
+                    aqi_legend_md += f"{level['Color_name']} ({level['Range']})\n\n"
                 st.markdown(aqi_legend_md)
             else:
                 st.header(translations[lang_code]['raw_data_view_header'])
@@ -979,7 +979,7 @@ with tab2:
                         aqi_legend_md = ""
                         for level in aqi_levels_10:
                             aqi_legend_md += f"**{level['Level']}**:\n"
-                            aqi_legend_md += f"{level['Color_name']} \n ({level['Range']})\n"
+                            aqi_legend_md += f"{level['Color_name']} \n ({level['Range']})\n\n"
                         st.markdown(aqi_legend_md)
                     else:
                         st.header(translations[lang_code]['raw_data_view_header'])
@@ -991,7 +991,7 @@ with tab2:
                         aqi_legend_md = ""
                         for level in aqi_levels_25:
                             aqi_legend_md += f"**{level['Level']}**:\n"
-                            aqi_legend_md += f"{level['Color_name']} \n ({level['Range']})\n"
+                            aqi_legend_md += f"{level['Color_name']} \n ({level['Range']})\n\n"
                         st.markdown(aqi_legend_md)
                     else:
                         st.header(translations[lang_code]['raw_data_view_header'])
