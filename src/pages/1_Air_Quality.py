@@ -608,38 +608,37 @@ with tab1:
     #############################################################
     
     if fig:
-        # Create two columns with a 3:1 ratio (map:legend)
-        col1, col2 = st.columns([3, 1])
-    
-        with col1:
-            st.plotly_chart(fig, use_container_width=True)
-    
-        with col2:
-            dataset = datasets[selected_data]
-            variable_name = list(dataset.keys())[0]
 
-            if variable_name =='dust' or variable_name == 'pm10' or variable_name == 'pmwildfire':
-                if mode == "AQI data":
-                    st.header(translations[lang_code]['aqi_levels_view_headers']) 
-                    aqi_legend_md = ""
-                    for level in aqi_levels_25:
-                        aqi_legend_md += f"**{level['Level']}**:\n\n"
-                        aqi_legend_md += f"{level['Color_name']} ({level['Range']})\n"
-                    st.markdown(aqi_legend_md)
-                else:
-                    st.header(translations[lang_code]['raw_data_view_header'])
-                    st.markdown(translations[lang_code]['raw_data_view_text'])
+        # First part of the page
+        dataset = datasets[selected_data]
+        variable_name = list(dataset.keys())[0]
+
+        if variable_name =='dust' or variable_name == 'pm10' or variable_name == 'pmwildfire':
+            if mode == "AQI data":
+                st.header(translations[lang_code]['aqi_levels_view_headers']) 
+                aqi_legend_md = ""
+                for level in aqi_levels_25:
+                    aqi_legend_md += f"**{level['Level']}**:\n\n"
+                    aqi_legend_md += f"{level['Color_name']} ({level['Range']})\n"
+                st.markdown(aqi_legend_md)
             else:
-                if mode == "AQI data":
-                    st.header(translations[lang_code]['aqi_levels_view_headers']) 
-                    aqi_legend_md = ""
-                    for level in aqi_levels_25:
-                        aqi_legend_md += f"**{level['Level']}**:\n\n"
-                        aqi_legend_md += f"{level['Color_name']} ({level['Range']})\n"
-                    st.markdown(aqi_legend_md)
-                else:
-                    st.header(translations[lang_code]['raw_data_view_header'])
-                    st.markdown(translations[lang_code]['raw_data_view_text'])
+                st.header(translations[lang_code]['raw_data_view_header'])
+                st.markdown(translations[lang_code]['raw_data_view_text'])
+        else:
+            if mode == "AQI data":
+                st.header(translations[lang_code]['aqi_levels_view_headers']) 
+                aqi_legend_md = ""
+                for level in aqi_levels_25:
+                    aqi_legend_md += f"**{level['Level']}**:\n\n"
+                    aqi_legend_md += f"{level['Color_name']} ({level['Range']})\n"
+                st.markdown(aqi_legend_md)
+            else:
+                st.header(translations[lang_code]['raw_data_view_header'])
+                st.markdown(translations[lang_code]['raw_data_view_text'])
+
+
+        # Second part of the page
+        st.plotly_chart(fig, use_container_width=True)
 
 
 #############################################################
@@ -902,57 +901,60 @@ with tab2:
             # Layout with two columns: map and AQI legend
             if fig:
                 
-                col1, col2 = st.columns([3, 1])
-                l1 = st.columns(1)
-    
-                with col1:
-                    st.plotly_chart(fig, use_container_width=True)
-    
-                with col2:
-                    if variable_name in ['dust', 'pm10', 'pmwildfire']:
-                        if mode == "AQI data":
-                            st.header(translations[lang_code]['aqi_levels_view_headers']) 
-                            aqi_legend_md = ""
-                            for level in aqi_levels_10:
-                                aqi_legend_md += f"**{level['Level']}**:\n"
-                                aqi_legend_md += f"{level['Color_name']} ({level['Range']})\n\n"
-                            st.markdown(aqi_legend_md)
-                        else:
-                            st.header(translations[lang_code]['raw_data_view_header'])
-                            st.markdown(translations[lang_code]['raw_data_view_text'])
-                    else:
-                        if mode == "AQI data":
-                            st.header(translations[lang_code]['aqi_levels_view_headers']) 
-                            aqi_legend_md = ""
-                            for level in aqi_levels_25:
-                                aqi_legend_md += f"**{level['Level']}**:\n"
-                                aqi_legend_md += f"{level['Color_name']} ({level['Range']})\n\n"
-                            st.markdown(aqi_legend_md)
-                        else:
-                            st.header(translations[lang_code]['raw_data_view_header'])
-                            st.markdown(translations[lang_code]['raw_data_view_text'])
+                # col1, col2 = st.columns([3, 1])
+                # l1 = st.columns(1)
 
-                with l1[0]:
-                    forecast_max = []
-                    forecast_interpretation = []
-                    times = []
-                    if variable_name in ['dust', 'pm10', 'pmwildfire']:
-                        for elt_time in selected_data.time:
-                            converted_time = int(pd.to_timedelta(elt_time.values).total_seconds()/(60*60))
-                            times.append( converted_time )
-                            fmax = float(selected_data[variable_in_dataset].sel(time=elt_time).max().values)
-                            forecast_max.append( fmax )
-                            forecast_interpretation = map_aqi_10(fmax)
-                            st.markdown(f"{translations[lang_code]['air_quality_description']} **{forecast_interpretation}** {translations[lang_code]['in']} {converted_time} {translations[lang_code]['hours']}. \n\n")
-    
+
+                # First part of the page
+                if variable_name in ['dust', 'pm10', 'pmwildfire']:
+                    if mode == "AQI data":
+                        st.header(translations[lang_code]['aqi_levels_view_headers']) 
+                        aqi_legend_md = ""
+                        for level in aqi_levels_10:
+                            aqi_legend_md += f"**{level['Level']}**:\n"
+                            aqi_legend_md += f"{level['Color_name']} ({level['Range']})\n\n"
+                        st.markdown(aqi_legend_md)
                     else:
-                        for elt_time in selected_data.time:
-                            converted_time = int(pd.to_timedelta(elt_time.values).total_seconds()/(60*60))
-                            times.append( converted_time )
-                            fmax = float(selected_data[variable_in_dataset].sel(time=elt_time).max().values)
-                            forecast_max.append( fmax )
-                            forecast_interpretation = map_aqi_25(fmax)
-                            st.markdown(f"{translations[lang_code]['air_quality_description']} **{forecast_interpretation}** {translations[lang_code]['in']} {converted_time} {translations[lang_code]['hours']}. \n\n")
+                        st.header(translations[lang_code]['raw_data_view_header'])
+                        st.markdown(translations[lang_code]['raw_data_view_text'])
+                else:
+                    if mode == "AQI data":
+                        st.header(translations[lang_code]['aqi_levels_view_headers']) 
+                        aqi_legend_md = ""
+                        for level in aqi_levels_25:
+                            aqi_legend_md += f"**{level['Level']}**:\n"
+                            aqi_legend_md += f"{level['Color_name']} ({level['Range']})\n\n"
+                        st.markdown(aqi_legend_md)
+                    else:
+                        st.header(translations[lang_code]['raw_data_view_header'])
+                        st.markdown(translations[lang_code]['raw_data_view_text'])
+
+                # Second part of the page
+                st.plotly_chart(fig, use_container_width=True)
+
+
+
+                # Third part of the page
+                forecast_max = []
+                forecast_interpretation = []
+                times = []
+                if variable_name in ['dust', 'pm10', 'pmwildfire']:
+                    for elt_time in selected_data.time:
+                        converted_time = int(pd.to_timedelta(elt_time.values).total_seconds()/(60*60))
+                        times.append( converted_time )
+                        fmax = float(selected_data[variable_in_dataset].sel(time=elt_time).max().values)
+                        forecast_max.append( fmax )
+                        forecast_interpretation = map_aqi_10(fmax)
+                        st.markdown(f"{translations[lang_code]['air_quality_description']} **{forecast_interpretation}** {translations[lang_code]['in']} {converted_time} {translations[lang_code]['hours']}. \n\n")
+
+                else:
+                    for elt_time in selected_data.time:
+                        converted_time = int(pd.to_timedelta(elt_time.values).total_seconds()/(60*60))
+                        times.append( converted_time )
+                        fmax = float(selected_data[variable_in_dataset].sel(time=elt_time).max().values)
+                        forecast_max.append( fmax )
+                        forecast_interpretation = map_aqi_25(fmax)
+                        st.markdown(f"{translations[lang_code]['air_quality_description']} **{forecast_interpretation}** {translations[lang_code]['in']} {converted_time} {translations[lang_code]['hours']}. \n\n")
         else:
             st.write(translations[lang_code]['getdata_instructions'])
     else:

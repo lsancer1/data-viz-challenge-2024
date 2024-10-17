@@ -1,5 +1,13 @@
 # Logbook
 
+
+
+## October 18th
+
+
+
+
+
 ## October 16th
 
 - **Proposed a planning for the final RUSH! See at the end of the file!**
@@ -217,7 +225,7 @@ Pretty basic. The GeoJson files don't have extra information.
 
 # Schedule for final rush
 
-- The 17th Before midnight GER / Before 8 AM AUS, check the constraints and all what need to do another time to sned the application 
+- The night of the 17/18 before going to sleep, check the constraints and all what need to do another time to sned the application 
 - The 18th Before 10h GER / 18h AUS, work on the app
 - AT 10h GER / 18h AUS STOP working on the app, create a copy of the repo and archive it in private, delete all the commits of the repo, create a README with explanations for the app, do the small video they are asking for
 - AT 11h GER / 19h AUS send everything qnd follow requirements
