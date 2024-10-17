@@ -561,10 +561,6 @@ with tab1:
 		else:
 		    st.error("Failed to load the Corsica map image")
 
-		# Step 3: Fetch and load the help image
-		help_img_response = requests.get(help_img_url)
-
-
 			
 		# help_img = Image.open(BytesIO(help_layermap.content))
 		# st.image(help_img, caption="Elevation Map", use_column_width=True)	
