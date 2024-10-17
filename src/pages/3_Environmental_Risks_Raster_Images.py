@@ -459,7 +459,7 @@ with tab1:
 
 	corsica_bbox_ori =  "43.25,8.15,41.15,10.15"
 
-	miny_corsica="41.2" 
+	miny_corsica="41.4" 
 	minx_corsica="7.9" 
 	maxy_corsica="43.2"
 	maxx_corsica="10.2" 
@@ -540,7 +540,7 @@ with tab1:
 		# st.plotly_chart(fig, use_container_width=True)
 		# st.image(temp_img, caption="Temperature Forecast Map", use_column_width=True)
 
-		st.image("https://i.imgur.com/MWch7ZP.png", caption="Corsica Map", width=700)
+		st.image("https://i.imgur.com/MWch7ZP.png", caption="Corsica Map", width=600)
 
 
 
