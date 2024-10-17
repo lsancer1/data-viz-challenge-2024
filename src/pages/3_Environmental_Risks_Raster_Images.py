@@ -464,7 +464,7 @@ with tab1:
 	minx_corsica="8.4" # actually minx 
 	maxx_corsica="9.7" # actually maxx
 
-	corsica_bbox_arome = miny_corsica+","+minx_corsica+","+maxx_corsica+","+maxy_corsica 
+	corsica_bbox_arome = miny_corsica+","+minx_corsica+","+maxy_corsica+","+maxx_corsica 
 	print("corsica_bbox_arome",corsica_bbox_arome)
 
 	globalminx=float(minx_corsica)
