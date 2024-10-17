@@ -552,7 +552,7 @@ with tab1:
 
 		# Step 2: Fetch and load the Corsica map using Pillow
 		corsica_map_response = requests.get(corsicamap_pillow_url, allow_redirects=True)
-		print(corsica_map_response)
+		print('corsica_map_response:',corsica_map_response)
 
 		# Check if the request was successful
 		if corsica_map_response.status_code == 200:
