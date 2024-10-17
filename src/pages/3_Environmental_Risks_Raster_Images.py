@@ -544,14 +544,14 @@ with tab1:
 		corsicamap_url = "https://i.imgur.com/MWch7ZP.png"
 
 		corsica_map_response = requests.get(corsicamap_url)
-		corsica_map = Image.open(BytesIO(corsica_map_response.content))
-
 
 		# Check the response status
 		print(corsica_map_response.status_code)  # Should be 200
 
 		# Check the content type
 		print(corsica_map_response.headers['Content-Type'])  # Should be 'image/png'
+
+		corsica_map = Image.open(BytesIO(corsica_map_response.content))
 
 		st.image(corsicamap_url, caption="Corsica Map", width=600)
 	
