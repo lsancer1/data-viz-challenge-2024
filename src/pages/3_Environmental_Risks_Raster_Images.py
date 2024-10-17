@@ -463,7 +463,14 @@ with tab1:
 	maxx_corsica="43.4"
 	miny_corsica="8.4"
 	maxy_corsica="9.7"
-	corsica_bbox_arome = minx_corsica+","+miny_corsica+","+maxx_corsica+","+ maxy_corsica 
+	corsica_bbox_arome = minx_corsica+","+miny_corsica+","+maxx_corsica+","+maxy_corsica 
+
+	globalminx=int(minx_corsica)-15
+	globalmaxx=int(maxx_corsica)+5
+	globalminy=int(miny_corsica)-5
+	globalmaxy=int(maxy_corsica)+15
+
+    globla_bbox_arome = str(globalminx)+","+str(globalminy)+","+str(globalmaxx)+","+str(globalmaxy) 
 
 	forecastlayers = {
 		"temperature": "TEMPERATURE__SPECIFIC_HEIGHT_LEVEL_ABOVE_GROUND",
@@ -497,25 +504,50 @@ with tab1:
 		width = str(cosrica_mapwidth)
 		)
 
+
+
+
+	tempglobal_layermap = client.get_wms_map(		
+	    layers = forecastlayers["temperature"],
+		bbox = globla_bbox_arome,
+		height = str(cosrica_mapheight),
+		width = str(cosrica_mapwidth)
+		)
+
+	windglobal_layermap = client.get_wms_map(		
+	    layers = forecastlayers["windspeed"],
+		bbox = corsica_bbox_arome,
+		height = str(cosrica_mapheight),
+		width = str(cosrica_mapwidth)
+		)
+
+	humiglobal_layermap = client.get_wms_map(		
+	    layers = forecastlayers["humidity"],
+		bbox = corsica_bbox_arome,
+		height = str(cosrica_mapheight),
+		width = str(cosrica_mapwidth)
+		)
+
+
 	#############################################################
 	## Layout with Two Columns: Map and Legend
 	#############################################################
 
 	if fig:
-		# Create two columns with a 3:1 ratio (map:legend)
-		col1, col2 = st.columns([3, 1])
 
-	with col1:
 		# st.plotly_chart(fig, use_container_width=True)
 		# st.image(temp_img, caption="Temperature Forecast Map", use_column_width=True)
 
-		st.image("https://i.imgur.com/MWch7ZP.png", caption="Corsica Map", width=400)
+		st.image("https://i.imgur.com/MWch7ZP.png", caption="Corsica Map", width=600)
 
 
 		# plotly_img = Image.open("plotly_fig.png") 
 		temp_img = Image.open(BytesIO(temp_layermap.content))		
 		st.image(temp_img, caption="Temperature Forecast Map", use_column_width=True)
 
+
+		temp_globalimg = Image.open(BytesIO(tempglobal_layermap.content))
+		st.image(temp_globalimg, caption="Temperature Forecast Map", use_column_width=True)		 
 		# # Resize temp_img to match Plotly figure dimensions
 		# temp_img_resized = temp_img.resize(plotly_img.size)
 
@@ -533,7 +565,9 @@ with tab1:
 
 		# st.plotly_chart(layermap, use_container_width=True)
 
-	with col2:
+
+
+
 		st.header("Exploration")
 		# st.write(layermap)
 
