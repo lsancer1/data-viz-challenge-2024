@@ -454,7 +454,7 @@ with tab1:
 	# hardcoded parameters for the forecast
 	example_bbox = "37.5,-12,55.4,16"
 	example_mapheight=256
-	example_mapwidth=256
+	example_mapwidth=356
 
 
 	corsica_bbox_ori =  "43.25,8.15,41.15,10.15"
@@ -466,8 +466,8 @@ with tab1:
 	corsica_bbox_arome = minx_corsica+","+miny_corsica+","+maxx_corsica+","+maxy_corsica 
 
 	globalminx=float(minx_corsica)-15
-	globalmaxx=float(maxx_corsica)+5
-	globalminy=float(miny_corsica)-5
+	globalmaxx=float(maxx_corsica)+2
+	globalminy=float(miny_corsica)-2
 	globalmaxy=float(maxy_corsica)+15
 
 	globla_bbox_arome = str(globalminx)+","+str(globalminy)+","+str(globalmaxx)+","+str(globalmaxy)
