@@ -543,7 +543,8 @@ with tab1:
 
 		corsicamap_url = "https://i.imgur.com/MWch7ZP.png"
 
-		corsica_map = Image.open(requests.get(corsicamap_url, stream=True).raw)
+		corsica_map_response = requests.get(corsicamap_url)
+		corsica_map = Image.open(BytesIO(corsica_map_response.content))
 		st.image(corsicamap_url, caption="Corsica Map", width=600)
 	
 		help_img = Image.open(BytesIO(help_layermap.content))
