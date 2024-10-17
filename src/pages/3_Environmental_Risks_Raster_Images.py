@@ -461,8 +461,8 @@ with tab1:
 
 	minx_corsica="41.8" #
 	maxx_corsica="43.4" # 
-	miny_corsica="9.4" # 
-	maxy_corsica="9.7"
+	miny_corsica="8.4" # actually minx 
+	maxy_corsica="10.7"
 
 	corsica_bbox_arome = minx_corsica+","+miny_corsica+","+maxx_corsica+","+maxy_corsica 
 
