@@ -455,11 +455,11 @@ with tab1:
                 # }
         
                 # Create the custom discrete colorscale for colorbar
-                aqi_thresholds = [0, 50, 100, 150, 200, 300]  # Extend max to 300 for colorbar
+                aqi_thresholds = [0, 40, 80, 120, 300, 500]  # Extend max to 300 for colorbar
                 aqi_colors = [level['Color'] for level in aqi_levels_10]
         
                 # Normalize thresholds for Plotly colorscale (0 to 1)
-                norm_thresholds = [thresh / 300 for thresh in aqi_thresholds]
+                norm_thresholds = [thresh / 500 for thresh in aqi_thresholds]
                 
         
                 # Create colorscale with steps
@@ -477,11 +477,11 @@ with tab1:
                 # }
         
                 # Create the custom discrete colorscale for colorbar
-                aqi_thresholds = [0, 50, 100, 150, 200, 300]  # Extend max to 300 for colorbar
+                aqi_thresholds = [0, 25, 50, 100, 300, 500]  # Extend max to 300 for colorbar
                 aqi_colors = [level['Color'] for level in aqi_levels_25]
         
                 # Normalize thresholds for Plotly colorscale (0 to 1)
-                norm_thresholds = [thresh / 300 for thresh in aqi_thresholds]
+                norm_thresholds = [thresh / 500 for thresh in aqi_thresholds]
                 
         
                 # Create colorscale with steps
@@ -632,7 +632,7 @@ with tab1:
                 # }
     
                 # Create the custom discrete colorscale for colorbar
-                aqi_thresholds = [0, 25, 50, 100, 300, 500]  # Extend max to 300 for colorbar
+                aqi_thresholds = [0, 25, 50, 100, 300]  # Extend max to 300 for colorbar
                 aqi_colors = [level['Color'] for level in aqi_levels_25]
     
                 # Normalize thresholds for Plotly colorscale (0 to 1)
