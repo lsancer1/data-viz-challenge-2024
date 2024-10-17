@@ -543,13 +543,17 @@ with tab1:
 		st.image("https://i.imgur.com/MWch7ZP.png", caption="Corsica Map", width=700)
 
 
+
+		help_img = Image.open(BytesIO(help_layermap.content))
+		st.image(help_img, caption="Elevation Map", use_column_width=True)	
+
+
+
 		# plotly_img = Image.open("plotly_fig.png") 
 		temp_img = Image.open(BytesIO(temp_layermap.content))		
 		st.image(temp_img, caption="Temperature Forecast Map", use_column_width=True)
 
 
-		help_img = Image.open(BytesIO(help_layermap.content))
-		st.image(help_img, caption="Elevation Map", use_column_width=True)	
 
 		# temp_globalimg = Image.open(BytesIO(tempglobal_layermap.content))
 		# st.image(temp_globalimg, caption="Temperature Forecast Map", use_column_width=True)
