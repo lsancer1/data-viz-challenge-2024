@@ -462,9 +462,10 @@ with tab1:
 	minx_corsica="41.8" #
 	maxx_corsica="43.4" # 
 	miny_corsica="8.4" # actually minx 
-	maxy_corsica="10.7" # actually maxx
+	maxy_corsica="9.7" # actually maxx
 
 	corsica_bbox_arome = minx_corsica+","+miny_corsica+","+maxx_corsica+","+maxy_corsica 
+	print("corsica_bbox_arome",corsica_bbox_arome)
 
 	globalminx=float(minx_corsica)
 	globalmaxx=float(maxx_corsica)-15
@@ -472,7 +473,7 @@ with tab1:
 	globalmaxy=float(maxy_corsica)+2
 
 	global_bbox_arome = str(globalminx)+","+str(globalminy)+","+str(globalmaxx)+","+str(globalmaxy)
-	print('global_bbox_arome')
+	print("global_bbox_arome",global_bbox_arome)
 
 	forecastlayers = {"temperature": "TEMPERATURE__SPECIFIC_HEIGHT_LEVEL_ABOVE_GROUND",
     			"windspeed": "WIND_SPEED__SPECIFIC_HEIGHT_LEVEL_ABOVE_GROUND",
