@@ -178,10 +178,21 @@ translations = {
         'red': "Rouge",
         'purple': "Violet"
 
-
-
     }
 }
+
+
+#Months
+months_list_fr = [
+    'Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin',
+    'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'
+]
+
+months_list_en = [
+    'January', 'February', 'March', 'April', 'May', 'June',
+    'July', 'August', 'September', 'October', 'November', 'December'
+]
+
 
 # Language selection
 language = st.sidebar.selectbox('Select language:', ['Français', 'English'])
@@ -327,17 +338,18 @@ with tab1:
     # Function to get available months
     def get_available_months(selected_data):
 
-        if lang_code == 'fr' :
-            locale.setlocale(locale.LC_TIME, 'fr_FR')
-        else:
-            locale.setlocale(locale.LC_TIME, 'en_US')
-            
         data = datasets[selected_data]
         times = pd.to_datetime(data.time.values)
         available_months = np.unique(times.month)
         available_months.sort()
-        month_options = [calendar.month_name[month] for month in available_months]
+        # month_options = [calendar.month_name[month] for month in available_months]
+        if lang_code == 'fr' :
+            month_options = months_list_fr
+        else:
+            month_options = months_list_en
+
         return available_months, month_options
+
     
     available_months, month_options = get_available_months(selected_data)
 
