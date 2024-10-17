@@ -552,14 +552,14 @@ with tab1:
 
 		# Step 2: Fetch and load the Corsica map using Pillow
 		corsica_map_response = requests.get(corsicamap_pillow_url, allow_redirects=True)
-		print('corsica_map_response:',corsica_map_response.status_code)
+		print('corsica_map_response:',corsica_map_response)
 
-		# Check if the request was successful
-		if corsica_map_response.status_code == 200:
-		    # Convert the response content into an image using Pillow
-		    corsica_map = Image.open(BytesIO(corsica_map_response.content))
-		else:
-		    st.error("Failed to load the Corsica map image")
+		# # Check if the request was successful
+		# if corsica_map_response.status_code == 200:
+		#     # Convert the response content into an image using Pillow
+		#     corsica_map = Image.open(BytesIO(corsica_map_response.content))
+		# else:
+		#     st.error("Failed to load the Corsica map image")
 
 			
 		# help_img = Image.open(BytesIO(help_layermap.content))
