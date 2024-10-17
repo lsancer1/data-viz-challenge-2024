@@ -280,7 +280,7 @@ aqi_levels_10 = [
     {"Level": translations[lang_code]['sensitive_groups'],  
     "Range": "81-120", 
     "Color": "#FF7E00" , 
-     "Color_name":translations[lang_code]['orange']}, , # Orange
+     "Color_name":translations[lang_code]['orange']}, # Orange
     {"Level": translations[lang_code]['unhealthy'], 
     "Range": "121-300", 
     "Color": "#FF0000" , 
