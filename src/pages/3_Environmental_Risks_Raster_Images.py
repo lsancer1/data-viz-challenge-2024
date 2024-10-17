@@ -453,26 +453,26 @@ with tab1:
 
 	# hardcoded parameters for the forecast
 	example_bbox = "37.5,-12,55.4,16"
-	example_mapheight=256
+	example_mapheight=356
 	example_mapwidth=356
 
 
 	corsica_bbox_ori =  "43.25,8.15,41.15,10.15"
 
-	miny_corsica="41.0" # actually miny 
-	maxy_corsica="43.4" # actually maxy
-	minx_corsica="8.4" # actually minx 
-	maxx_corsica="9.7" # actually maxx
+	miny_corsica="41.4" 
+	minx_corsica="8.4" 
+	maxy_corsica="43.2"
+	maxx_corsica="9.7" 
 
 	corsica_bbox_arome = miny_corsica+","+minx_corsica+","+maxy_corsica+","+maxx_corsica 
 	print("corsica_bbox_arome",corsica_bbox_arome)
 
-	globalminx=float(minx_corsica)
-	globalmaxx=float(maxx_corsica)
 	globalminy=float(miny_corsica)
+	globalminx=float(minx_corsica)
 	globalmaxy=float(maxy_corsica)
+	globalmaxx=float(maxx_corsica)
 
-	global_bbox_arome = str(globalminx)+","+str(globalminy)+","+str(globalmaxx)+","+str(globalmaxy)
+	global_bbox_arome = str(globalminy)+","+str(globalminx)+","+str(globalmaxy)+","+str(globalmaxx)
 	print("global_bbox_arome",global_bbox_arome)
 
 	forecastlayers = {"temperature": "TEMPERATURE__SPECIFIC_HEIGHT_LEVEL_ABOVE_GROUND",
