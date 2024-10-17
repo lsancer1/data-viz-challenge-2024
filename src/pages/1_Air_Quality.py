@@ -94,7 +94,8 @@ translations = {
          without categorization into AQI levels.",
         'aqi_levels_view_headers': "AQI Levels",
         'aqi_levels_view_text': "AQI (Air Quality Index) is an international index used to assess \
-         the level of air pollution.", 
+         the level of air pollution. Depending on the particules, the range of hazardousness change. \
+         Here you can see the different ranges for the choosen particules:", 
 
         'dataset_dust': "Dust",
         'dataset_pm10': "PM10 Particles",
@@ -150,7 +151,8 @@ translations = {
          sans catégorisation en niveaux AQI.",
         'aqi_levels_view_headers': "Niveaux AQI",
         'aqi_levels_view_text': "AQI (pour Air Quality Index) est un indice international utilisé pour évaluer \
-         le niveau de pollution de l'air.",
+         le niveau de pollution de l'air. En fonction des particules, la plage de dangerosité change. \
+         Vous pouvez voir ici les différents niveaux de dangerosité pour les particules choisies :",
 
         'dataset_dust': "Poussières",
         'dataset_pm10': "Particules PM10",
