@@ -509,17 +509,21 @@ with tab1:
 		# st.plotly_chart(fig, use_container_width=True)
 		# st.image(temp_img, caption="Temperature Forecast Map", use_column_width=True)
 
-		plotly_img = Image.open("plotly_fig.png") 
-		temp_img = Image.open(BytesIO(temp_layermap.content))
+		st.image("https://imgur.com/a/w55uzF0.png", caption="Corsica Map", width=800)
 
-		# Resize temp_img to match Plotly figure dimensions
-		temp_img_resized = temp_img.resize(plotly_img.size)
 
-		# Overlay images 
-		combined_img = ImageChops.add(plotly_img, temp_img_resized, scale=2.0) 
+		# plotly_img = Image.open("plotly_fig.png") 
+		temp_img = Image.open(BytesIO(temp_layermap.content))		
+		st.image(temp_img, caption="Temperature Forecast Map", use_column_width=True)
 
-		# Display combined image in Streamlit
-		st.image(combined_img, caption="Combined Map and Forecast Image", use_column_width=True)
+		# # Resize temp_img to match Plotly figure dimensions
+		# temp_img_resized = temp_img.resize(plotly_img.size)
+
+		# # Overlay images 
+		# combined_img = ImageChops.add(plotly_img, temp_img_resized, scale=2.0) 
+
+		# # Display combined image in Streamlit
+		# st.image(combined_img, caption="Combined Map and Forecast Image", use_column_width=True)
 
 		wind_img = Image.open(BytesIO(wind_layermap.content))
 		st.image(wind_img, caption="Wind Forecast Map", use_column_width=True)
