@@ -459,7 +459,7 @@ with tab1:
 
 	corsica_bbox_ori =  "43.25,8.15,41.15,10.15"
 
-	miny_corsica="41.4" 
+	miny_corsica="41.3" 
 	minx_corsica="7.9" 
 	maxy_corsica="43.2"
 	maxx_corsica="10.2" 
@@ -549,6 +549,23 @@ with tab1:
 
 
 
+		# Resize temp_img to match Plotly figure dimensions
+		temp_img_resized = temp_img.resize(plotly_img.size)
+
+		# Overlay images 
+		combined_img = ImageChops.add(plotly_img, temp_img_resized, scale=2.0) 
+
+		# Display combined image in Streamlit
+		st.image(combined_img, caption="Combined Map and Forecast Image", use_column_width=True)
+
+
+
+
+
+
+
+
+
 		# plotly_img = Image.open("plotly_fig.png") 
 		temp_img = Image.open(BytesIO(temp_layermap.content))		
 		st.image(temp_img, caption="Temperature Forecast Map", use_column_width=True)
@@ -562,14 +579,6 @@ with tab1:
 
 
 
-		# # Resize temp_img to match Plotly figure dimensions
-		# temp_img_resized = temp_img.resize(plotly_img.size)
-
-		# # Overlay images 
-		# combined_img = ImageChops.add(plotly_img, temp_img_resized, scale=2.0) 
-
-		# # Display combined image in Streamlit
-		# st.image(combined_img, caption="Combined Map and Forecast Image", use_column_width=True)
 
 		wind_img = Image.open(BytesIO(wind_layermap.content))
 		st.image(wind_img, caption="Wind Forecast Map", use_column_width=True)
