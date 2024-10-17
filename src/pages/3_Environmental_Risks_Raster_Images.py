@@ -475,9 +475,13 @@ with tab1:
 	global_bbox_arome = str(globalminy)+","+str(globalminx)+","+str(globalmaxy)+","+str(globalmaxx)
 	print("global_bbox_arome",global_bbox_arome)
 
-	forecastlayers = {"temperature": "TEMPERATURE__SPECIFIC_HEIGHT_LEVEL_ABOVE_GROUND",
-    			"windspeed": "WIND_SPEED__SPECIFIC_HEIGHT_LEVEL_ABOVE_GROUND",
-    			"humidity": "RELATIVE_HUMIDITY__SPECIFIC_HEIGHT_LEVEL_ABOVE_GROUND"}
+	forecastlayers = {
+	"temperature": "TEMPERATURE__SPECIFIC_HEIGHT_LEVEL_ABOVE_GROUND",
+	"windspeed": "WIND_SPEED__SPECIFIC_HEIGHT_LEVEL_ABOVE_GROUND",
+	"humidity": "RELATIVE_HUMIDITY__SPECIFIC_HEIGHT_LEVEL_ABOVE_GROUND",
+	"geom": "GEOMETRIC_HEIGHT__GROUND_OR_WATER_SURFACE",
+	}
+	
 	cosrica_mapheight=800
 	cosrica_mapwidth=600
 
@@ -490,6 +494,15 @@ with tab1:
 		height = str(cosrica_mapheight),
 		width = str(cosrica_mapwidth)
 		)
+
+
+	help_layermap = client.get_wms_map(		
+	    layers = forecastlayers["geom"],
+		bbox = corsica_bbox_arome,
+		height = str(cosrica_mapheight),
+		width = str(cosrica_mapwidth)
+		)
+
 
 	wind_layermap = client.get_wms_map(		
 	    layers = forecastlayers["windspeed"],
@@ -515,19 +528,7 @@ with tab1:
 		width = str(cosrica_mapwidth)
 		)
 
-	windglobal_layermap = client.get_wms_map(		
-	    layers = forecastlayers["windspeed"],
-		bbox = corsica_bbox_arome,
-		height = str(cosrica_mapheight),
-		width = str(cosrica_mapwidth)
-		)
 
-	humiglobal_layermap = client.get_wms_map(		
-	    layers = forecastlayers["humidity"],
-		bbox = corsica_bbox_arome,
-		height = str(cosrica_mapheight),
-		width = str(cosrica_mapwidth)
-		)
 
 
 	#############################################################
@@ -547,8 +548,14 @@ with tab1:
 		st.image(temp_img, caption="Temperature Forecast Map", use_column_width=True)
 
 
-		temp_globalimg = Image.open(BytesIO(tempglobal_layermap.content))
-		st.image(temp_globalimg, caption="Temperature Forecast Map", use_column_width=True)		 
+		# temp_globalimg = Image.open(BytesIO(tempglobal_layermap.content))
+		# st.image(temp_globalimg, caption="Temperature Forecast Map", use_column_width=True)
+
+
+		help_img = Image.open(BytesIO(help_layermap.content))
+		st.image(help_img, caption="Temperature Forecast Map", use_column_width=True)	
+
+					 
 		# # Resize temp_img to match Plotly figure dimensions
 		# temp_img_resized = temp_img.resize(plotly_img.size)
 
