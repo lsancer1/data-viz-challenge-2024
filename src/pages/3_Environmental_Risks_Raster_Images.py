@@ -551,7 +551,7 @@ with tab1:
 
 
 		# Step 2: Fetch and load the Corsica map using Pillow
-		corsica_map_response = requests.get(corsicamap_pillow_url, allow_redirects=True)
+		corsica_map_response = requests.get(corsicamap_st_url, allow_redirects=True)
 		print('corsica_map_response:',corsica_map_response)
 
 		# # Check if the request was successful
@@ -562,8 +562,8 @@ with tab1:
 		#     st.error("Failed to load the Corsica map image")
 
 			
-		# help_img = Image.open(BytesIO(help_layermap.content))
-		# st.image(help_img, caption="Elevation Map", use_column_width=True)	
+		help_img = Image.open(BytesIO(help_layermap.content))
+		st.image(help_img, caption="Elevation Map", use_column_width=True)	
 
 		# # Resize the help image to match the Corsica map size if needed
 		# help_img = help_img.resize(corsica_map.size)
