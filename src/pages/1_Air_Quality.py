@@ -11,6 +11,7 @@ import plotly.express as px
 import xarray as xr
 import pandas as pd
 import calendar
+import locale
 import numpy as np
 import yaml
 from attrdictionary import AttrDict as attributedict
@@ -93,7 +94,7 @@ translations = {
          without categorization into AQI levels.",
         'aqi_levels_view_headers': "AQI Levels",
         'aqi_levels_view_text': "AQI (Air Quality Index) is an international index used to assess \
-         the level of air pollution", 
+         the level of air pollution.", 
 
         'dataset_dust': "Dust",
         'dataset_pm10': "PM10 Particles",
@@ -149,7 +150,7 @@ translations = {
          sans catégorisation en niveaux AQI.",
         'aqi_levels_view_headers': "Niveaux AQI",
         'aqi_levels_view_text': "AQI (pour Air Quality Index) est un indice international utilisé pour évaluer \
-         le niveau de pollution de l'air",
+         le niveau de pollution de l'air.",
 
         'dataset_dust': "Poussières",
         'dataset_pm10': "Particules PM10",
@@ -325,6 +326,12 @@ with tab1:
     
     # Function to get available months
     def get_available_months(selected_data):
+
+        if lang_code == 'fr' :
+            locale.setlocale(locale.LC_TIME, 'fr_FR')
+        else:
+            locale.setlocale(locale.LC_TIME, 'en_EN')
+            
         data = datasets[selected_data]
         times = pd.to_datetime(data.time.values)
         available_months = np.unique(times.month)
@@ -333,8 +340,13 @@ with tab1:
         return available_months, month_options
     
     available_months, month_options = get_available_months(selected_data)
+
+
     
     selected_month_name = st.sidebar.selectbox(translations[lang_code]['month_selection'], month_options)
+
+
+
     selected_month_index = month_options.index(selected_month_name)
     selected_month = available_months[selected_month_index]
     
@@ -683,8 +695,8 @@ with tab1:
                 st.markdown(translations[lang_code]['aqi_levels_view_text'])
                 aqi_legend_md = ""
                 for level in aqi_levels_25:
-                    aqi_legend_md += f"**{level['Level']}**:\n\n"
-                    aqi_legend_md += f"{level['Color_name']} ({level['Range']})\n\n"
+                    aqi_legend_md += f"**{level['Level']}**:\n"
+                    aqi_legend_md += f"{level['Color_name']} \n ({level['Range']})\n\n"
                 st.markdown(aqi_legend_md)
             else:
                 st.header(translations[lang_code]['raw_data_view_header'])
@@ -695,8 +707,8 @@ with tab1:
                 st.markdown(translations[lang_code]['aqi_levels_view_text'])
                 aqi_legend_md = ""
                 for level in aqi_levels_25:
-                    aqi_legend_md += f"**{level['Level']}**:\n\n"
-                    aqi_legend_md += f"{level['Color_name']} ({level['Range']})\n\n"
+                    aqi_legend_md += f"**{level['Level']}**:\n"
+                    aqi_legend_md += f"{level['Color_name']} \n ({level['Range']})\n\n"
                 st.markdown(aqi_legend_md)
             else:
                 st.header(translations[lang_code]['raw_data_view_header'])
