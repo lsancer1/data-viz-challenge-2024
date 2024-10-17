@@ -542,7 +542,7 @@ with tab1:
 		
 
 		corsicamap_st_url = "https://i.imgur.com/MWch7ZP.png"
-		corsicamap_pillow_url = "https://imgur.com/a/w55uzF0"
+		corsicamap_pillow_url = "https://imgur.com/a/w55uzF0.png"
 
 
 		# corsica_map = Image.open(BytesIO(corsica_map_response.content))
