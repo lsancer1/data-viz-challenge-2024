@@ -545,32 +545,43 @@ with tab1:
 
 		corsica_map_response = requests.get(corsicamap_url)
 
-		# Check the response status
-		print(corsica_map_response.status_code)  # Should be 200
 
-		# Check the content type
-		print(corsica_map_response.headers['Content-Type'])  # Should be 'image/png'
-
-		corsica_map = Image.open(BytesIO(corsica_map_response.content))
+		# corsica_map = Image.open(BytesIO(corsica_map_response.content))
 
 		st.image(corsicamap_url, caption="Corsica Map", width=600)
-	
-		help_img = Image.open(BytesIO(help_layermap.content))
-		st.image(help_img, caption="Elevation Map", use_column_width=True)	
 
-		# Resize the help image to match the Corsica map size if needed
-		help_img = help_img.resize(corsica_map.size)
 
-		# Apply transparency (set alpha) to the help image
-		help_img = help_img.convert("RGBA")  # Ensure it's in RGBA mode for transparency
-		alpha = 0.3  # Adjust transparency level (0 is fully transparent, 1 is fully opaque)
-		help_img.putalpha(int(255 * alpha))
+		# Step 2: Fetch and load the Corsica map using Pillow
+		corsica_map_response = requests.get(corsicamap_url, allow_redirects=True)
 
-		# Merge the two images
-		combined_img = Image.alpha_composite(corsica_map.convert("RGBA"), help_img)
+		# Check if the request was successful
+		if corsica_map_response.status_code == 200:
+		    # Convert the response content into an image using Pillow
+		    corsica_map = Image.open(BytesIO(corsica_map_response.content))
+		else:
+		    st.error("Failed to load the Corsica map image")
 
-		# Display the final combined image
-		st.image(combined_img, caption="Overlay of Corsica Map and Elevation Map", use_column_width=True)
+		# Step 3: Fetch and load the help image
+		help_img_response = requests.get(help_img_url)
+
+
+			
+		# help_img = Image.open(BytesIO(help_layermap.content))
+		# st.image(help_img, caption="Elevation Map", use_column_width=True)	
+
+		# # Resize the help image to match the Corsica map size if needed
+		# help_img = help_img.resize(corsica_map.size)
+
+		# # Apply transparency (set alpha) to the help image
+		# help_img = help_img.convert("RGBA")  # Ensure it's in RGBA mode for transparency
+		# alpha = 0.3  # Adjust transparency level (0 is fully transparent, 1 is fully opaque)
+		# help_img.putalpha(int(255 * alpha))
+
+		# # Merge the two images
+		# combined_img = Image.alpha_composite(corsica_map.convert("RGBA"), help_img)
+
+		# # Display the final combined image
+		# st.image(combined_img, caption="Overlay of Corsica Map and Elevation Map", use_column_width=True)
 
 
 
