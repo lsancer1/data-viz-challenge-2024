@@ -92,7 +92,7 @@ translations = {
         'raw_data_view_text': "This view displays the raw aerosol concentration data \
          without categorization into AQI levels.",
         'aqi_levels_view_headers': "AQI Levels",
-        'aqi_levels_view_textr': "AQI (Air Quality Index) is an international index used to assess \
+        'aqi_levels_view_text': "AQI (Air Quality Index) is an international index used to assess \
          the level of air pollution", 
 
         'dataset_dust': "Dust",
@@ -148,7 +148,7 @@ translations = {
         'raw_data_view_text': "Cette vue affiche les données brutes de concentration d'aérosols \
          sans catégorisation en niveaux AQI.",
         'aqi_levels_view_headers': "Niveaux AQI",
-        'aqi_levels_view_textr': "AQI (pour Air Quality Index) est un indice international utilisé pour évaluer \
+        'aqi_levels_view_text': "AQI (pour Air Quality Index) est un indice international utilisé pour évaluer \
          le niveau de pollution de l'air",
 
         'dataset_dust': "Poussières",
