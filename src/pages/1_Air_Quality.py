@@ -499,7 +499,7 @@ with tab1:
                 lon='Longitude',
                 color='Aerosol',
                 color_continuous_scale=colorscale,
-                range_color=(0, 300),  # Set the color axis range to match AQI thresholds
+                range_color=(0, 500),  # Set the color axis range to match AQI thresholds
                 mapbox_style='open-street-map',
                 zoom=7,
                 center={"lat": 42.16, "lon": 9.13},
