@@ -541,18 +541,18 @@ with tab1:
 		# st.image(temp_img, caption="Temperature Forecast Map", use_column_width=True)
 		
 
-		corsicamap_url = "https://i.imgur.com/MWch7ZP.png"
-
-		corsica_map_response = requests.get(corsicamap_url)
+		corsicamap_st_url = "https://i.imgur.com/MWch7ZP.png"
+		corsicamap_pillow_url = "https://imgur.com/a/w55uzF0"
 
 
 		# corsica_map = Image.open(BytesIO(corsica_map_response.content))
 
-		st.image(corsicamap_url, caption="Corsica Map", width=600)
+		st.image(corsicamap_st_url, caption="Corsica Map", width=600)
 
 
 		# Step 2: Fetch and load the Corsica map using Pillow
-		corsica_map_response = requests.get(corsicamap_url, allow_redirects=True)
+		corsica_map_response = requests.get(corsicamap_pillow_url, allow_redirects=True)
+		print(corsica_map_response)
 
 		# Check if the request was successful
 		if corsica_map_response.status_code == 200:
