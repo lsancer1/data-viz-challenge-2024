@@ -539,24 +539,29 @@ with tab1:
 
 		# st.plotly_chart(fig, use_container_width=True)
 		# st.image(temp_img, caption="Temperature Forecast Map", use_column_width=True)
+		
 
-		st.image("https://i.imgur.com/MWch7ZP.png", caption="Corsica Map", width=600)
+		corsicamap_url = "https://i.imgur.com/MWch7ZP.png"
 
-
-
+		corsica_map = Image.open(requests.get(corsicamap_url, stream=True).raw)
+		st.image(corsicamap_url, caption="Corsica Map", width=600)
+	
 		help_img = Image.open(BytesIO(help_layermap.content))
 		st.image(help_img, caption="Elevation Map", use_column_width=True)	
 
+		# Resize the help image to match the Corsica map size if needed
+		help_img = help_img.resize(corsica_map.size)
 
+		# Apply transparency (set alpha) to the help image
+		help_img = help_img.convert("RGBA")  # Ensure it's in RGBA mode for transparency
+		alpha = 0.3  # Adjust transparency level (0 is fully transparent, 1 is fully opaque)
+		help_img.putalpha(int(255 * alpha))
 
-		# Resize temp_img to match Plotly figure dimensions
-		temp_img_resized = temp_img.resize(plotly_img.size)
+		# Merge the two images
+		combined_img = Image.alpha_composite(corsica_map.convert("RGBA"), help_img)
 
-		# Overlay images 
-		combined_img = ImageChops.add(plotly_img, temp_img_resized, scale=2.0) 
-
-		# Display combined image in Streamlit
-		st.image(combined_img, caption="Combined Map and Forecast Image", use_column_width=True)
+		# Display the final combined image
+		st.image(combined_img, caption="Overlay of Corsica Map and Elevation Map", use_column_width=True)
 
 
 
