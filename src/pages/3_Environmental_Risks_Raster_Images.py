@@ -460,7 +460,7 @@ with tab1:
 	corsica_bbox_ori =  "43.25,8.15,41.15,10.15"
 
 	minx_corsica="41.8" #
-	maxx_corsica="43.4" # 
+	maxx_corsica="44.3" # 
 	miny_corsica="8.4" # actually minx 
 	maxy_corsica="9.7" # actually maxx
 
@@ -468,9 +468,9 @@ with tab1:
 	print("corsica_bbox_arome",corsica_bbox_arome)
 
 	globalminx=float(minx_corsica)
-	globalmaxx=float(maxx_corsica)-15
+	globalmaxx=float(maxx_corsica)
 	globalminy=float(miny_corsica)
-	globalmaxy=float(maxy_corsica)+2
+	globalmaxy=float(maxy_corsica)
 
 	global_bbox_arome = str(globalminx)+","+str(globalminy)+","+str(globalmaxx)+","+str(globalmaxy)
 	print("global_bbox_arome",global_bbox_arome)
