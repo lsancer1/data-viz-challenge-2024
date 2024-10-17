@@ -547,10 +547,10 @@ with tab1:
 
 		# corsica_map = Image.open(BytesIO(corsica_map_response.content))
 
-		st.image(corsicamap_st_url, caption="Corsica Map", width=600)
+		# st.image(corsicamap_st_url, caption="Corsica Map", width=600)
 
-		# I guess I have to set a delay for imgur before requesting the image again 
-		time.sleep(1) 
+		# # I guess I have to set a delay for imgur before requesting the image again 
+		# time.sleep(1) 
 
 		# Function to load an image using Pillow
 		def load_image(url):
@@ -571,6 +571,9 @@ with tab1:
 
 		# Step 1: Load the Corsica map using Pillow
 		corsica_map = load_image(corsicamap_st_url)
+		st.image(corsica_map, caption="corsica_map", use_column_width=True)	
+		# maybe this way we request imgur only once 
+
 
 		# # Check if the request was successful
 		# if corsica_map_response.status_code == 200:
@@ -631,7 +634,9 @@ with tab1:
 
 
 		st.header("Exploration")
-		# st.write(layermap)
+        
+        # corsicamap_st_url = "https://i.imgur.com/MWch7ZP.png"
+		# st.image(corsicamap_st_url, caption="Corsica Map", width=600)
 
          
 
