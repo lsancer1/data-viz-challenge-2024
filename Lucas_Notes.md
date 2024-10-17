@@ -60,6 +60,12 @@ Checking if Streamlit is installed
 	// true default 
 ```
 
+### TDL Next Day
+
+- First, reorganize the display of Air Quality tab. After testing on 3 screens, the display per row is way better than per columns so change this. Keep a version of the code easy to access (no on github versionning but directly on a script) if Alberto wants to edit back.
+- Second, finish the plan B maps with the Meteo France API
+- **After this 2 points**, we restart working on plan A, meaning doing interactive maps. By ctrl + F the metadata with key "coverageID", I get it will be possible to extract value for temp, wind and so on from WCS.
+
 ## October 11th
 
 - https://discuss.streamlit.io/t/manage-app-button-has-disappeared/43915/11 
