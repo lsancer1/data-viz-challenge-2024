@@ -577,7 +577,7 @@ with tab1:
 		# help_img = help_img.resize(new_size)
 
 		# Resize the help image to match the Corsica map size if needed
-		help_img = help_img.resize(corsica_map.size)
+		help_img = help_img.resize(corsica_map.size[0]+300,corsica_map.size[1])
 
 		# Apply transparency (set alpha) to the help image
 		help_img = help_img.convert("RGBA")  # Ensure it's in RGBA mode for transparency
