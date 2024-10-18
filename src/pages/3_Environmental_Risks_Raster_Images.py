@@ -604,7 +604,7 @@ with tab1:
 			return img.paste(stretched_center, (0, 0))
 
 
-		adapt_stretch(help_img)
+		help_img = adapt_stretch(help_img)
 
 		# # Define the new size (width, height) for stretching
 		# new_size = (cosrica_mapwidth + 50, cosrica_mapheight)  # Replace with your desired dimensions
