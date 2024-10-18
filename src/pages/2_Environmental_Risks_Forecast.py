@@ -107,13 +107,10 @@ translations = {
          "Wind forecast is of great importance to determine potential risks for infrastructures (ports, electrical lines) but also people's safety. \n\n" \
          "The forecast presents contours of wind velocity: the wind is constant along a line and the value of the wind in meters per seconds is shown over the line. \n\n" \,
         'wind_risks_header': "Risks linked to high wind force",
-        'wind_risks_text': "Strong winds (above 50 km/h): Increased risk of property damage (fallen trees or damaged roofs) and power outages due to downed power lines.\n\n" \
-       "Severe winds (above 80 km/h): Can result in dangerous flying debris and increase the risk of accidents for pedestrians, vehicles, and cyclists.\n\n" \
-       "Fire conditions (wind above 40 km/h): Increased risk of forest fires spreading rapidly, especially in dry conditions (low humidity).\n\n" \
-       "Coastal areas (wind above 75 km/h): Risk of storm surges and flooding in coastal regions, especially during storms or hurricanes..\n\n" \,
-
-
-
+        'wind_risks_text': "Strong winds (above 50 km/h): Increased risk of property damage (fallen trees or damaged roofs) and power outages due to downed power lines. \n\n" \
+       "Severe winds (above 80 km/h): Can result in dangerous flying debris and increase the risk of accidents for pedestrians, vehicles, and cyclists. \n\n" \
+       "Fire conditions (wind above 40 km/h): Increased risk of forest fires spreading rapidly, especially in dry conditions (low humidity). \n\n" \
+       "Coastal areas (wind above 75 km/h): Risk of storm surges and flooding in coastal regions, especially during storms or hurricanes. \n\n" \,
 
         'tab2name': "Rain Forecast",
         'title2': "Rain precipitation Forecast",
