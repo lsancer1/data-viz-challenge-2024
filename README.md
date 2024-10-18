@@ -31,17 +31,17 @@ Il est aussi possible de cloner le dépôt et d'utiliser un serveur local.
 Une fois le dépôt cloné sur la machine locale il faudra modifier les fichiers (Home.py et les fichiers dans le dossier Pages) en remplaçant la variable _currently_ par _local_ au lieu de _cloud_.
 
 ### Fonctionnement
-![Home]
+![Home](https://data-viz-challenge-2024.streamlit.app/)
 
 Page d'accueil.
 L'utilisateur chosit sur le menu à gauche la visualisation à observer : "Air Quality", "Environmental Risk Forecast" ou "Electric Network".
 
-![Air Quality]
+![Air Quality](https://data-viz-challenge-2024.streamlit.app/Air_Quality)
 
 L'utilisateur peut observer les données 2023 ou alors la prévision de qualité d'air dans la Corse.
 Le mode _rax data_ affiche les données brutes et le mode _AQI data_ (pour Air Quality Index) affiche des données avec une estimation du risque pour la population.
 
-![Environmental Risk Forecast]
+![Environmental Risk Forecast](https://data-viz-challenge-2024.streamlit.app/Environmental_Risks_Forecast)
 L'utilisateur peut observer la prévision météorologique pour les prochaines heures en Corse et particulièrement : le vent, la pluie, l'humidité, la tempétature et la neige.
 Une explication des risques potentiels est aussi affichée.
 
