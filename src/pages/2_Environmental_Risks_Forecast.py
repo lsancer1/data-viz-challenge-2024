@@ -109,6 +109,7 @@ translations = {
         'tab1options': "Options",
 
         'tab2name': "Wind Forecast",
+        'title2': "Wind Forecast",
 
 
     },
@@ -117,7 +118,8 @@ translations = {
         'title1': "Prévision de température",
         'tab1options': "Options",
 
-        'tab2name': "Wind Forecast",
+        'tab2name': "Prévision de la force du vent",
+        'title2': "Prévision de la force du vent",
 
     }
 }
@@ -478,82 +480,15 @@ wind_layermap = client.get_wms_map(
 
 
 with tab1:
+
+	####### Tab management 
+
 	st.session_state['active_tab'] = translations[lang_code]['tab1name']
 	st.title(translations[lang_code]['title1'])
 
 	st.sidebar.header(translations[lang_code]['tab1options'])
 
-	#insert the function we will need to read the API
-
-	######
-
-	#############################################################
-	## Function to generate static map
-	#############################################################
-
-	# def generate_map_tab1(bt_aerien_coord, hta_aerien_coord, htb_aerien_coord,pylones_coord):
-   	#  # Step 1: Combine your data into one DataFrame
-
-	# 	data = []
-	# 	for point in bt_aerien_coord:
-	# 	 	data.append({'Latitude': point['lat'], 'Longitude': point['lon'], 
-	# 	 	'Category': 'BT aérien', 'Statut': point['statut']})
-	# 	for point in hta_aerien_coord:
-	# 	 	data.append({'Latitude': point['lat'], 'Longitude': point['lon'], 
-	# 	 	'Category': 'HTA aérien', 'Statut': point['statut']})
-	# 	# for point in htb_aerien_coord:
-	# 	#  	data.append({'Latitude': point['lat'], 'Longitude': point['lon'], 
-	# 	# 'Category': 'HTB aérien', 'Statut': point['statut']})
-	# 	for point in pylones_coord:
-	# 	 	data.append({'Latitude': point['lat'], 'Longitude': point['lon'], 
-	# 	 	'Category': 'Pylones', 'Statut': point['statut']})
-
-	# 	# Create a DataFrame
-	# 	df = pd.DataFrame(data)
-
-	# 	# Define your custom color map
-	# 	custom_colors = {
-	# 		'BT aérien': 'blue',   
-	# 		'HTA aérien': 'red',    
-	# 		'HTB aérien': 'orange',  
-	# 		'Pylones': 'orange'  
-	# 	}
-
-	# 	# plot
-	# 	fig = px.scatter_mapbox(
-	# 		 df,
-	# 		 lat='Latitude',
-	# 		 lon='Longitude',
-	# 		 color='Category',  # Differentiate points by 'Category'
-	# 		 hover_name='Statut',  # Display 'Statut' on hover
-	# 		 mapbox_style='open-street-map',
-	# 		 zoom=7,
-	# 		 center={"lat": 42.16, "lon": 9.13},
-	# 		 title="Aerial Points Map",
-	# 		 height=800,
-	# 		 width=800,
-	# 		 color_discrete_map=custom_colors  # Apply custom color map
-	# 	 )
-
-	# 	return fig
-
-	#############################################################
-	## Generate and Display the Map
-	#############################################################
-
-	# fig = generate_map_tab1(bt_aerien_coord, hta_aerien_coord, htb_aerien_coord, pylones_coord)
-
-	# # Step 1: Save Plotly figure as an image
-	# fig.write_image("plotly_fig.png", format='png')  # Save plotly figure to disk
-
-
-
-
-
-	#############################################################
-	## Layout with Two Columns: Map and Legend
-	#############################################################
-
+	###### Layout 
 
 	### First header and text
 	st.header("Exploration")
@@ -583,7 +518,7 @@ with tab1:
 
 	# Apply transparency (set alpha) to the help image
 	temp_img = temp_img.convert("RGBA")  # Ensure it's in RGBA mode for transparency
-	alpha = 0.35  # Adjust transparency level (0 is fully transparent, 1 is fully opaque)
+	alpha = 0.45  # Adjust transparency level (0 is fully transparent, 1 is fully opaque)
 	temp_img.putalpha(int(255 * alpha))
 
 	# Merge the two images
@@ -604,9 +539,52 @@ with tab1:
 
 
 with tab2:
-	
-	st.header("Exploration")
 
+	####### Tab management 
+	
+	st.session_state['active_tab'] = translations[lang_code]['tab2name']
+	st.title(translations[lang_code]['title2'])
+
+	st.sidebar.header(translations[lang_code]['tab1options'])
+
+	###### Layout 
+
+	### First header and text
+	st.header("Exploration")
+	st.markdown("Text to put here")
+
+	### Second plot the combioned image
+	corsicamap_st_url = "https://i.imgur.com/MWch7ZP.png"
+
+	corsica_map = load_image(corsicamap_st_url)
+	# size (1428, 1806)
+		
+	wind_img = Image.open(BytesIO(wind_layermap.content))	
+
+	output = find_stretch_dim(wind_img)
+	stretched_center = output[0]
+	output_width = output[1]
+	output_height = output[2]
+
+	# Create a new blank image with the same dimensions as the original
+	wind_img = Image.new("RGB", (output_width, output_height))
+
+	# Paste the stretched center back into the new image
+	wind_img.paste(stretched_center, (0, 0))
+
+	# Resize the help image to match the Corsica map size if needed
+	wind_img = wind_img.resize(corsica_map.size)
+
+	# Apply transparency (set alpha) to the help image
+	wind_img = wind_img.convert("RGBA")  # Ensure it's in RGBA mode for transparency
+	alpha = 0.45  # Adjust transparency level (0 is fully transparent, 1 is fully opaque)
+	wind_img.putalpha(int(255 * alpha))
+
+	# Merge the two images
+	combined_img = Image.alpha_composite(corsica_map.convert("RGBA"), wind_img)
+
+	# Display the final combined image
+	st.image(combined_img, caption="Put caption here")
 		# st.image(corsica_map, caption="corsica_map", use_column_width=True)
 		# st.image(help_img, caption="Elevation Map", use_column_width=True)	
 
