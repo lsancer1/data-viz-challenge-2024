@@ -103,9 +103,9 @@ translations = {
         'hour_selection': "Select number of hours from now to display forecast",
         'im_caption1' : "",
 
-        'wind_pres_text': "The forecast time window is shown just above. \n\n "\
-         "Wind forecast is of great importance to determine potential risks for infrastructures (ports, electrical lines) but also people's safety. \n\n" \
-         "The forecast presents contours of wind velocity: the wind is constant along a line and the value of the wind in meters per seconds is shown over the line. \n\n" \,
+        'wind_pres_text': "The forecast time window is shown just above.\n\n" \
+          "Wind forecasts are crucial for determining potential risks to infrastructure (such as ports and electrical lines) as well as people's safety.\n\n" \
+          "The forecast presents contours of wind velocity: the wind is constant along a line, and the value of the wind in meters per second is displayed over the line.",
         'wind_risks_header': "Risks linked to high wind force",
         'wind_risks_text': "Strong winds (above 50 km/h): Increased risk of property damage (fallen trees or damaged roofs) and power outages due to downed power lines. \n\n" \
        "Severe winds (above 80 km/h): Can result in dangerous flying debris and increase the risk of accidents for pedestrians, vehicles, and cyclists. \n\n" \
