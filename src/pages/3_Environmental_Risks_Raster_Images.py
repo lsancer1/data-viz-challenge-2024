@@ -461,7 +461,7 @@ with tab1:
 
 	miny_corsica="41.3" 
 	minx_corsica="7.9" 
-	maxy_corsica="42.2"
+	maxy_corsica="42.9"
 	maxx_corsica="10.2" 
 
 	corsica_bbox_arome = miny_corsica+","+minx_corsica+","+maxy_corsica+","+maxx_corsica 
@@ -559,6 +559,8 @@ with tab1:
 		        return None
 
 		corsica_map = load_image(corsicamap_st_url)
+	
+			
 		help_img = Image.open(BytesIO(help_layermap.content))
 
 
