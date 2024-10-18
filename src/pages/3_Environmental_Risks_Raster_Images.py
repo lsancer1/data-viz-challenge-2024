@@ -593,7 +593,7 @@ with tab1:
 
 		# plotly_img = Image.open("plotly_fig.png") 
 		temp_img = Image.open(BytesIO(temp_layermap.content))		
-		st.image(temp_img, caption="Temperature Forecast Map", use_column_width=True)
+		st.image(temp_img, caption="Temperature Forecast Map")
 
 
 
