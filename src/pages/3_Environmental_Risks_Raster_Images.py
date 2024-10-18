@@ -556,7 +556,7 @@ with tab1:
 		def load_image(url):
 		    try:
 		        # Fetch the image from the URL
-		        response = requests.get(url, allow_redirects=True)
+		        response = requests.get(url, allow_redirects=True,  headers = {'User-agent': 'your bot 0.1'})
 		        print('corsica_map_response:',response)
 		        
 		        # Check if the response is successful
