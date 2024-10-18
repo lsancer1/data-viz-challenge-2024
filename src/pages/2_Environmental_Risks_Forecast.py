@@ -178,12 +178,17 @@ translations = {
         'hour_selection': "Select number of hours from now to display forecast",
         'im_caption1' : "",
 
-        'wind_pres_text':  "[Explain for when is the forecast]. \n\n "\
-         "Explain that this forecast could be dangerous and risks will be listed below \n\n" \
-         "Explain how to read the map. \n\n" \
-         "Explain that if it is empty it means... (some cannot be empty)",
-        'wind_risks_header': "Risks linked to high wind force",
-        'wind_risks_text': "Do the list",
+        'wind_pres_text': "La période de prévision est indiquée juste au-dessus. Les risques sont expliqués sous l'image. \n\n" \
+          "Les prévisions de vent sont cruciales pour déterminer les risques potentiels pour les infrastructures (comme les ports et les lignes électriques), ainsi que pour la sécurité des personnes.\n\n" \
+          "La prévision présente des contours de vitesse du vent : le vent est constant le long d'une ligne, et la valeur du vent en mètres par seconde est affichée sur la ligne.",
+
+        'wind_risks_header': "Risques liés à la force du vent élevé",
+        'wind_risks_text': 
+        "Vents violents (au-dessus de 80 km/h) : peuvent entraîner des débris volants dangereux et augmenter le risque d'accidents pour les piétons, les véhicules et les cyclistes. \n\n" \
+        "Vents forts (au-dessus de 50 km/h) : risque accru de dommages matériels (arbres tombés ou toits endommagés) et de coupures de courant dues à la chute de lignes électriques. \n\n" \
+       "Conditions propices aux incendies (vent au-dessus de 40 km/h) : risque accru de propagation rapide des feux de forêt, surtout en cas de conditions sèches (faible humidité). \n\n" \
+       "Zones côtières (vent au-dessus de 75 km/h) : risque de vagues de tempête et d'inondations dans les régions côtières, notamment lors des tempêtes ou des ouragans. \n\n",
+
 
 
 
@@ -191,12 +196,15 @@ translations = {
         'title2': "Prévision des précipitations de pluie",
         'im_caption2' : "",
 
-        'rain_pres_text': "[Explain for when is the forecast]. \n\n "\
-         "Explain that this forecast could be dangerous and risks will be listed below \n\n" \
-         "Explain how to read the map. \n\n" \
-         "Explain that if it is empty it means... (some cannot be empty)",
-        'rain_risks_header': "Risks linked to high volume of rain precipitation",
-        'rain_risks_text': "Do the list",
+        'rain_pres_text': "La période de prévision est indiquée juste au-dessus. Les risques sont expliqués sous l'image. \n\n" \
+                          "Les prévisions de pluie sont d'une grande importance pour déterminer les risques potentiels pour les infrastructures (comme les ports, par exemple), ainsi que pour la sécurité des personnes. \n\n" \
+                          "La prévision présente des contours de quantité de pluie : la pluie est constante le long d'une ligne et la valeur de la pluie est affichée sur la ligne. \n\n",
+
+        'rain_risks_header': "Risques liés à l'intensité des pluies",
+        'rain_risks_text': "Pluies abondantes (>50 mm) : augmentent le risque d'inondations soudaines, particulièrement dans les zones urbaines où les systèmes de drainage peuvent être submergés. \n\n" \
+                           "Pluie continue (plus de 20 mm pendant plusieurs jours) : peut provoquer des glissements de terrain dans les régions montagneuses en raison de la saturation des sols. \n\n" \
+                           "Précipitations localisées intenses (plus de 15 mm en une heure) : peuvent submerger les systèmes de drainage urbains et provoquer des inondations soudaines, causant des dégâts aux routes et aux biens. \n\n",
+
 
 
 
@@ -204,12 +212,15 @@ translations = {
         'title3': "Prévision du taux d'humidité",
         'im_caption3' : "",
 
-        'humidity_pres_text': "[Explain for when is the forecast]. \n\n "\
-         "Explain that this forecast could be dangerous and risks will be listed below \n\n" \
-         "Explain how to read the map. \n\n" \
-         "Explain that if it is empty it means... (some cannot be empty)",
-        'humidity_risks_header': "Risks linked to high humidity rate",
-        'humidity_risks_text': "Do the list",
+        'humidity_pres_text': "La période de prévision est indiquée juste au-dessus. Les risques sont expliqués sous l'image. \n\n" \
+                              "La prévision de l'humidité permet de déterminer la concentration d'eau dans l'atmosphère. \n\n" \
+                              "La prévision présente des contours d'humidité : l'humidité est constante le long d'une ligne et la valeur de l'humidité en pourcentage est affichée sur la ligne. \n\n",
+
+        'humidity_risks_header': "Risques liés à l'humidité",
+        'humidity_risks_text': "Humidité élevée (au-dessus de 85 %) : augmente le risque de stress thermique lorsqu'elle est combinée à des températures élevées. Elle favorise également la croissance de moisissures et d'autres allergènes, aggravant les problèmes respiratoires. \n\n" \
+                               "Humidité faible (en dessous de 30 %) : peut entraîner un risque de feux de forêt dans les régions sèches en asséchant la végétation. Une humidité faible prolongée peut aussi provoquer une sécheresse de la peau et des irritations des yeux et de la gorge. \n\n" \
+                               "Changements rapides d'humidité (>20 % dans les prochaines heures) : peuvent affecter les matériaux et les infrastructures, provoquant un gonflement ou une contraction du bois, ce qui pourrait entraîner des problèmes structurels dans les bâtiments. \n\n",
+
 
 
 
@@ -217,12 +228,12 @@ translations = {
         'title4': "Prévision de température",
         'im_caption4' : "",       
 
-        'temp_pres_text': "[Explain for when is the forecast]. \n\n "\
-         "Explain that this forecast could be dangerous and risks will be listed below \n\n" \
-         "Explain how to read the map. \n\n" \
-         "Explain that if it is empty it means... (some cannot be empty)",
-        'temp_risks_header': "Risks linked to high temperature",
-        'temp_risks_text': "List risks linked to high temperature",
+        'temp_risks_header': "Risques liés aux températures élevées",
+        'temp_risks_text': "Chaleur extrême (au-dessus de 35°C) : Les températures élevées augmentent le risque de coup de chaleur, en particulier pour les personnes âgées, les enfants et ceux ayant des problèmes de santé préexistants. Cela peut également mettre à rude épreuve les systèmes électriques en raison de l'utilisation accrue de la climatisation. \n\n" \
+                           "Températures élevées (au-dessus de 30°C) : Le risque de feux de forêt augmente dans les zones végétalisées et sèches. Les hautes températures assèchent la végétation, la rendant plus inflammable. \n\n" \
+                           "Températures de gel (0°C et en dessous) : Les conditions glacées sur les routes augmentent le risque d'accidents de la circulation en raison de la réduction de l'adhérence des pneus et des surfaces glissantes. \n\n" \
+                           "Températures très froides (en dessous de -10°C) : Les températures extrêmement basses peuvent provoquer des engelures et de l'hypothermie, en particulier pour ceux qui n'ont pas de vêtements ou d'abris adéquats. \n\n",
+
 
 
 
@@ -230,12 +241,14 @@ translations = {
         'title5': "Prévision des précipitations de neige",
         'im_caption5' : "",       
 
-        'snow_pres_text':  "[Explain for when is the forecast]. \n\n "\
-         "Explain that this forecast could be dangerous and risks will be listed below \n\n" \
-         "Explain how to read the map. \n\n" \
-         "Explain that if it is empty it means... (some cannot be empty)",
-        'snow_risks_header': "Risks linked to high volume of snow precipitation",
-        'snow_risks_text': "Do the list",
+        'snow_risks_header': "Risques liés à la neige",
+        'snow_pres_text': "La période de prévision est indiquée juste au-dessus. Les risques sont expliqués sous l'image. \n\n" \
+                          "Les prévisions de neige sont d'une grande importance pour déterminer les risques potentiels dans les zones montagneuses. \n\n" \
+                          "La prévision présente des contours de neige : la neige est constante le long d'une ligne et la valeur de l'accumulation de neige est affichée sur la ligne. \n\n",
+
+        'snow_risks_text': "Chutes de neige abondantes (plus de 10 cm en 24 heures) : Augmente le risque de dommages structurels aux bâtiments, en particulier ceux avec des toits plats, ainsi que les accidents de la route dus à une faible visibilité et des conditions glissantes. \n\n" \
+                           "Chutes de neige à haute altitude (>1500m) : Dans les zones montagneuses, même une neige modérée peut poser des risques tels que des avalanches et l'isolement des communautés. \n\n",
+
 
 
     }
