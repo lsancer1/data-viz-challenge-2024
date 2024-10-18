@@ -121,11 +121,13 @@ translations = {
 # Language selection
 language = st.sidebar.selectbox('Select language:', ['Français', 'English'])
 if language == 'Français':
-    lang_code = 'fr'
-    tab1,  = st.tabs(["Risques sur le réseau electrique aérien"] )
+    lang_code = 'fr'   
 else:
     lang_code = 'en'
-    tab1,  = st.tabs(["Risk on overhead electricity network (poles)"])
+
+# Tab names
+tab1, tab2 = st.tabs([translations[lang_code]['tab1name'], 
+				translations[lang_code]['tab2name']])
 
 
 
@@ -344,17 +346,63 @@ class Client(object):
 
 
 
+###### UTILS 
+
+
+def find_stretch_dim(image):
+	"""
+	"""
+	# Define the new size for the output image
+	output_width = image.width
+	output_height = image.height
+
+	# Define how much you want to stretch the center section horizontally
+	stretch_factor = 1.25  # Increase this value to stretch more
+
+	# Calculate crop dimensions (assuming you want to crop from the center)
+	crop_width = int(output_width / stretch_factor)  # Crop width is reduced by the stretch factor
+	crop_height = output_height  # Keep the full height
+
+	# Get the center crop box
+	left = (output_width - crop_width) / 2
+	top = 0
+	right = (output_width + crop_width) / 2
+	bottom = output_height
+
+	# Crop the center of the image
+	cropped_img = image.crop((left, top, right, bottom))
+
+	# Stretch the cropped image to the new width
+	stretched_center = cropped_img.resize((output_width, crop_height))
+
+	return stretched_center, output_width, output_height
+
+
+
+
+# Function to load an image using Pillow
+def load_image(url):
+    try:
+        # Fetch the image from the URL
+        response = requests.get(url, allow_redirects=True,  headers = {'User-agent': 'your bot 0.1'})
+        print('corsica_map_response:',response)
+        
+        # Check if the response is successful
+        if response.status_code == 200:
+            return Image.open(BytesIO(response.content))  # Return the image as a Pillow object
+        else:
+            st.error(f"Failed to load image from {url}. Status code: {response.status_code}")
+            return None
+    except requests.exceptions.RequestException as e:
+        st.error(f"Request failed: {e}")
+        return None
+
+
+
 #############################################################
 ## Generate and Display Forecast
 #############################################################
 
-# hardcoded parameters for the forecast
-example_bbox = "37.5,-12,55.4,16"
-example_mapheight=300
-example_mapwidth=300
-
-
-corsica_bbox_ori =  "43.25,8.15,41.15,10.15"
 
 miny_corsica="41.3" 
 minx_corsica="7.93" 
@@ -362,15 +410,6 @@ maxy_corsica="43.1"
 maxx_corsica="10" 
 
 corsica_bbox_arome = miny_corsica+","+minx_corsica+","+maxy_corsica+","+maxx_corsica 
-print("corsica_bbox_arome",corsica_bbox_arome)
-
-globalminy=float(miny_corsica)
-globalminx=float(minx_corsica)
-globalmaxy=float(maxy_corsica)
-globalmaxx=float(maxx_corsica)
-
-global_bbox_arome = str(globalminy)+","+str(globalminx)+","+str(globalmaxy)+","+str(globalmaxx)
-print("global_bbox_arome",global_bbox_arome)
 
 forecastlayers = {
 "temperature": "TEMPERATURE__SPECIFIC_HEIGHT_LEVEL_ABOVE_GROUND",
@@ -385,16 +424,19 @@ cosrica_mapwidth=757
 # load client 
 client = Client()
 
-temp_layermap = client.get_wms_map(		
-    layers = forecastlayers["temperature"],
+
+# Used to size and transform the map to fit Corsica map
+help_layermap = client.get_wms_map(		
+    layers = forecastlayers["geom"],
 	bbox = corsica_bbox_arome,
 	height = str(cosrica_mapheight),
 	width = str(cosrica_mapwidth)
 	)
 
 
-help_layermap = client.get_wms_map(		
-    layers = forecastlayers["geom"],
+
+temp_layermap = client.get_wms_map(		
+    layers = forecastlayers["temperature"],
 	bbox = corsica_bbox_arome,
 	height = str(cosrica_mapheight),
 	width = str(cosrica_mapwidth)
@@ -408,24 +450,22 @@ wind_layermap = client.get_wms_map(
 	width = str(cosrica_mapwidth)
 	)
 
-humi_layermap = client.get_wms_map(		
-    layers = forecastlayers["humidity"],
-	bbox = corsica_bbox_arome,
-	height = str(cosrica_mapheight),
-	width = str(cosrica_mapwidth)
-	)
+
+# hardcoded parameters for the forecast
+# example_bbox = "37.5,-12,55.4,16"
+# example_mapheight=300
+# example_mapwidth=300
 
 
+# corsica_bbox_ori =  "43.25,8.15,41.15,10.15"
 
+# globalminy=float(miny_corsica)
+# globalminx=float(minx_corsica)
+# globalmaxy=float(maxy_corsica)
+# globalmaxx=float(maxx_corsica)
 
-tempglobal_layermap = client.get_wms_map(		
-    layers = forecastlayers["temperature"],
-	bbox = global_bbox_arome,
-	height = str(cosrica_mapheight),
-	width = str(cosrica_mapwidth)
-	)
-
-
+# global_bbox_arome = str(globalminy)+","+str(globalminx)+","+str(globalmaxy)+","+str(globalmaxx)
+# print("global_bbox_arome",global_bbox_arome)
 
 
 #############################################################
@@ -447,51 +487,51 @@ with tab1:
 	## Function to generate static map
 	#############################################################
 
-	def generate_map_tab1(bt_aerien_coord, hta_aerien_coord, htb_aerien_coord,pylones_coord):
-   	 # Step 1: Combine your data into one DataFrame
+	# def generate_map_tab1(bt_aerien_coord, hta_aerien_coord, htb_aerien_coord,pylones_coord):
+   	#  # Step 1: Combine your data into one DataFrame
 
-		data = []
-		for point in bt_aerien_coord:
-		 	data.append({'Latitude': point['lat'], 'Longitude': point['lon'], 
-		 	'Category': 'BT aérien', 'Statut': point['statut']})
-		for point in hta_aerien_coord:
-		 	data.append({'Latitude': point['lat'], 'Longitude': point['lon'], 
-		 	'Category': 'HTA aérien', 'Statut': point['statut']})
-		# for point in htb_aerien_coord:
-		#  	data.append({'Latitude': point['lat'], 'Longitude': point['lon'], 
-		# 'Category': 'HTB aérien', 'Statut': point['statut']})
-		for point in pylones_coord:
-		 	data.append({'Latitude': point['lat'], 'Longitude': point['lon'], 
-		 	'Category': 'Pylones', 'Statut': point['statut']})
+	# 	data = []
+	# 	for point in bt_aerien_coord:
+	# 	 	data.append({'Latitude': point['lat'], 'Longitude': point['lon'], 
+	# 	 	'Category': 'BT aérien', 'Statut': point['statut']})
+	# 	for point in hta_aerien_coord:
+	# 	 	data.append({'Latitude': point['lat'], 'Longitude': point['lon'], 
+	# 	 	'Category': 'HTA aérien', 'Statut': point['statut']})
+	# 	# for point in htb_aerien_coord:
+	# 	#  	data.append({'Latitude': point['lat'], 'Longitude': point['lon'], 
+	# 	# 'Category': 'HTB aérien', 'Statut': point['statut']})
+	# 	for point in pylones_coord:
+	# 	 	data.append({'Latitude': point['lat'], 'Longitude': point['lon'], 
+	# 	 	'Category': 'Pylones', 'Statut': point['statut']})
 
-		# Create a DataFrame
-		df = pd.DataFrame(data)
+	# 	# Create a DataFrame
+	# 	df = pd.DataFrame(data)
 
-		# Define your custom color map
-		custom_colors = {
-			'BT aérien': 'blue',   
-			'HTA aérien': 'red',    
-			'HTB aérien': 'orange',  
-			'Pylones': 'orange'  
-		}
+	# 	# Define your custom color map
+	# 	custom_colors = {
+	# 		'BT aérien': 'blue',   
+	# 		'HTA aérien': 'red',    
+	# 		'HTB aérien': 'orange',  
+	# 		'Pylones': 'orange'  
+	# 	}
 
-		# plot
-		fig = px.scatter_mapbox(
-			 df,
-			 lat='Latitude',
-			 lon='Longitude',
-			 color='Category',  # Differentiate points by 'Category'
-			 hover_name='Statut',  # Display 'Statut' on hover
-			 mapbox_style='open-street-map',
-			 zoom=7,
-			 center={"lat": 42.16, "lon": 9.13},
-			 title="Aerial Points Map",
-			 height=800,
-			 width=800,
-			 color_discrete_map=custom_colors  # Apply custom color map
-		 )
+	# 	# plot
+	# 	fig = px.scatter_mapbox(
+	# 		 df,
+	# 		 lat='Latitude',
+	# 		 lon='Longitude',
+	# 		 color='Category',  # Differentiate points by 'Category'
+	# 		 hover_name='Statut',  # Display 'Statut' on hover
+	# 		 mapbox_style='open-street-map',
+	# 		 zoom=7,
+	# 		 center={"lat": 42.16, "lon": 9.13},
+	# 		 title="Aerial Points Map",
+	# 		 height=800,
+	# 		 width=800,
+	# 		 color_discrete_map=custom_colors  # Apply custom color map
+	# 	 )
 
-		return fig
+	# 	return fig
 
 	#############################################################
 	## Generate and Display the Map
@@ -510,124 +550,51 @@ with tab1:
 	## Layout with Two Columns: Map and Legend
 	#############################################################
 
-	if fig:
 
-		# First header and text
+	### First header and text
+	st.header("Exploration")
+	st.markdown("Text to put here")
 
-		st.header("Exploration")
-		st.markdown("Text to put here")
+	### Second plot the combioned image
+	corsicamap_st_url = "https://i.imgur.com/MWch7ZP.png"
 
-		# Display the image 
+	corsica_map = load_image(corsicamap_st_url)
+	# size (1428, 1806)
+		
+	temp_img = Image.open(BytesIO(temp_layermap.content))	
 
+	output = find_stretch_dim(temp_img)
+	stretched_center = output[0]
+	output_width = output[1]
+	output_height = output[2]
 
-		corsicamap_st_url = "https://i.imgur.com/MWch7ZP.png"
+	# Create a new blank image with the same dimensions as the original
+	temp_img = Image.new("RGB", (output_width, output_height))
 
+	# Paste the stretched center back into the new image
+	temp_img.paste(stretched_center, (0, 0))
 
-		# Function to load an image using Pillow
-		def load_image(url):
-		    try:
-		        # Fetch the image from the URL
-		        response = requests.get(url, allow_redirects=True,  headers = {'User-agent': 'your bot 0.1'})
-		        print('corsica_map_response:',response)
-		        
-		        # Check if the response is successful
-		        if response.status_code == 200:
-		            return Image.open(BytesIO(response.content))  # Return the image as a Pillow object
-		        else:
-		            st.error(f"Failed to load image from {url}. Status code: {response.status_code}")
-		            return None
-		    except requests.exceptions.RequestException as e:
-		        st.error(f"Request failed: {e}")
-		        return None
+	# Resize the help image to match the Corsica map size if needed
+	temp_img = temp_img.resize(corsica_map.size)
 
-		corsica_map = load_image(corsicamap_st_url)
-		# size (1428, 1806)
+	# Apply transparency (set alpha) to the help image
+	temp_img = temp_img.convert("RGBA")  # Ensure it's in RGBA mode for transparency
+	alpha = 0.35  # Adjust transparency level (0 is fully transparent, 1 is fully opaque)
+	temp_img.putalpha(int(255 * alpha))
 
-		# # Define the new size (width, height) for stretching
-		# new_size = (1428, 1806)  # Replace with your desired dimensions
+	# Merge the two images
+	combined_img = Image.alpha_composite(corsica_map.convert("RGBA"), temp_img)
 
-		# # Stretch the image
-		# corsica_map = corsica_map.resize(new_size)
-	
-			
-		temp_img = Image.open(BytesIO(temp_layermap.content))	
-
-		def find_stretch_dim(image):
-			"""
-			"""
-			# Define the new size for the output image
-			output_width = image.width
-			output_height = image.height
-
-			# Define how much you want to stretch the center section horizontally
-			stretch_factor = 1.25  # Increase this value to stretch more
-
-			# Calculate crop dimensions (assuming you want to crop from the center)
-			crop_width = int(output_width / stretch_factor)  # Crop width is reduced by the stretch factor
-			crop_height = output_height  # Keep the full height
-
-			# Get the center crop box
-			left = (output_width - crop_width) / 2
-			top = 0
-			right = (output_width + crop_width) / 2
-			bottom = output_height
-
-			# Crop the center of the image
-			cropped_img = image.crop((left, top, right, bottom))
-
-			# Stretch the cropped image to the new width
-			stretched_center = cropped_img.resize((output_width, crop_height))
-
-			return stretched_center, output_width, output_height
-
-
-		output = find_stretch_dim(temp_img)
-		stretched_center = output[0]
-		output_width = output[1]
-		output_height = output[2]
-
-		# Create a new blank image with the same dimensions as the original
-		temp_img = Image.new("RGB", (output_width, output_height))
-
-		# Paste the stretched center back into the new image
-		temp_img.paste(stretched_center, (0, 0))
-
-		# Resize the help image to match the Corsica map size if needed
-		temp_img = temp_img.resize(corsica_map.size)
-
-		# Apply transparency (set alpha) to the help image
-		temp_img = temp_img.convert("RGBA")  # Ensure it's in RGBA mode for transparency
-		alpha = 0.35  # Adjust transparency level (0 is fully transparent, 1 is fully opaque)
-		temp_img.putalpha(int(255 * alpha))
-
-		# Merge the two images
-		combined_img = Image.alpha_composite(corsica_map.convert("RGBA"), temp_img)
-
-		# Display the final combined image
-		st.image(combined_img, caption="Put caption here")
+	# Display the final combined image
+	st.image(combined_img, caption="Put caption here")
 
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+#############################################################
+## Tab2 
+#############################################################
 
 
 
