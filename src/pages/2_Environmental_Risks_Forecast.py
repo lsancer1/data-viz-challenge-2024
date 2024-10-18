@@ -110,7 +110,7 @@ translations = {
         'wind_risks_text': "Strong winds (above 50 km/h): Increased risk of property damage (fallen trees or damaged roofs) and power outages due to downed power lines. \n\n" \
        "Severe winds (above 80 km/h): Can result in dangerous flying debris and increase the risk of accidents for pedestrians, vehicles, and cyclists. \n\n" \
        "Fire conditions (wind above 40 km/h): Increased risk of forest fires spreading rapidly, especially in dry conditions (low humidity). \n\n" \
-       "Coastal areas (wind above 75 km/h): Risk of storm surges and flooding in coastal regions, especially during storms or hurricanes. \n\n" \,
+       "Coastal areas (wind above 75 km/h): Risk of storm surges and flooding in coastal regions, especially during storms or hurricanes. \n\n",
 
         'tab2name': "Rain Forecast",
         'title2': "Rain precipitation Forecast",
@@ -118,11 +118,11 @@ translations = {
 
         'rain_pres_text': "The forecast time window is shown just above. \n\n "\
          "Rain forecast is of great importance to determine potential risks for infrastructures (ports for example) but also people's safety \n\n" \
-         "The forecast presents contours of rain quantity: the rain is constant along a line and the value of the rain is shown over the line. \n\n"\,
+         "The forecast presents contours of rain quantity: the rain is constant along a line and the value of the rain is shown over the line. \n\n",
         'rain_risks_header': "Risks linked to rain intensity",
         'rain_risks_text': "Heavy rain (>50): increases the risk of flash flooding, particularly in urban areas where drainage systems might be overwhelmed. \n\n" \
         "Continuous rain (more than 20 for several days): can lead to landslides in mountainous regions due to saturated soil. \n\n" \
-        "Localized intense rainfall (more than 15 mm in one hour): can overwhelm urban drainage systems and lead to flash floods, causing road and property damage. \n\n" \,
+        "Localized intense rainfall (more than 15 mm in one hour): can overwhelm urban drainage systems and lead to flash floods, causing road and property damage. \n\n",
 
 
 
@@ -132,11 +132,11 @@ translations = {
 
         'humidity_pres_text': "The forecast time window is shown just above. \n\n "\
          "Humidity forecast allows to determine water concentration in the atmosphere. \n\n" \
-         "The forecast presents contours of humidity : the humidity is constant along a line and the value of the humidity in percentage is shown over the line. \n\n"\,
+         "The forecast presents contours of humidity : the humidity is constant along a line and the value of the humidity in percentage is shown over the line. \n\n",
         'humidity_risks_header': "Risks linked to humidity",
         'humidity_risks_text': "High humidity (above 85%): increases the risk of heat stress when combined with high temperatures. It also promotes the growth of mold and other allergens, exacerbating respiratory issues. \n\n" \
         "Low humidity (below 30%): can lead to wildfire risk in dry regions by drying out vegetation. Prolonged low humidity can also cause dry skin and irritation of the eyes and throat. \n\n" \
-        "Rapid humidity changes (>20% within next hours): can impact materials and infrastructure, causing wood to swell or contract, which could lead to structural issues in buildings. \n\n" \,
+        "Rapid humidity changes (>20% within next hours): can impact materials and infrastructure, causing wood to swell or contract, which could lead to structural issues in buildings. \n\n" ,
 
 
 
@@ -146,13 +146,13 @@ translations = {
 
         'temp_pres_text': "The forecast time window is shown just above. \n\n "\
          "Temperature forecast is of great importance to determine potential risks for landscapes (in case of a fire propagation for example) but also for people's safety \n\n" \
-        "The forecast presents contours of temperature : the temperature is constant along a line and the value of the temperature in degrees Celsius is shown over the line. \n\n"\,
+        "The forecast presents contours of temperature : the temperature is constant along a line and the value of the temperature in degrees Celsius is shown over the line. \n\n",
         
         'temp_risks_header': "Risks linked to high temperature",
         'temp_risks_text': "Extreme heat (above 35°C): High temperatures increase the risk of heatstroke, especially for elderly people, children, and those with pre-existing health conditions. This can also strain power systems due to increased air conditioning use. \n\n "\
         "High temperatures (above 30°C): wildfire risk increases in dry, vegetated areas. High temperatures dry out vegetation, making it more flammable.  \n\n "\
         "Freezing temperatures (0°C and below): icy road conditions increase the risk of traffic accidents due to reduced tire grip and slippery surfaces. \n\n "\
-        "Very cold temperatures (Below -10°C): extremely low temperatures can cause frostbite and hypothermia, particularly for those without adequate clothing or shelter. \n\n "\,
+        "Very cold temperatures (Below -10°C): extremely low temperatures can cause frostbite and hypothermia, particularly for those without adequate clothing or shelter. \n\n ",
 
 
 
@@ -162,9 +162,9 @@ translations = {
         'im_caption5' : "",
         'snow_pres_text': "The forecast time window is shown just above. \n\n "\
          "Snow forecast is of great importance to determine potential risks for mountainous areas. \n\n" \
-        "The forecast presents contours of snow : the snow is constant along a line and the value of the snow is shown over the line. \n\n"\,
+        "The forecast presents contours of snow : the snow is constant along a line and the value of the snow is shown over the line. \n\n",
         'snow_risks_text': "Heavy snowfall (more than 10 cm in 24 hours): Increases the risk of structural damage to buildings, especially those with flat roofs, as well as road accidents due to low visibility and slippery conditions. \n\n "\
-        "Snowfall at Higher Altitudes (>1500m): In mountainous areas, even moderate snow can pose risks such as avalanches and isolating communities. \n\n "\,
+        "Snowfall at Higher Altitudes (>1500m): In mountainous areas, even moderate snow can pose risks such as avalanches and isolating communities. \n\n ",
 
     },
 
