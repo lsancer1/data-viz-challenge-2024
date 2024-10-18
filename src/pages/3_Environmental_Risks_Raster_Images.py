@@ -482,7 +482,7 @@ with tab1:
 	"geom": "GEOMETRIC_HEIGHT__GROUND_OR_WATER_SURFACE",
 	}
 	
-	cosrica_mapheight=590
+	cosrica_mapheight=570
 	cosrica_mapwidth=757
 
 	# load client 
