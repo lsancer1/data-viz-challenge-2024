@@ -104,15 +104,15 @@ TOKEN_URL = st.secrets['MF_TOKEN_URL']
 # Language translations
 translations = {
     'en': {
-        'tab1name': "Risk on overhead electricity network (poles)",
-        'title1': "Environmental risks on the overhead electricity network",
+        'tab1name': "Temperature Forecast",
+        'title1': "Temperature Forecast",
         'tab1options': "Options",
 
 
     },
     'fr': {
-        'tab1name': "Risques sur le réseau electrique aérien",
-        'title1': "Risques environementaux sur le réseau electrique aérien",
+        'tab1name': "Prévision de température",
+        'title1': "Prévision de température",
         'tab1options': "Options",
 
     }
@@ -344,6 +344,89 @@ class Client(object):
 
 
 
+#############################################################
+## Generate and Display Forecast
+#############################################################
+
+# hardcoded parameters for the forecast
+example_bbox = "37.5,-12,55.4,16"
+example_mapheight=300
+example_mapwidth=300
+
+
+corsica_bbox_ori =  "43.25,8.15,41.15,10.15"
+
+miny_corsica="41.3" 
+minx_corsica="7.93" 
+maxy_corsica="43.1"
+maxx_corsica="10" 
+
+corsica_bbox_arome = miny_corsica+","+minx_corsica+","+maxy_corsica+","+maxx_corsica 
+print("corsica_bbox_arome",corsica_bbox_arome)
+
+globalminy=float(miny_corsica)
+globalminx=float(minx_corsica)
+globalmaxy=float(maxy_corsica)
+globalmaxx=float(maxx_corsica)
+
+global_bbox_arome = str(globalminy)+","+str(globalminx)+","+str(globalmaxy)+","+str(globalmaxx)
+print("global_bbox_arome",global_bbox_arome)
+
+forecastlayers = {
+"temperature": "TEMPERATURE__SPECIFIC_HEIGHT_LEVEL_ABOVE_GROUND",
+"windspeed": "WIND_SPEED__SPECIFIC_HEIGHT_LEVEL_ABOVE_GROUND",
+"humidity": "RELATIVE_HUMIDITY__SPECIFIC_HEIGHT_LEVEL_ABOVE_GROUND",
+"geom": "GEOMETRIC_HEIGHT__GROUND_OR_WATER_SURFACE",
+}
+
+cosrica_mapheight=570
+cosrica_mapwidth=757
+
+# load client 
+client = Client()
+
+temp_layermap = client.get_wms_map(		
+    layers = forecastlayers["temperature"],
+	bbox = corsica_bbox_arome,
+	height = str(cosrica_mapheight),
+	width = str(cosrica_mapwidth)
+	)
+
+
+help_layermap = client.get_wms_map(		
+    layers = forecastlayers["geom"],
+	bbox = corsica_bbox_arome,
+	height = str(cosrica_mapheight),
+	width = str(cosrica_mapwidth)
+	)
+
+
+wind_layermap = client.get_wms_map(		
+    layers = forecastlayers["windspeed"],
+	bbox = corsica_bbox_arome,
+	height = str(cosrica_mapheight),
+	width = str(cosrica_mapwidth)
+	)
+
+humi_layermap = client.get_wms_map(		
+    layers = forecastlayers["humidity"],
+	bbox = corsica_bbox_arome,
+	height = str(cosrica_mapheight),
+	width = str(cosrica_mapwidth)
+	)
+
+
+
+
+tempglobal_layermap = client.get_wms_map(		
+    layers = forecastlayers["temperature"],
+	bbox = global_bbox_arome,
+	height = str(cosrica_mapheight),
+	width = str(cosrica_mapwidth)
+	)
+
+
+
 
 #############################################################
 ## Tab1 
@@ -410,30 +493,6 @@ with tab1:
 
 		return fig
 
-
-	# Customize the colorbar
-	# fig.update_layout(
-	# 	mapbox_style="open-street-map",
-	# 	mapbox=dict(
-	#     	zoom=7,
-	#     	center={"lat": 42.16, "lon": 9.13}  # Center map on the data
-	# 	),
-	# 	height=800,
-	# 	width=800
-	# 	)
-
-	# Also an option for pylones
-	# go.Scattermapbox(
-	# 	lat=[point['lat'] for point in pylones_coord],
-	# 	lon=[point['lon'] for point in pylones_coord],
-	# 	mode='markers',
-	# 	marker=go.scattermapbox.Marker(
-	#     	size=10,
-	#     	color='black'  # Set a different color for the second set of points
-	# 	),
-	# 	text=[point['statut'] for point in pylones_coord],
-	# ) return fig
-
 	#############################################################
 	## Generate and Display the Map
 	#############################################################
@@ -444,90 +503,6 @@ with tab1:
 	fig.write_image("plotly_fig.png", format='png')  # Save plotly figure to disk
 
 
-	
-	
-
-	#############################################################
-	## Generate and Display Forecast
-	#############################################################
-
-	# hardcoded parameters for the forecast
-	example_bbox = "37.5,-12,55.4,16"
-	example_mapheight=300
-	example_mapwidth=300
-
-
-	corsica_bbox_ori =  "43.25,8.15,41.15,10.15"
-
-	miny_corsica="41.3" 
-	minx_corsica="7.93" 
-	maxy_corsica="43.1"
-	maxx_corsica="10" 
-
-	corsica_bbox_arome = miny_corsica+","+minx_corsica+","+maxy_corsica+","+maxx_corsica 
-	print("corsica_bbox_arome",corsica_bbox_arome)
-
-	globalminy=float(miny_corsica)
-	globalminx=float(minx_corsica)
-	globalmaxy=float(maxy_corsica)
-	globalmaxx=float(maxx_corsica)
-
-	global_bbox_arome = str(globalminy)+","+str(globalminx)+","+str(globalmaxy)+","+str(globalmaxx)
-	print("global_bbox_arome",global_bbox_arome)
-
-	forecastlayers = {
-	"temperature": "TEMPERATURE__SPECIFIC_HEIGHT_LEVEL_ABOVE_GROUND",
-	"windspeed": "WIND_SPEED__SPECIFIC_HEIGHT_LEVEL_ABOVE_GROUND",
-	"humidity": "RELATIVE_HUMIDITY__SPECIFIC_HEIGHT_LEVEL_ABOVE_GROUND",
-	"geom": "GEOMETRIC_HEIGHT__GROUND_OR_WATER_SURFACE",
-	}
-	
-	cosrica_mapheight=570
-	cosrica_mapwidth=757
-
-	# load client 
-	client = Client()
-
-	temp_layermap = client.get_wms_map(		
-	    layers = forecastlayers["temperature"],
-		bbox = corsica_bbox_arome,
-		height = str(cosrica_mapheight),
-		width = str(cosrica_mapwidth)
-		)
-
-
-	help_layermap = client.get_wms_map(		
-	    layers = forecastlayers["geom"],
-		bbox = corsica_bbox_arome,
-		height = str(cosrica_mapheight),
-		width = str(cosrica_mapwidth)
-		)
-
-
-	wind_layermap = client.get_wms_map(		
-	    layers = forecastlayers["windspeed"],
-		bbox = corsica_bbox_arome,
-		height = str(cosrica_mapheight),
-		width = str(cosrica_mapwidth)
-		)
-
-	humi_layermap = client.get_wms_map(		
-	    layers = forecastlayers["humidity"],
-		bbox = corsica_bbox_arome,
-		height = str(cosrica_mapheight),
-		width = str(cosrica_mapwidth)
-		)
-
-
-
-
-	tempglobal_layermap = client.get_wms_map(		
-	    layers = forecastlayers["temperature"],
-		bbox = global_bbox_arome,
-		height = str(cosrica_mapheight),
-		width = str(cosrica_mapwidth)
-		)
-
 
 
 
@@ -536,6 +511,13 @@ with tab1:
 	#############################################################
 
 	if fig:
+
+		# First header and text
+
+		st.header("Exploration")
+		st.markdown("Text to put here")
+
+		# Display the image 
 
 
 		corsicamap_st_url = "https://i.imgur.com/MWch7ZP.png"
@@ -568,7 +550,7 @@ with tab1:
 		# corsica_map = corsica_map.resize(new_size)
 	
 			
-		help_img = Image.open(BytesIO(help_layermap.content))
+		temp_img = Image.open(BytesIO(temp_layermap.content))	
 
 		def find_stretch_dim(image):
 			"""
@@ -599,72 +581,48 @@ with tab1:
 			return stretched_center, output_width, output_height
 
 
-		output = find_stretch_dim(help_img)
+		output = find_stretch_dim(temp_img)
 		stretched_center = output[0]
 		output_width = output[1]
 		output_height = output[2]
 
 		# Create a new blank image with the same dimensions as the original
-		help_img = Image.new("RGB", (output_width, output_height))
+		temp_img = Image.new("RGB", (output_width, output_height))
 
 		# Paste the stretched center back into the new image
-		help_img.paste(stretched_center, (0, 0))
-
-
-		# # Define the new size (width, height) for stretching
-		# new_size = (cosrica_mapwidth + 50, cosrica_mapheight)  # Replace with your desired dimensions
-
-		# # Stretch the image
-		# help_img = help_img.resize(new_size)
+		temp_img.paste(stretched_center, (0, 0))
 
 		# Resize the help image to match the Corsica map size if needed
-		help_img = help_img.resize(corsica_map.size)
+		temp_img = temp_img.resize(corsica_map.size)
 
 		# Apply transparency (set alpha) to the help image
-		help_img = help_img.convert("RGBA")  # Ensure it's in RGBA mode for transparency
+		temp_img = temp_img.convert("RGBA")  # Ensure it's in RGBA mode for transparency
 		alpha = 0.45  # Adjust transparency level (0 is fully transparent, 1 is fully opaque)
-		help_img.putalpha(int(255 * alpha))
+		temp_img.putalpha(int(255 * alpha))
 
 		# Merge the two images
-		combined_img = Image.alpha_composite(corsica_map.convert("RGBA"), help_img)
+		combined_img = Image.alpha_composite(corsica_map.convert("RGBA"), temp_img)
 
 		# Display the final combined image
 		st.image(combined_img, caption="Overlay of Corsica Map and Elevation Map")
 
 
-		st.image(corsica_map, caption="corsica_map", use_column_width=True)
-		st.image(help_img, caption="Elevation Map", use_column_width=True)	
+		# st.image(corsica_map, caption="corsica_map", use_column_width=True)
+		# st.image(help_img, caption="Elevation Map", use_column_width=True)	
+
+		# temp_img = Image.open(BytesIO(temp_layermap.content))		
+		# st.image(temp_img, caption="Temperature Forecast Map", use_column_width=True)
+
+		# wind_img = Image.open(BytesIO(wind_layermap.content))
+		# st.image(wind_img, caption="Wind Forecast Map", use_column_width=True)
+
+		# humi_img = Image.open(BytesIO(humi_layermap.content))
+		# st.image(humi_img, caption="Humidity Forecast Map", use_column_width=True)
 
 
 
 
 
-		# plotly_img = Image.open("plotly_fig.png") 
-		temp_img = Image.open(BytesIO(temp_layermap.content))		
-		st.image(temp_img, caption="Temperature Forecast Map", use_column_width=True)
-
-
-
-		# temp_globalimg = Image.open(BytesIO(tempglobal_layermap.content))
-		# st.image(temp_globalimg, caption="Temperature Forecast Map", use_column_width=True)
-
-
-
-
-
-
-		wind_img = Image.open(BytesIO(wind_layermap.content))
-		st.image(wind_img, caption="Wind Forecast Map", use_column_width=True)
-
-		humi_img = Image.open(BytesIO(humi_layermap.content))
-		st.image(humi_img, caption="Humidity Forecast Map", use_column_width=True)
-
-		# st.plotly_chart(layermap, use_container_width=True)
-
-
-
-
-		st.header("Exploration")
         # it also work like that:
         # corsicamap_st_url = "https://i.imgur.com/MWch7ZP.png"
 		# st.image(corsicamap_st_url, caption="Corsica Map", width=600)
