@@ -114,18 +114,8 @@ translations = {
         'wind_risks_header': "Risks linked to high wind force",
         'wind_risks_text': "Do the list",
 
-        'tab2name': "Snow Forecast",
-        'title2': "Snow precipitation Forecast",
-
-        'snow_pres_text': "[Explain for when is the forecast]. \n\n "\
-         "Explain that this forecast could be dangerous and risks will be listed below \n\n" \
-         "Explain how to read the map. \n\n" \
-         "Explain that if it is empty it means... (some cannot be empty)",
-        'snow_risks_header': "Risks linked to high volume of snow precipitation",
-        'snow_risks_text': "Do the list",
-
-        'tab3name': "Rain Forecast",
-        'title3': "Rain precipitation Forecast",
+        'tab2name': "Rain Forecast",
+        'title2': "Rain precipitation Forecast",
 
         'rain_pres_text': "[Explain for when is the forecast]. \n\n "\
          "Explain that this forecast could be dangerous and risks will be listed below \n\n" \
@@ -134,8 +124,8 @@ translations = {
         'rain_risks_header': "Risks linked to high volume of rain precipitation",
         'rain_risks_text': "Do the list",
 
-        'tab4name': "Humidity Forecast",
-        'title4': "Humidity level Forecast",
+        'tab3name': "Humidity Forecast",
+        'title3': "Humidity level Forecast",
 
         'humidity_pres_text': "[Explain for when is the forecast]. \n\n "\
          "Explain that this forecast could be dangerous and risks will be listed below \n\n" \
@@ -144,8 +134,8 @@ translations = {
         'humidity_risks_header': "Risks linked to high humidity rate",
         'humidity_risks_text': "Do the list",
 
-        'tab5name': "Temperature Forecast",
-        'title5': "Temperature Forecast",
+        'tab4name': "Temperature Forecast",
+        'title4': "Temperature Forecast",
         'taboptions': "Options",
         'hour_selection': "Select number of hours from now to display forecast",
 
@@ -155,6 +145,16 @@ translations = {
          "Explain that if it is empty it means... (some cannot be empty)",
         'temp_risks_header': "Risks linked to high temperature",
         'temp_risks_text': "List risks linked to high temperature",
+
+        'tab5name': "Snow Forecast",
+        'title5': "Snow precipitation Forecast",
+
+        'snow_pres_text': "[Explain for when is the forecast]. \n\n "\
+         "Explain that this forecast could be dangerous and risks will be listed below \n\n" \
+         "Explain how to read the map. \n\n" \
+         "Explain that if it is empty it means... (some cannot be empty)",
+        'snow_risks_header': "Risks linked to high volume of snow precipitation",
+        'snow_risks_text': "Do the list",
 
     },
 
@@ -168,18 +168,8 @@ translations = {
         'wind_risks_header': "Risks linked to high wind force",
         'wind_risks_text': "Do the list",
 
-        'tab2name': "Prévision neige",
-        'title2': "Prévision des précipitations de neige",
-
-        'snow_pres_text':  "[Explain for when is the forecast]. \n\n "\
-         "Explain that this forecast could be dangerous and risks will be listed below \n\n" \
-         "Explain how to read the map. \n\n" \
-         "Explain that if it is empty it means... (some cannot be empty)",
-        'snow_risks_header': "Risks linked to high volume of snow precipitation",
-        'snow_risks_text': "Do the list",
-
-        'tab3name': "Prévision pluie",
-        'title3': "Prévision des précipitations de pluie",
+        'tab2name': "Prévision pluie",
+        'title2': "Prévision des précipitations de pluie",
 
         'rain_pres_text': "[Explain for when is the forecast]. \n\n "\
          "Explain that this forecast could be dangerous and risks will be listed below \n\n" \
@@ -188,8 +178,8 @@ translations = {
         'rain_risks_header': "Risks linked to high volume of rain precipitation",
         'rain_risks_text': "Do the list",
 
-        'tab4name': "Prévision d'humidité",
-        'title4': "Prévision du taux d'humidité",
+        'tab3name': "Prévision d'humidité",
+        'title3': "Prévision du taux d'humidité",
 
         'humidity_pres_text': "[Explain for when is the forecast]. \n\n "\
          "Explain that this forecast could be dangerous and risks will be listed below \n\n" \
@@ -198,8 +188,8 @@ translations = {
         'humidity_risks_header': "Risks linked to high humidity rate",
         'humidity_risks_text': "Do the list",
 
-        'tab5name': "Prévision température",
-        'title5': "Prévision de température",
+        'tab4name': "Prévision température",
+        'title4': "Prévision de température",
         'taboptions': "Options",
         'hour_selection': "Sélectionnez le nombre d'heures séparant de la prévision",
 
@@ -209,6 +199,17 @@ translations = {
          "Explain that if it is empty it means... (some cannot be empty)",
         'temp_risks_header': "Risks linked to high temperature",
         'temp_risks_text': "List risks linked to high temperature",
+
+
+        'tab5name': "Prévision neige",
+        'title5': "Prévision des précipitations de neige",
+
+        'snow_pres_text':  "[Explain for when is the forecast]. \n\n "\
+         "Explain that this forecast could be dangerous and risks will be listed below \n\n" \
+         "Explain how to read the map. \n\n" \
+         "Explain that if it is empty it means... (some cannot be empty)",
+        'snow_risks_header': "Risks linked to high volume of snow precipitation",
+        'snow_risks_text': "Do the list",
 
 
     }
@@ -644,8 +645,8 @@ with tab1:
 
 	####### Tab management 
 	
-	st.session_state['active_tab'] = translations[lang_code]['tab2name']
-	st.title(translations[lang_code]['title2'])
+	st.session_state['active_tab'] = translations[lang_code]['tab1name']
+	st.title(translations[lang_code]['title1'])
 
 	st.markdown(f"UTC Time chosen for prediction: `{formatted_future_time}` " )
 
@@ -694,6 +695,7 @@ with tab1:
 
 
 
+
 #############################################################
 ## Tab2
 #############################################################
@@ -703,67 +705,8 @@ with tab2:
 
 	####### Tab management 
 	
-	st.session_state['active_tab'] = translations[lang_code]['tab3name']
-	st.title(translations[lang_code]['title3'])
-
-	st.markdown(f"UTC Time chosen for prediction: `{formatted_future_time}` " )
-
-
-	###### Layout 
-
-	### First header and text
-	st.markdown(translations[lang_code]['snow_pres_text'])
-
-	### Second plot the combioned image
-	corsicamap_st_url = "https://i.imgur.com/MWch7ZP.png"
-
-	corsica_map = load_image(corsicamap_st_url)
-	# size (1428, 1806)
-		
-	snow_img = Image.open(BytesIO(snow_layermap.content))	
-
-	output = find_stretch_dim(snow_img)
-	stretched_center = output[0]
-	output_width = output[1]
-	output_height = output[2]
-
-	# Create a new blank image with the same dimensions as the original
-	snow_img = Image.new("RGB", (output_width, output_height))
-
-	# Paste the stretched center back into the new image
-	snow_img.paste(stretched_center, (0, 0))
-
-	# Resize the help image to match the Corsica map size if needed
-	snow_img = snow_img.resize(corsica_map.size)
-
-	# Apply transparency (set alpha) to the help image
-	snow_img = snow_img.convert("RGBA")  # Ensure it's in RGBA mode for transparency
-	alpha = 0.35  # Adjust transparency level (0 is fully transparent, 1 is fully opaque)
-	snow_img.putalpha(int(255 * alpha))
-
-	# Merge the two images
-	combined_img = Image.alpha_composite(corsica_map.convert("RGBA"), snow_img)
-
-	# Display the final combined image
-	st.image(combined_img, caption="Put caption here")
-
-	### Second header and text
-	st.header(translations[lang_code]['snow_risks_header'])
-	st.markdown(translations[lang_code]['snow_risks_text'])
-
-
-
-#############################################################
-## Tab3
-#############################################################
-
-
-with tab3:
-
-	####### Tab management 
-	
-	st.session_state['active_tab'] = translations[lang_code]['tab4name']
-	st.title(translations[lang_code]['title4'])
+	st.session_state['active_tab'] = translations[lang_code]['tab2name']
+	st.title(translations[lang_code]['title2'])
 
 	st.markdown(f"UTC Time chosen for prediction: `{formatted_future_time}` " )
 
@@ -812,17 +755,18 @@ with tab3:
 
 
 
+
 #############################################################
-## Tab4
+## Tab3
 #############################################################
 
 
-with tab4:
+with tab3:
 
 	####### Tab management 
 	
-	st.session_state['active_tab'] = translations[lang_code]['tab5name']
-	st.title(translations[lang_code]['title5'])
+	st.session_state['active_tab'] = translations[lang_code]['tab3name']
+	st.title(translations[lang_code]['title3'])
 
 	st.markdown(f"UTC Time chosen for prediction: `{formatted_future_time}` " )
 
@@ -872,16 +816,16 @@ with tab4:
 
 
 #############################################################
-## Tab5
+## Tab4
 #############################################################
 
 
-with tab5:
+with tab4:
 
 	####### Tab management 
 
-	st.session_state['active_tab'] = translations[lang_code]['tab1name']
-	st.title(translations[lang_code]['title1'])
+	st.session_state['active_tab'] = translations[lang_code]['tab4name']
+	st.title(translations[lang_code]['title4'])
 
 	st.markdown(f"UTC Time chosen for prediction: `{formatted_future_time}` " )
 
@@ -932,6 +876,65 @@ with tab5:
 	st.header(translations[lang_code]['temp_risks_header'])
 	st.markdown(translations[lang_code]['temp_risks_text'])
 
+
+
+
+#############################################################
+## Tab5
+#############################################################
+
+
+with tab5:
+
+	####### Tab management 
+	
+	st.session_state['active_tab'] = translations[lang_code]['tab5name']
+	st.title(translations[lang_code]['title5'])
+
+	st.markdown(f"UTC Time chosen for prediction: `{formatted_future_time}` " )
+
+
+	###### Layout 
+
+	### First header and text
+	st.markdown(translations[lang_code]['snow_pres_text'])
+
+	### Second plot the combioned image
+	corsicamap_st_url = "https://i.imgur.com/MWch7ZP.png"
+
+	corsica_map = load_image(corsicamap_st_url)
+	# size (1428, 1806)
+		
+	snow_img = Image.open(BytesIO(snow_layermap.content))	
+
+	output = find_stretch_dim(snow_img)
+	stretched_center = output[0]
+	output_width = output[1]
+	output_height = output[2]
+
+	# Create a new blank image with the same dimensions as the original
+	snow_img = Image.new("RGB", (output_width, output_height))
+
+	# Paste the stretched center back into the new image
+	snow_img.paste(stretched_center, (0, 0))
+
+	# Resize the help image to match the Corsica map size if needed
+	snow_img = snow_img.resize(corsica_map.size)
+
+	# Apply transparency (set alpha) to the help image
+	snow_img = snow_img.convert("RGBA")  # Ensure it's in RGBA mode for transparency
+	alpha = 0.35  # Adjust transparency level (0 is fully transparent, 1 is fully opaque)
+	snow_img.putalpha(int(255 * alpha))
+
+	# Merge the two images
+	combined_img = Image.alpha_composite(corsica_map.convert("RGBA"), snow_img)
+
+	# Display the final combined image
+	st.image(combined_img, caption="Put caption here")
+
+	### Second header and text
+	st.header(translations[lang_code]['snow_risks_header'])
+	st.markdown(translations[lang_code]['snow_risks_text'])
          
 
 
