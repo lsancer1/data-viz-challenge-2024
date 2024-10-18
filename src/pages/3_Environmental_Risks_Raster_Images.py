@@ -460,9 +460,9 @@ with tab1:
 	corsica_bbox_ori =  "43.25,8.15,41.15,10.15"
 
 	miny_corsica="41.3" 
-	minx_corsica="7.8" 
+	minx_corsica="7.9" 
 	maxy_corsica="43.1"
-	maxx_corsica="10.1" 
+	maxx_corsica="10" 
 
 	corsica_bbox_arome = miny_corsica+","+minx_corsica+","+maxy_corsica+","+maxx_corsica 
 	print("corsica_bbox_arome",corsica_bbox_arome)
@@ -550,7 +550,7 @@ with tab1:
 		        
 		        # Check if the response is successful
 		        if response.status_code == 200:
-		            return Image.open(BytesIO(response.content))  # Return the image as a Pillow object
+		            return Image.open(BytesIO(response.content), width=600)  # Return the image as a Pillow object
 		        else:
 		            st.error(f"Failed to load image from {url}. Status code: {response.status_code}")
 		            return None
