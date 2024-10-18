@@ -719,7 +719,7 @@ with tab4:
 	corsica_map = load_image(corsicamap_st_url)
 	# size (1428, 1806)
 		
-	humi_img = Image.open(BytesIO(rain_layermap.content))	
+	rain_img = Image.open(BytesIO(rain_layermap.content))	
 
 	output = find_stretch_dim(rain_img)
 	stretched_center = output[0]
