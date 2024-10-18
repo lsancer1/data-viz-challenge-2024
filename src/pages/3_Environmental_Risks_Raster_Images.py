@@ -462,7 +462,7 @@ with tab1:
 	miny_corsica="41.3" 
 	minx_corsica="8" 
 	maxy_corsica="43.1"
-	maxx_corsica="9.8" 
+	maxx_corsica="10.2" 
 
 	corsica_bbox_arome = miny_corsica+","+minx_corsica+","+maxy_corsica+","+maxx_corsica 
 	print("corsica_bbox_arome",corsica_bbox_arome)
