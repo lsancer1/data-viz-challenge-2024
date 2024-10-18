@@ -4,7 +4,7 @@
 
 ## October 18th
 
-
+- https://stackoverflow.com/questions/22786068/how-to-avoid-http-error-429-too-many-requests-python
 
 
 

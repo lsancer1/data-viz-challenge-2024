@@ -34,7 +34,7 @@ translations = {
         Alberto enjoys cycling and figs.
         
         Contact us:
-        - lsancere@uni-koeln.de
+        - lsancer1@smail.uni-koeln.de
         """,
     }
 }

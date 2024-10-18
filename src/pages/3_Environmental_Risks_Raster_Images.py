@@ -537,20 +537,9 @@ with tab1:
 
 	if fig:
 
-		# st.plotly_chart(fig, use_container_width=True)
-		# st.image(temp_img, caption="Temperature Forecast Map", use_column_width=True)
-		
 
 		corsicamap_st_url = "https://i.imgur.com/MWch7ZP.png"
-		corsicamap_pillow_url = "https://imgur.com/a/w55uzF0.png"
 
-
-		# corsica_map = Image.open(BytesIO(corsica_map_response.content))
-
-		# st.image(corsicamap_st_url, caption="Corsica Map", width=600)
-
-		# I guess I have to set a delay for imgur before requesting the image again 
-		# time.sleep(30) 
 
 		# Function to load an image using Pillow
 		def load_image(url):
@@ -569,36 +558,25 @@ with tab1:
 		        st.error(f"Request failed: {e}")
 		        return None
 
-		# Step 1: Load the Corsica map using Pillow
 		corsica_map = load_image(corsicamap_st_url)
 		st.image(corsica_map, caption="corsica_map", use_column_width=True)	
-		# maybe this way we request imgur only once 
-
-
-		# # Check if the request was successful
-		# if corsica_map_response.status_code == 200:
-		#     # Convert the response content into an image using Pillow
-		#     corsica_map = Image.open(BytesIO(corsica_map_response.content))
-		# else:
-		#     st.error("Failed to load the Corsica map image")
-
 			
 		help_img = Image.open(BytesIO(help_layermap.content))
 		st.image(help_img, caption="Elevation Map", use_column_width=True)	
 
-		# # Resize the help image to match the Corsica map size if needed
-		# help_img = help_img.resize(corsica_map.size)
+		# Resize the help image to match the Corsica map size if needed
+		help_img = help_img.resize(corsica_map.size)
 
-		# # Apply transparency (set alpha) to the help image
-		# help_img = help_img.convert("RGBA")  # Ensure it's in RGBA mode for transparency
-		# alpha = 0.3  # Adjust transparency level (0 is fully transparent, 1 is fully opaque)
-		# help_img.putalpha(int(255 * alpha))
+		# Apply transparency (set alpha) to the help image
+		help_img = help_img.convert("RGBA")  # Ensure it's in RGBA mode for transparency
+		alpha = 0.3  # Adjust transparency level (0 is fully transparent, 1 is fully opaque)
+		help_img.putalpha(int(255 * alpha))
 
-		# # Merge the two images
-		# combined_img = Image.alpha_composite(corsica_map.convert("RGBA"), help_img)
+		# Merge the two images
+		combined_img = Image.alpha_composite(corsica_map.convert("RGBA"), help_img)
 
-		# # Display the final combined image
-		# st.image(combined_img, caption="Overlay of Corsica Map and Elevation Map", use_column_width=True)
+		# Display the final combined image
+		st.image(combined_img, caption="Overlay of Corsica Map and Elevation Map", use_column_width=True)
 
 
 
@@ -634,7 +612,7 @@ with tab1:
 
 
 		st.header("Exploration")
-        
+        # it also work like that:
         # corsicamap_st_url = "https://i.imgur.com/MWch7ZP.png"
 		# st.image(corsicamap_st_url, caption="Corsica Map", width=600)
 
