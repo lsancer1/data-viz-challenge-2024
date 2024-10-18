@@ -156,13 +156,8 @@ client = Client()
 
 # WMS
 
-# wms_exploration = client.get_wms_metadata()
-# st.write(wms_exploration)
-
-# WCS 
-
 # Step 1: Fetch the XML capabilities response
-xml_data = client.get_wcs_metadata()
+xml_data = client.get_wms_metadata()
 # Step 2: Pretty-print the XML for readability
 pretty_xml = prettify_xml(xml_data)
 # Step 3: Create a Streamlit app with a text area for XML display
@@ -171,8 +166,19 @@ st.write("TO REMOVE BEFORE SHARING")
 # Provide an interactive area to explore the XML
 st.text_area("Explore the GetCapabilities XML", pretty_xml, height=500)
 
-# wcs_exploration = prettify_xml(client.get_wcs_metadata())
-# st.write(wcs_exploration)
+
+# WCS 
+
+# # Step 1: Fetch the XML capabilities response
+# xml_data = client.get_wcs_metadata()
+# # Step 2: Pretty-print the XML for readability
+# pretty_xml = prettify_xml(xml_data)
+# # Step 3: Create a Streamlit app with a text area for XML display
+# st.title("WCS GetCapabilities XML")
+# st.write("TO REMOVE BEFORE SHARING")
+# # Provide an interactive area to explore the XML
+# st.text_area("Explore the GetCapabilities XML", pretty_xml, height=500)
+
 
 
 
