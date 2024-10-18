@@ -600,7 +600,7 @@ with tab1:
 
 	# Apply transparency (set alpha) to the help image
 	temp_img = temp_img.convert("RGBA")  # Ensure it's in RGBA mode for transparency
-	alpha = 0.65  # Adjust transparency level (0 is fully transparent, 1 is fully opaque)
+	alpha = 0.55  # Adjust transparency level (0 is fully transparent, 1 is fully opaque)
 	temp_img.putalpha(int(255 * alpha))
 
 	# Merge the two images
@@ -632,7 +632,7 @@ with tab2:
 	###### Layout 
 
 	### First header and text
-	st.markdown(translations[lang_code]['temp_pres_text'])
+	st.markdown(translations[lang_code]['wind_pres_text'])
 
 	### Second plot the combioned image
 	corsicamap_st_url = "https://i.imgur.com/MWch7ZP.png"
@@ -668,8 +668,8 @@ with tab2:
 	st.image(combined_img, caption="Put caption here")
 
 	### Second header and text
-	st.header(translations[lang_code]['temp_risks_header'])
-	st.markdown(translations[lang_code]['temp_risks_text'])
+	st.header(translations[lang_code]['wind_risks_header'])
+	st.markdown(translations[lang_code]['wind_risks_text'])
 
 
 
@@ -690,7 +690,7 @@ with tab3:
 	###### Layout 
 
 	### First header and text
-	st.markdown(translations[lang_code]['temp_pres_text'])
+	st.markdown(translations[lang_code]['snow_pres_text'])
 
 	### Second plot the combioned image
 	corsicamap_st_url = "https://i.imgur.com/MWch7ZP.png"
@@ -726,8 +726,8 @@ with tab3:
 	st.image(combined_img, caption="Put caption here")
 
 	### Second header and text
-	st.header(translations[lang_code]['temp_risks_header'])
-	st.markdown(translations[lang_code]['temp_risks_text'])
+	st.header(translations[lang_code]['snow_risks_header'])
+	st.markdown(translations[lang_code]['snow_risks_text'])
 
 
 
@@ -748,7 +748,7 @@ with tab4:
 	###### Layout 
 
 	### First header and text
-	st.markdown(translations[lang_code]['temp_pres_text'])
+	st.markdown(translations[lang_code]['rain_pres_text'])
 
 	### Second plot the combioned image
 	corsicamap_st_url = "https://i.imgur.com/MWch7ZP.png"
@@ -784,8 +784,8 @@ with tab4:
 	st.image(combined_img, caption="Put caption here")
 
 	### Second header and text
-	st.header(translations[lang_code]['temp_risks_header'])
-	st.markdown(translations[lang_code]['temp_risks_text'])
+	st.header(translations[lang_code]['rain_risks_header'])
+	st.markdown(translations[lang_code]['rain_risks_text'])
 
 
 
@@ -806,7 +806,7 @@ with tab5:
 	###### Layout 
 
 	### First header and text
-	st.markdown(translations[lang_code]['temp_pres_text'])
+	st.markdown(translations[lang_code]['humidity_pres_text'])
 
 	### Second plot the combioned image
 	corsicamap_st_url = "https://i.imgur.com/MWch7ZP.png"
@@ -842,8 +842,8 @@ with tab5:
 	st.image(combined_img, caption="Put caption here")
 
 	### Second header and text
-	st.header(translations[lang_code]['temp_risks_header'])
-	st.markdown(translations[lang_code]['temp_risks_text'])
+	st.header(translations[lang_code]['humidity_risks_header'])
+	st.markdown(translations[lang_code]['humidity_risks_text'])
 
          
 
