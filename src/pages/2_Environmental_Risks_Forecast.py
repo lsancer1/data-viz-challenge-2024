@@ -181,7 +181,7 @@ translations = {
         'wind_risks_text': "Do the list",
 
         'tab3name': "Prévision neige",
-        'title3': "Prévision précipitation de neige",
+        'title3': "Prévision des précipitations de neige",
 
         'snow_pres_text':  "[Explain for when is the forecast]. \n\n "\
          "Explain that this forecast could be dangerous and risks will be listed below \n\n" \
@@ -191,7 +191,7 @@ translations = {
         'snow_risks_text': "Do the list",
 
         'tab4name': "Prévision pluie",
-        'title4': "Prévision précipitation de pluie",
+        'title4': "Prévision des précipitations de pluie",
 
         'rain_pres_text': "[Explain for when is the forecast]. \n\n "\
          "Explain that this forecast could be dangerous and risks will be listed below \n\n" \
