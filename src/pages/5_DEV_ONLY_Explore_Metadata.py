@@ -167,6 +167,7 @@ xml_data = client.get_wcs_metadata()
 pretty_xml = prettify_xml(xml_data)
 # Step 3: Create a Streamlit app with a text area for XML display
 st.title("WCS GetCapabilities XML")
+st.write("TO REMOVE BEFORE SHARING")
 # Provide an interactive area to explore the XML
 st.text_area("Explore the GetCapabilities XML", pretty_xml, height=500)
 

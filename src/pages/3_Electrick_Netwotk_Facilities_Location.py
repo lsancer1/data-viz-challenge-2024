@@ -108,7 +108,7 @@ translations = {
         'title1': "Environmental risks on the overhead electricity network",
         'tab1options': "Options",
         'tab1header': "Options",
-        'network_text1': "Visualisation du réseau électrique aérien en Corse. \n" \
+        'network_text1': "Visualisation du réseau électrique aérien en Corse. \n\n" \
          "Le réseau électrique est vulnérable aux risques climatiques tels que le vent." \
          "Egalement lorsque l'humidité est de plus de 30%, le vent de plus de 30km/h et la température de plus de 30°C" \
          "le réseau électrique est en danger (règle des 30)."  \
@@ -121,10 +121,10 @@ translations = {
     },
     'fr': {
         'tab1name': "Réseau electrique aérien",
-        'title1': "Réseau electrique aérien localisation",
+        'title1': "Localisation des lignes du réseau électrique aérien",
         'tab1options': "Options",
         'tab1header': "Options",
-        'network_text1': "Visualisation du réseau électrique aérien en Corse. \n" \
+        'network_text1': "Visualisation du réseau électrique aérien en Corse. \n\n" \
          "Le réseau électrique est vulnérable aux risques climatiques tels que le vent." \
          "Egalement lorsque l'humidité est de plus de 30%, le vent de plus de 30km/h et la température de plus de 30°C" \
          "le réseau électrique est en danger (règle des 30)."  \
