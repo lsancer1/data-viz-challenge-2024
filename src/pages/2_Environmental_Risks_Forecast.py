@@ -597,14 +597,14 @@ with tab1:
 
 		# Apply transparency (set alpha) to the help image
 		temp_img = temp_img.convert("RGBA")  # Ensure it's in RGBA mode for transparency
-		alpha = 0.45  # Adjust transparency level (0 is fully transparent, 1 is fully opaque)
+		alpha = 0.25  # Adjust transparency level (0 is fully transparent, 1 is fully opaque)
 		temp_img.putalpha(int(255 * alpha))
 
 		# Merge the two images
 		combined_img = Image.alpha_composite(corsica_map.convert("RGBA"), temp_img)
 
 		# Display the final combined image
-		st.image(combined_img, caption="Overlay of Corsica Map and Elevation Map")
+		st.image(combined_img, caption="Put caption here")
 
 
 		# st.image(corsica_map, caption="corsica_map", use_column_width=True)
