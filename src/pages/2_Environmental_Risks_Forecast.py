@@ -111,32 +111,32 @@ translations = {
         'tab2name': "Wind Forecast",
         'title2': "Wind Forecast",
 
-        'tab3name': "Snow precipitation Forecast",
+        'tab3name': "Snow Forecast",
         'title3': "Snow precipitation Forecast",
 
-        'tab4name': "Rain precipitation Forecast",
+        'tab4name': "Rain Forecast",
         'title4': "Rain precipitation Forecast",
 
-        'tab5name': "Humidity level Forecast",
+        'tab5name': "Humidity Forecast",
         'title5': "Humidity level Forecast",
 
 
     },
     'fr': {
-        'tab1name': "Prévision de température",
+        'tab1name': "Prévision température",
         'title1': "Prévision de température",
         'tab1options': "Options",
 
-        'tab2name': "Prévision de la force du vent",
+        'tab2name': "Prévision vent",
         'title2': "Prévision de la force du vent",
 
-        'tab3name': "Prévision précipitation de neige",
+        'tab3name': "Prévision neige",
         'title3': "Prévision précipitation de neige",
 
-        'tab4name': "Prévision précipitation de pluie",
+        'tab4name': "Prévision pluie",
         'title4': "Prévision précipitation de pluie",
 
-        'tab5name': "Prévision du taux d'humidité",
+        'tab5name': "Prévision d'humidité",
         'title5': "Prévision du taux d'humidité",
     }
 }
@@ -694,6 +694,64 @@ with tab3:
 
 
 #############################################################
+## Tab4
+#############################################################
+
+
+with tab4:
+
+	####### Tab management 
+	
+	st.session_state['active_tab'] = translations[lang_code]['tab4name']
+	st.title(translations[lang_code]['title4'])
+
+	st.sidebar.header(translations[lang_code]['tab1options'])
+
+	###### Layout 
+
+	### First header and text
+	st.header("Exploration")
+	st.markdown("Text to put here")
+
+	### Second plot the combioned image
+	corsicamap_st_url = "https://i.imgur.com/MWch7ZP.png"
+
+	corsica_map = load_image(corsicamap_st_url)
+	# size (1428, 1806)
+		
+	humi_img = Image.open(BytesIO(rain_layermap.content))	
+
+	output = find_stretch_dim(rain_img)
+	stretched_center = output[0]
+	output_width = output[1]
+	output_height = output[2]
+
+	# Create a new blank image with the same dimensions as the original
+	rain_img = Image.new("RGB", (output_width, output_height))
+
+	# Paste the stretched center back into the new image
+	rain_img.paste(stretched_center, (0, 0))
+
+	# Resize the help image to match the Corsica map size if needed
+	rain_img = rain_img.resize(corsica_map.size)
+
+	# Apply transparency (set alpha) to the help image
+	rain_img = rain_img.convert("RGBA")  # Ensure it's in RGBA mode for transparency
+	alpha = 0.35  # Adjust transparency level (0 is fully transparent, 1 is fully opaque)
+	rain_img.putalpha(int(255 * alpha))
+
+	# Merge the two images
+	combined_img = Image.alpha_composite(corsica_map.convert("RGBA"), rain_img)
+
+	# Display the final combined image
+	st.image(combined_img, caption="Put caption here")
+
+
+
+
+
+
+#############################################################
 ## Tab5
 #############################################################
 
@@ -702,8 +760,8 @@ with tab5:
 
 	####### Tab management 
 	
-	st.session_state['active_tab'] = translations[lang_code]['tab4name']
-	st.title(translations[lang_code]['title4'])
+	st.session_state['active_tab'] = translations[lang_code]['tab5name']
+	st.title(translations[lang_code]['title5'])
 
 	st.sidebar.header(translations[lang_code]['tab1options'])
 
