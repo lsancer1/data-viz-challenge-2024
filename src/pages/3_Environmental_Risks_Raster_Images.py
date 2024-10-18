@@ -575,7 +575,7 @@ with tab1:
 		output_height = help_img.height
 
 		# Define how much you want to stretch the center section horizontally
-		stretch_factor = 2.0  # Increase this value to stretch more
+		stretch_factor = 1.2  # Increase this value to stretch more
 
 		# Calculate crop dimensions (assuming you want to crop from the center)
 		crop_width = int(output_width / stretch_factor)  # Crop width is reduced by the stretch factor
