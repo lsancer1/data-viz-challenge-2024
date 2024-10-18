@@ -565,7 +565,8 @@ help_layermap = client.get_wms_map(
     layers = forecastlayers["geom"],
 	bbox = corsica_bbox_arome,
 	height = str(cosrica_mapheight),
-	width = str(cosrica_mapwidth)
+	width = str(cosrica_mapwidth),
+	time = formatted_future_time
 	)
 
 
