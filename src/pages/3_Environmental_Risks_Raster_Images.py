@@ -550,7 +550,7 @@ with tab1:
 		        
 		        # Check if the response is successful
 		        if response.status_code == 200:
-		            return Image.open(BytesIO(response.content), width=600)  # Return the image as a Pillow object
+		            return Image.open(BytesIO(response.content))  # Return the image as a Pillow object
 		        else:
 		            st.error(f"Failed to load image from {url}. Status code: {response.status_code}")
 		            return None
@@ -559,6 +559,7 @@ with tab1:
 		        return None
 
 		corsica_map = load_image(corsicamap_st_url)
+		print('corsica_map.size',corsica_map.size)
 	
 			
 		help_img = Image.open(BytesIO(help_layermap.content))
