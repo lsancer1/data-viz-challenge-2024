@@ -483,7 +483,7 @@ with tab1:
 	}
 	
 	cosrica_mapheight=570
-	cosrica_mapwidth=760
+	cosrica_mapwidth=757
 
 	# load client 
 	client = Client()
@@ -563,6 +563,11 @@ with tab1:
 			
 		help_img = Image.open(BytesIO(help_layermap.content))
 
+		# Define the new size (width, height) for stretching
+		new_size = (cosrica_mapwidth + 30, cosrica_mapheight)  # Replace with your desired dimensions
+
+		# Stretch the image
+		help_img = help_img.resize(new_size, Image.ANTIALIAS)
 
 		# Resize the help image to match the Corsica map size if needed
 		help_img = help_img.resize(corsica_map.size)
