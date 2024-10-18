@@ -455,15 +455,14 @@ with tab1:
 	#############################################################
 
 	if fig:
-		# Create two columns with a 3:1 ratio (map:legend)
-		col1, col2 = st.columns([3, 1])
 
-	with col1:
-		st.plotly_chart(fig, use_container_width=True)
 
-	with col2:
 		st.header("Exploration")
 		# st.write(layermap)
+
+		st.plotly_chart(fig, use_container_width=True)
+
+
 
          
 

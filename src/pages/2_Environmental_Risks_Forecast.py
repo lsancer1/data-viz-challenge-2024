@@ -111,6 +111,9 @@ translations = {
         'tab2name': "Wind Forecast",
         'title2': "Wind Forecast",
 
+        'tab3name': "Snow Precipitation Forecast",
+        'title3': "Snow Precipitation Forecast",
+
 
     },
     'fr': {
@@ -120,6 +123,9 @@ translations = {
 
         'tab2name': "Prévision de la force du vent",
         'title2': "Prévision de la force du vent",
+
+        'tab3name': "Prévision précipitation de neige",
+        'title3': "Prévision précipitation de neige",
 
     }
 }
@@ -132,8 +138,9 @@ else:
     lang_code = 'en'
 
 # Tab names
-tab1, tab2 = st.tabs([translations[lang_code]['tab1name'], 
-				    translations[lang_code]['tab2name']])
+tab1, tab2, tab3 = st.tabs([translations[lang_code]['tab1name'], 
+				     translations[lang_code]['tab2name'],
+				     translations[lang_code]['tab3name']])
 
 
 
@@ -420,6 +427,7 @@ corsica_bbox_arome = miny_corsica+","+minx_corsica+","+maxy_corsica+","+maxx_cor
 forecastlayers = {
 "temperature": "TEMPERATURE__SPECIFIC_HEIGHT_LEVEL_ABOVE_GROUND",
 "windspeed": "WIND_SPEED__SPECIFIC_HEIGHT_LEVEL_ABOVE_GROUND",
+"snow":  "TOTAL_SNOW_PRECIPITATION__GROUND_OR_WATER_SURFACE",
 "humidity": "RELATIVE_HUMIDITY__SPECIFIC_HEIGHT_LEVEL_ABOVE_GROUND",
 "geom": "GEOMETRIC_HEIGHT__GROUND_OR_WATER_SURFACE",
 }
@@ -457,6 +465,13 @@ wind_layermap = client.get_wms_map(
 	)
 
 
+snow_layermap = client.get_wms_map(		
+    layers = forecastlayers["snow"],
+	bbox = corsica_bbox_arome,
+	height = str(cosrica_mapheight),
+	width = str(cosrica_mapwidth)
+	)
+
 # hardcoded parameters for the forecast
 # example_bbox = "37.5,-12,55.4,16"
 # example_mapheight=300
@@ -472,6 +487,12 @@ wind_layermap = client.get_wms_map(
 
 # global_bbox_arome = str(globalminy)+","+str(globalminx)+","+str(globalmaxy)+","+str(globalmaxx)
 # print("global_bbox_arome",global_bbox_arome)
+
+# corsicamap_st_url = "https://i.imgur.com/MWch7ZP.png"
+# st.image(corsicamap_st_url, caption="Corsica Map", width=600)
+
+# humi_img = Image.open(BytesIO(humi_layermap.content))
+# st.image(humi_img, caption="Humidity Forecast Map", use_column_width=True)
 
 
 #############################################################
@@ -518,7 +539,7 @@ with tab1:
 
 	# Apply transparency (set alpha) to the help image
 	temp_img = temp_img.convert("RGBA")  # Ensure it's in RGBA mode for transparency
-	alpha = 0.45  # Adjust transparency level (0 is fully transparent, 1 is fully opaque)
+	alpha = 0.35  # Adjust transparency level (0 is fully transparent, 1 is fully opaque)
 	temp_img.putalpha(int(255 * alpha))
 
 	# Merge the two images
@@ -529,13 +550,9 @@ with tab1:
 
 
 
-
-
 #############################################################
 ## Tab2 
 #############################################################
-
-
 
 
 with tab2:
@@ -577,7 +594,7 @@ with tab2:
 
 	# Apply transparency (set alpha) to the help image
 	wind_img = wind_img.convert("RGBA")  # Ensure it's in RGBA mode for transparency
-	alpha = 0.45  # Adjust transparency level (0 is fully transparent, 1 is fully opaque)
+	alpha = 0.35  # Adjust transparency level (0 is fully transparent, 1 is fully opaque)
 	wind_img.putalpha(int(255 * alpha))
 
 	# Merge the two images
@@ -585,26 +602,62 @@ with tab2:
 
 	# Display the final combined image
 	st.image(combined_img, caption="Put caption here")
-		# st.image(corsica_map, caption="corsica_map", use_column_width=True)
-		# st.image(help_img, caption="Elevation Map", use_column_width=True)	
-
-		# temp_img = Image.open(BytesIO(temp_layermap.content))		
-		# st.image(temp_img, caption="Temperature Forecast Map", use_column_width=True)
-
-		# wind_img = Image.open(BytesIO(wind_layermap.content))
-		# st.image(wind_img, caption="Wind Forecast Map", use_column_width=True)
-
-		# humi_img = Image.open(BytesIO(humi_layermap.content))
-		# st.image(humi_img, caption="Humidity Forecast Map", use_column_width=True)
 
 
 
 
+#############################################################
+## Tab3
+#############################################################
 
-        # it also work like that:
-        # corsicamap_st_url = "https://i.imgur.com/MWch7ZP.png"
-		# st.image(corsicamap_st_url, caption="Corsica Map", width=600)
 
+with tab3:
+
+	####### Tab management 
+	
+	st.session_state['active_tab'] = translations[lang_code]['tab3name']
+	st.title(translations[lang_code]['title3'])
+
+	st.sidebar.header(translations[lang_code]['tab1options'])
+
+	###### Layout 
+
+	### First header and text
+	st.header("Exploration")
+	st.markdown("Text to put here")
+
+	### Second plot the combioned image
+	corsicamap_st_url = "https://i.imgur.com/MWch7ZP.png"
+
+	corsica_map = load_image(corsicamap_st_url)
+	# size (1428, 1806)
+		
+	snow_img = Image.open(BytesIO(snow_layermap.content))	
+
+	output = find_stretch_dim(snow_img)
+	stretched_center = output[0]
+	output_width = output[1]
+	output_height = output[2]
+
+	# Create a new blank image with the same dimensions as the original
+	snow_img = Image.new("RGB", (output_width, output_height))
+
+	# Paste the stretched center back into the new image
+	snow_img.paste(stretched_center, (0, 0))
+
+	# Resize the help image to match the Corsica map size if needed
+	snow_img = snow_img.resize(corsica_map.size)
+
+	# Apply transparency (set alpha) to the help image
+	snow_img = snow_img.convert("RGBA")  # Ensure it's in RGBA mode for transparency
+	alpha = 0.35  # Adjust transparency level (0 is fully transparent, 1 is fully opaque)
+	snow_img.putalpha(int(255 * alpha))
+
+	# Merge the two images
+	combined_img = Image.alpha_composite(corsica_map.convert("RGBA"), snow_img)
+
+	# Display the final combined image
+	st.image(combined_img, caption="Put caption here")
          
 
 
