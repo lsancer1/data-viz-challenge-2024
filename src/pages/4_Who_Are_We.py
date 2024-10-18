@@ -14,7 +14,7 @@ translations = {
     'Français': {
         'title': "# Qui sommes nous?",
         'description': """
-        Nous sommes deux amis de longue date et doctorants dans notre temps libre!
+        Nous sommes deux amis de longue date et doctorants!
 
         Lucas aime apprendre le nom de toutes les subdivisions des pays d'Amérique,
 
@@ -27,7 +27,7 @@ translations = {
     'English': {
         'title': "# Who are we?",
         'description': """
-        We are two long-time friends and doctoral students in our free time!
+        We are two long-time friends and doctoral students!
 
         Lucas loves learning the names of all the subdivisions of American countries,
         

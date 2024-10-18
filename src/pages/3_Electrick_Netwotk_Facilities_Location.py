@@ -109,17 +109,17 @@ translations = {
         'tab1options': "Options",
         'tab1header': "Options",
         'network_text1': "Visualisation du réseau électrique aérien en Corse. \n\n" \
-         "Le réseau électrique est vulnérable aux risques climatiques tels que le vent." \
+         " Le réseau électrique est vulnérable aux risques climatiques tels que le vent." \
          " Egalement lorsque l'humidité est de plus de 30%, le vent de plus de 30km/h et la température de plus de 30°C" \
-         " le réseau électrique est en danger (règle des 30)."  \
+         " les feux de forêt son probables (règle des trois 30) et peuvent donc endommager le réseau."  \
          " Vous pouvez explorer les prévisions de risques climatiques sur l'onglet  `Environmental Risks Forecast`. \n\n" \
-         "Les points BT indiquent la localisation des lignes électrique basse tension \n\n" \
-         "Les points HTA indiquent la localisation des lignes électrique haute tension \n\n" \
-  		 "Les points Pylones HTB indiquent la localisation des pylones de lignes électrique très haute tension",
+         "- Les points BT indiquent la localisation des lignes électrique basse tension \n\n" \
+         "- Les points HTA indiquent la localisation des lignes électrique haute tension \n\n" \
+  		 "- Les points Pylones HTB indiquent la localisation des pylones de lignes électrique très haute tension",
 
   		 'cat_bt':"Aerial BT",
   		 'cat_hta':"Aerial HTA",
-  		 'cat_hta':"Poles",
+  		 'cat_htb':"HTB Poles",
 
     },
 
@@ -129,17 +129,17 @@ translations = {
         'tab1options': "Options",
         'tab1header': "Options",
         'network_text1': "Visualisation du réseau électrique aérien en Corse. \n\n" \
-         "Le réseau électrique est vulnérable aux risques climatiques tels que le vent." \
-         "Egalement lorsque l'humidité est de plus de 30%, le vent de plus de 30km/h et la température de plus de 30°C" \
-         "les feux de forêt son probables (règle des trois 30) et peuvent donc endommager le réseau."  \
-         "Vous pouvez explorer les prévisions de risques climatiques sur l'onglet  `Environmental Risks Forecast`. \n\n" \
+         " Le réseau électrique est vulnérable aux risques climatiques tels que le vent." \
+         " Egalement lorsque l'humidité est de plus de 30%, le vent de plus de 30km/h et la température de plus de 30°C" \
+         " les feux de forêt son probables (règle des trois 30) et peuvent donc endommager le réseau."  \
+         " Vous pouvez explorer les prévisions de risques climatiques sur l'onglet  `Environmental Risks Forecast`. \n\n" \
          "- Les points BT indiquent la localisation des lignes électrique basse tension \n\n" \
          "- Les points HTA indiquent la localisation des lignes électrique haute tension \n\n" \
   		 "- Les points Pylones HTB indiquent la localisation des pylones de lignes électrique très haute tension",
 
   		 'cat_bt':"BT aérien",
   		 'cat_hta':"HTA aérien",
-  		 'cat_hta':"Pylones",
+  		 'cat_htb':"Pylones HTB",
     }
 }
 
@@ -176,7 +176,7 @@ pylones_path = pathtofolder + keptfiles[3] + ext
 #     geojson_htb_aerien = json.load(f)
 
 # with open(pylones_path) as f:
-#     geojson_pylones = json.load(f)
+#     geojson_pylones = json.load(f)translations[lang_code]['tab1name']
 
 
 @st.cache_data
@@ -213,163 +213,6 @@ if 'active_tab' not in st.session_state:
     
 
 
-
-# #############################################################
-# ## Functions and Classes
-# ############################################################
-
-
-# class Client(object):
-
-#     def __init__(self):
-#         self.session = requests.Session()
-
-#     def request(self, method, url, **kwargs):
-#         # First request will always need to obtain a token first
-#         if 'Authorization' not in self.session.headers:
-#             self.obtain_token()
-#         # Optimistically attempt to dispatch reqest
-#         response = self.session.request(method, url, **kwargs)
-#         if self.token_has_expired(response):
-#             # We got an 'Access token expired' response => refresh token
-#             self.obtain_token()
-#             # Re-dispatch the request that previously failed
-#             response = self.session.request(method, url, **kwargs)
-
-#         return response
-
-
-#     def token_has_expired(self, response):
-
-#         status = response.status_code
-#         content_type = response.headers['Content-Type']
-#         if status == 401 and 'application/json' in content_type:
-#             repJson = response.text
-#             if 'Invalid JWT token' in repJson['description']:
-#                 return True
-
-#         return False
-
-
-
-#     def obtain_token(self):
-#         # Obtain new token
-#         data = {'grant_type': 'client_credentials'}
-#         headers = {'Authorization': 'Basic ' + APPLICATION_ID}
-#         access_token_response = requests.post(TOKEN_URL, 
-#         									  data=data, 
-#         									  verify=False, 
-#         									  allow_redirects=False, 
-#         									  headers=headers)
-#         token = access_token_response.json()['access_token']
-#         # Update session with fresh token
-#         self.session.headers.update({'Authorization': 'Bearer %s' % token})
-
-
-
-#     def observations_get_stations_list(self) -> requests.Response:
-#         """Get the list of observation stations from the API.
-
-#         Returns:
-#             requests.Response: Response from the API with the data in csv.
-#         """
-#         self.session.headers.update({'Accept': 'application/json'})
-#         request = self.request(
-#             method='GET',
-#             url=constants.STATION_LIST_URL
-#         )
-
-#         return request
-
-
-#     def get_wms_metadata(
-#     	self,
-#     	service: str = "WMS",
-#     	version: str = "1.3.0",
-#     	language: str = "eng"
-#     	) -> requests.Response:
-
-# 	    """
-# 	    Returns the metadata of the WMS service 
-# 	    (proposed layers, associated projections, author, etc.)
-
-
-# 	    """
-# 	    self.session.headers.update({'Accept': 'application/json'})
-# 	    request = self.request(
-# 	    	method='GET',
-# 	    	url=constants.AROME_WMS_CAPABILITIES_URL,
-# 	    	params = {
-# 	    	"service": service, 
-# 	    	"version": version, 
-# 	    	"language": language}
-# 	    	)
-
-# 	    return request.text
-
-
-#     def get_wcs_metadata(
-#     	self,
-#     	service: str = "WCS",
-#     	version: str = "2.0.1",
-#     	language: str = "eng"
-#     	) -> requests.Response:
-
-# 	    """
-# 	    Returns the metadata of the WCS service 
-# 	    (proposed layers, associated projections, author, etc.)
-
-
-# 	    """
-# 	    self.session.headers.update({'Accept': 'application/json'})
-# 	    request = self.request(
-# 	    	method='GET',
-# 	    	url=constants.AROME_WCS_CAPABILITIES_URL,
-# 	    	params = {
-# 	    	"service": service, 
-# 	    	"version": version, 
-# 	    	"language": language}
-# 	    	)
-
-# 	    return request.text
-
-
-#     def get_wms_map(
-# 		self,
-# 		layers: str,
-# 		bbox: str,
-# 		height: str,
-# 		width: str,
-# 		service: str = "WMS",
-# 		version: str = "1.3.0",
-# 		crs: str = "EPSG:4326",
-# 		format: str = "image/png",
-# 		transparent: str = "true"
-# 		) -> requests.Response:
-# 	    """
-# 	    """
-# 	    self.session.headers.update({'Accept': 'application/json'})
-# 	    request = self.request(
-# 	    	method='GET',
-# 	    	url=constants.AROME_WMS_MAP_URL,
-# 	    	params = {
-# 	    	"layers": layers,
-# 	        "bbox": bbox,
-# 	        "height": height,
-# 	        "width": width,
-# 	        "service": service,
-# 	        "version": version,
-# 	        "crs": crs,
-# 	        "format": format,
-# 	        "transparent": transparent,
-# 	    	}
-# 	    	)
-
-# 	    return request 
-
-
-
-
 #############################################################
 ## Tab1 
 #############################################################
@@ -383,42 +226,32 @@ with tab1:
 	st.write(translations[lang_code]['network_text1'])
 	
 
-	# st.sidebar.header(translations[lang_code]['tab1options'])
-
-	#insert the function we will need to read the API
-
-	######
-
-	#############################################################
-	## Function to generate static map
-	#############################################################
-
 	def generate_map_tab1(bt_aerien_coord, hta_aerien_coord, htb_aerien_coord,pylones_coord):
    	 # Step 1: Combine your data into one DataFrame
 
 		data = []
 		for point in bt_aerien_coord:
 		 	data.append({'Latitude': point['lat'], 'Longitude': point['lon'], 
-		 	'Category': 'BT aérien', 'Statut': point['statut']})
+		 	'Category': translations[lang_code]['cat_bt'], 'Statut': point['statut']})
 		for point in hta_aerien_coord:
 		 	data.append({'Latitude': point['lat'], 'Longitude': point['lon'], 
-		 	'Category': 'HTA aérien', 'Statut': point['statut']})
+		 	'Category': translations[lang_code]['cat_hta'], 'Statut': point['statut']})
+		for point in pylones_coord:
+		 	data.append({'Latitude': point['lat'], 'Longitude': point['lon'], 
+		 	'Category': translations[lang_code]['cat_htb'], 'Statut': point['statut']})
 		# for point in htb_aerien_coord:
 		#  	data.append({'Latitude': point['lat'], 'Longitude': point['lon'], 
 		# 'Category': 'HTB aérien', 'Statut': point['statut']})
-		for point in pylones_coord:
-		 	data.append({'Latitude': point['lat'], 'Longitude': point['lon'], 
-		 	'Category': 'Pylones', 'Statut': point['statut']})
+		## -> USEless if Pylones
 
 		# Create a DataFrame
 		df = pd.DataFrame(data)
 
 		# Define your custom color map
 		custom_colors = {
-			'BT aérien': 'blue',   
-			'HTA aérien': 'red',    
-			'HTB aérien': 'orange',  
-			'Pylones': 'orange'  
+			translations[lang_code]['cat_bt']: 'blue',   
+			translations[lang_code]['cat_hta']: 'red',    
+			translations[lang_code]['cat_htb']: 'orange'  
 		}
 
 		# plot
@@ -431,7 +264,7 @@ with tab1:
 			 mapbox_style='open-street-map',
 			 zoom=7,
 			 center={"lat": 42.16, "lon": 9.13},
-			 title="Aerial Points Map",
+			 title="",
 			 height=800,
 			 width=800,
 			 color_discrete_map=custom_colors  # Apply custom color map
@@ -440,54 +273,14 @@ with tab1:
 		return fig
 
 
-	# Customize the colorbar
-	# fig.update_layout(
-	# 	mapbox_style="open-street-map",
-	# 	mapbox=dict(
-	#     	zoom=7,
-	#     	center={"lat": 42.16, "lon": 9.13}  # Center map on the data
-	# 	),
-	# 	height=800,
-	# 	width=800
-	# 	)
-
-	# Also an option for pylones
-	# go.Scattermapbox(
-	# 	lat=[point['lat'] for point in pylones_coord],
-	# 	lon=[point['lon'] for point in pylones_coord],
-	# 	mode='markers',
-	# 	marker=go.scattermapbox.Marker(
-	#     	size=10,
-	#     	color='black'  # Set a different color for the second set of points
-	# 	),
-	# 	text=[point['statut'] for point in pylones_coord],
-	# ) return fig
-
-	#############################################################
-	## Generate and Display the Map
-	#############################################################
 
 	fig = generate_map_tab1(bt_aerien_coord, hta_aerien_coord, htb_aerien_coord, pylones_coord)
 
 	
 
-	#############################################################
-	## Generate and Display Forecast
-	#############################################################
-
-
-
-
-
-	#############################################################
-	## Layout with Two Columns: Map and Legend
-	#############################################################
-
 	if fig:
 
 
-		# st.header("Exploration")
-		# # st.write(layermap)
 
 		st.plotly_chart(fig, use_container_width=True)
 
