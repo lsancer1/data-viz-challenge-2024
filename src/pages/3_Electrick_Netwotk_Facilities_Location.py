@@ -373,7 +373,7 @@ with tab1:
 	st.title(translations[lang_code]['title1'])
 
 	# Explanations about electricity network
-    st.write(translations[lang_code]['network_text1'])
+	st.write(translations[lang_code]['network_text1'])
 	
 
 	# st.sidebar.header(translations[lang_code]['tab1options'])
