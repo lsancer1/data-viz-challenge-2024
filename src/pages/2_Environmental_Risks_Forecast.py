@@ -227,7 +227,7 @@ translations = {
         'tab4name': "Prévision température",
         'title4': "Prévision de température",
         'im_caption4' : "",       
-
+        'temp_pres_text': "La période de prévision est indiquée juste au-dessus. Les risques sont expliqués sous l'image. \n\n" \
         'temp_risks_header': "Risques liés aux températures élevées",
         'temp_risks_text': "Chaleur extrême (au-dessus de 35°C) : Les températures élevées augmentent le risque de coup de chaleur, en particulier pour les personnes âgées, les enfants et ceux ayant des problèmes de santé préexistants. Cela peut également mettre à rude épreuve les systèmes électriques en raison de l'utilisation accrue de la climatisation. \n\n" \
                            "Températures élevées (au-dessus de 30°C) : Le risque de feux de forêt augmente dans les zones végétalisées et sèches. Les hautes températures assèchent la végétation, la rendant plus inflammable. \n\n" \
