@@ -103,25 +103,25 @@ TOKEN_URL = st.secrets['MF_TOKEN_URL']
 
 # Language translations
 translations = {
-    'en': {
-        'tab1name': "Risk on overhead electricity network (poles)",
-        'title1': "Environmental risks on the overhead electricity network",
-        'tab1options': "Options",
-        'tab1header': "Options",
-        'network_text1': "Visualisation du réseau électrique aérien en Corse. \n\n" \
-         " Le réseau électrique est vulnérable aux risques climatiques tels que le vent." \
-         " Egalement lorsque l'humidité est de plus de 30%, le vent de plus de 30km/h et la température de plus de 30°C" \
-         " les feux de forêt son probables (règle des trois 30) et peuvent donc endommager le réseau."  \
-         " Vous pouvez explorer les prévisions de risques climatiques sur l'onglet  `Environmental Risks Forecast`. \n\n" \
-         "- Les points BT indiquent la localisation des lignes électrique basse tension \n\n" \
-         "- Les points HTA indiquent la localisation des lignes électrique haute tension \n\n" \
-  		 "- Les points Pylones HTB indiquent la localisation des pylones de lignes électrique très haute tension",
+	'en': {
+	    'tab1name': "Overhead Power Network",
+	    'title1': "Location of overhead power lines",
+	    'tab1options': "Options",
+	    'tab1header': "Options",
+	    'network_text1': "Visualization of the overhead power network in Corsica. \n\n" \
+	    "The power network is vulnerable to climatic risks such as wind." \
+	    " Additionally, when humidity exceeds 30%, wind exceeds 30 km/h, and temperature exceeds 30°C," \
+	    " forest fires are likely (the rule of three 30s) and can damage the network." \
+	    " You can explore climatic risk forecasts in the `Environmental Risks Forecast` tab. \n\n" \
+	    "- The BT points indicate the location of low-voltage power lines \n\n" \
+	    "- The HTA points indicate the location of high-voltage power lines \n\n" \
+	    "- The HTB pylons points indicate the location of very high-voltage power pylons",
 
-  		 'cat_bt':"Aerial BT",
-  		 'cat_hta':"Aerial HTA",
-  		 'cat_htb':"HTB Poles",
+	    'cat_bt': "Overhead LV",
+	    'cat_hta': "Overhead MV",
+	    'cat_htb': "HTB Poles",
+	},
 
-    },
 
     'fr': {
         'tab1name': "Réseau electrique aérien",
