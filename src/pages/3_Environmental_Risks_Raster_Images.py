@@ -567,7 +567,7 @@ with tab1:
 		new_size = (cosrica_mapwidth + 30, cosrica_mapheight)  # Replace with your desired dimensions
 
 		# Stretch the image
-		help_img = help_img.resize(new_size, Image.ANTIALIAS)
+		help_img = help_img.resize(new_size)
 
 		# Resize the help image to match the Corsica map size if needed
 		help_img = help_img.resize(corsica_map.size)
