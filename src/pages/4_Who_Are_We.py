@@ -21,7 +21,8 @@ translations = {
         Alberto aime le vélo et les figues,
 
         Nous contacter:
-        - lsancer1@smail.uni-koeln.de
+        - lsancer1@smail AT uni-koeln.de
+        - alonso-pinar_a AT univ-corse.fr
         """,
     },
     'English': {
@@ -34,7 +35,8 @@ translations = {
         Alberto enjoys cycling and figs.
         
         Contact us:
-        - lsancer1@smail.uni-koeln.de
+        - lsancer1 AT smail.uni-koeln.de
+        - alonso-pinar_a AT univ-corse.fr
         """,
     }
 }
