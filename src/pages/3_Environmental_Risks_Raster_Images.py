@@ -559,7 +559,7 @@ with tab1:
 		        return None
 
 		corsica_map = load_image(corsicamap_st_url)
-		print('corsica_map.size',corsica_map.size)
+		st.markdown(corsica_map.size)
 	
 			
 		help_img = Image.open(BytesIO(help_layermap.content))
