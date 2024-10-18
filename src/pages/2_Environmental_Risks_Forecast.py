@@ -228,6 +228,9 @@ translations = {
         'title4': "Prévision de température",
         'im_caption4' : "",       
         'temp_pres_text': "La période de prévision est indiquée juste au-dessus. Les risques sont expliqués sous l'image. \n\n" \
+                          "Les prévisions de température sont d'une grande importance pour déterminer les risques potentiels pour les paysages (en cas de propagation d'incendie, par exemple), mais aussi pour la sécurité des personnes. \n\n" \
+                          "La prévision présente des contours de température : la température est constante le long d'une ligne et la valeur de la température en degrés Celsius est affichée sur la ligne. \n\n",
+
         'temp_risks_header': "Risques liés aux températures élevées",
         'temp_risks_text': "Chaleur extrême (au-dessus de 35°C) : Les températures élevées augmentent le risque de coup de chaleur, en particulier pour les personnes âgées, les enfants et ceux ayant des problèmes de santé préexistants. Cela peut également mettre à rude épreuve les systèmes électriques en raison de l'utilisation accrue de la climatisation. \n\n" \
                            "Températures élevées (au-dessus de 30°C) : Le risque de feux de forêt augmente dans les zones végétalisées et sèches. Les hautes températures assèchent la végétation, la rendant plus inflammable. \n\n" \
