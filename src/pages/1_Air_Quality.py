@@ -709,7 +709,7 @@ with tab1:
                 st.markdown(translations[lang_code]['aqi_levels_view_text'])
                 aqi_legend_md = ""
                 for level in aqi_levels_10:
-                    aqi_legend_md += f"**{level['Level']}**:\n"
+                    aqi_legend_md += f"- **{level['Level']}**:\n"
                     aqi_legend_md += f"{level['Color_name']} \n ({level['Range']})\n\n"
                 st.markdown(aqi_legend_md)
             else:
@@ -721,7 +721,7 @@ with tab1:
                 st.markdown(translations[lang_code]['aqi_levels_view_text'])
                 aqi_legend_md = ""
                 for level in aqi_levels_25:
-                    aqi_legend_md += f"**{level['Level']}**:\n"
+                    aqi_legend_md += f"- **{level['Level']}**:\n"
                     aqi_legend_md += f"{level['Color_name']} \n ({level['Range']})\n\n"
                 st.markdown(aqi_legend_md)
             else:
@@ -1004,7 +1004,7 @@ with tab2:
                         st.markdown(translations[lang_code]['aqi_levels_view_text']) 
                         aqi_legend_md = ""
                         for level in aqi_levels_10:
-                            aqi_legend_md += f"**{level['Level']}**:\n"
+                            aqi_legend_md += f"- **{level['Level']}**:\n"
                             aqi_legend_md += f"{level['Color_name']} \n ({level['Range']})\n\n"
                         st.markdown(aqi_legend_md)
                     else:
@@ -1016,7 +1016,7 @@ with tab2:
                         st.markdown(translations[lang_code]['aqi_levels_view_text'])
                         aqi_legend_md = ""
                         for level in aqi_levels_25:
-                            aqi_legend_md += f"**{level['Level']}**:\n"
+                            aqi_legend_md += f"- **{level['Level']}**:\n"
                             aqi_legend_md += f"{level['Color_name']} \n ({level['Range']})\n\n"
                         st.markdown(aqi_legend_md)
                     else:
