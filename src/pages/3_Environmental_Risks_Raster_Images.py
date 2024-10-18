@@ -564,7 +564,7 @@ with tab1:
 		help_img = Image.open(BytesIO(help_layermap.content))
 
 		# Define the new size (width, height) for stretching
-		new_size = (cosrica_mapwidth + 30, cosrica_mapheight)  # Replace with your desired dimensions
+		new_size = (cosrica_mapwidth + 50, cosrica_mapheight)  # Replace with your desired dimensions
 
 		# Stretch the image
 		help_img = help_img.resize(new_size)
