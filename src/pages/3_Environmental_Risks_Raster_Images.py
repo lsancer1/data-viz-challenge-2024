@@ -482,8 +482,8 @@ with tab1:
 	"geom": "GEOMETRIC_HEIGHT__GROUND_OR_WATER_SURFACE",
 	}
 	
-	cosrica_mapheight=600
-	cosrica_mapwidth=755
+	cosrica_mapheight=610
+	cosrica_mapwidth=757
 
 	# load client 
 	client = Client()
