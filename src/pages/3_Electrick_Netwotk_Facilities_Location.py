@@ -107,13 +107,31 @@ translations = {
         'tab1name': "Risk on overhead electricity network (poles)",
         'title1': "Environmental risks on the overhead electricity network",
         'tab1options': "Options",
+        'tab1header': "Options",
+        'network_text1': "Visualisation du réseau électrique aérien en Corse. \
+         Le réseau électrique est vulnérable aux risques climatiques tels que le vent. \
+         Egalement lorsque l'humidité est de plus de 30%, le vent de plus de 30km/h et la température de plus de 30°C \
+         le réseau électrique est en danger (règle des 30).  \
+         Vous pouvez explorer les prévisions de risques climatiques sur l'onglet `Environmental Risks Forecast` \n\n \
+         Les points BT indiquent la localisation des lignes électrique basse tension \n \
+         Les points HTA indiquent la localisation des lignes électrique haute tension \n \
+  		 Les points Pylones HTB indiquent la localisation des pylones de lignes électrique très haute tension",
 
 
     },
     'fr': {
-        'tab1name': "Risques sur le réseau electrique aérien",
-        'title1': "Risques environementaux sur le réseau electrique aérien",
+        'tab1name': "Réseau electrique aérien",
+        'title1': "Réseau electrique aérien localisation",
         'tab1options': "Options",
+        'tab1header': "Options",
+        'network_text1': "Visualisation du réseau électrique aérien en Corse. \
+         Le réseau électrique est vulnérable aux risques climatiques tels que le vent. \
+         Egalement lorsque l'humidité est de plus de 30%, le vent de plus de 30km/h et la température de plus de 30°C \
+         le réseau électrique est en danger (règle des 30).  \
+         Vous pouvez explorer les prévisions de risques climatiques sur l'onglet  `Environmental Risks Forecast` \n\n \
+         Les points BT indiquent la localisation des lignes électrique basse tension \n \
+         Les points HTA indiquent la localisation des lignes électrique haute tension \n \
+  		 Les points Pylones HTB indiquent la localisation des pylones de lignes électrique très haute tension",
 
     }
 }
@@ -354,7 +372,11 @@ with tab1:
 	st.session_state['active_tab'] = translations[lang_code]['tab1name']
 	st.title(translations[lang_code]['title1'])
 
-	st.sidebar.header(translations[lang_code]['tab1options'])
+	# Explanations about electricity network
+    st.write(translations[lang_code]['network_text1'])
+	
+
+	# st.sidebar.header(translations[lang_code]['tab1options'])
 
 	#insert the function we will need to read the API
 
