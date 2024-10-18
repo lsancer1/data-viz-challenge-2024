@@ -483,7 +483,7 @@ with tab1:
 	}
 	
 	cosrica_mapheight=570
-	cosrica_mapwidth=777
+	cosrica_mapwidth=757
 
 	# load client 
 	client = Client()
@@ -569,6 +569,35 @@ with tab1:
 	
 			
 		help_img = Image.open(BytesIO(help_layermap.content))
+
+		# Define the new size for the output image
+		output_width = help_img.width
+		output_height = help_img.height
+
+		# Define how much you want to stretch the center section
+		stretch_factor = 1.5  # Increase this value to stretch more
+
+		# Calculate crop dimensions (assuming you want to crop from the center)
+		crop_width = int(output_width / 2)
+		crop_height = int(output_height / stretch_factor)
+
+		# Get the center crop box
+		left = (output_width - crop_width) / 2
+		top = (output_height - crop_height) / 2
+		right = (output_width + crop_width) / 2
+		bottom = (output_height + crop_height) / 2
+
+		# Crop the center of the image
+		cropped_img = help_img.crop((left, top, right, bottom))
+
+		# Stretch the cropped image to the new height
+		stretched_center = cropped_img.resize((crop_width, output_height), Image.ANTIALIAS)
+
+		# Create a new blank image with the same dimensions as the original
+		new_image = Image.new("RGB", (output_width, output_height))
+
+		# Paste the stretched center back into the new image
+		help_img.paste(stretched_center, (int((output_width - crop_width) / 2), 0))
 
 		# # Define the new size (width, height) for stretching
 		# new_size = (cosrica_mapwidth + 50, cosrica_mapheight)  # Replace with your desired dimensions
