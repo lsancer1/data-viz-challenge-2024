@@ -461,7 +461,7 @@ with tab1:
 
 	miny_corsica="41.3" 
 	minx_corsica="7.9" 
-	maxy_corsica="42.9"
+	maxy_corsica="43.1"
 	maxx_corsica="10.2" 
 
 	corsica_bbox_arome = miny_corsica+","+minx_corsica+","+maxy_corsica+","+maxx_corsica 
@@ -482,7 +482,7 @@ with tab1:
 	"geom": "GEOMETRIC_HEIGHT__GROUND_OR_WATER_SURFACE",
 	}
 	
-	cosrica_mapheight=800
+	cosrica_mapheight=600
 	cosrica_mapwidth=600
 
 	# load client 
