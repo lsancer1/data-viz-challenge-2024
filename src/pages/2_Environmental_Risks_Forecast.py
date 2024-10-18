@@ -96,7 +96,6 @@ TOKEN_URL = st.secrets['MF_TOKEN_URL']
 # Language translations
 translations = {
     'en': {
-    
         'tab1name': "Wind Forecast",
         'title1': "Wind Forecast",
         'taboptions': "Options",
@@ -174,8 +173,7 @@ translations = {
         'tab1name': "Prévision vent",
         'title1': "Prévision de la force du vent",
         'taboptions': "Options",
-        'hour_selection': "Select number of hours from now to display forecast",
-        'hour_selection': "Select number of hours from now to display forecast",
+        'hour_selection': "Sélectionnez le nombre d heure séparant de la prévison",
         'im_caption1' : "Prévision de la force du vent",
 
         'wind_pres_text': "La période de prévision est indiquée juste au-dessus. Les risques sont expliqués sous l'image. \n\n" \
