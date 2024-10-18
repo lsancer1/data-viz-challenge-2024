@@ -570,16 +570,15 @@ with tab1:
 			
 		help_img = Image.open(BytesIO(help_layermap.content))
 
-		def adapt_stretch(img):
+		def find_stretch_dim(image):
 			"""
-			Resize the AROME forecast that it fits perfectly with the Corsica map provided
 			"""
-			output_width = img.width
-			output_height = img.height
+			# Define the new size for the output image
+			output_width = image.width
+			output_height = image.height
 
 			# Define how much you want to stretch the center section horizontally
 			stretch_factor = 1.25  # Increase this value to stretch more
-
 
 			# Calculate crop dimensions (assuming you want to crop from the center)
 			crop_width = int(output_width / stretch_factor)  # Crop width is reduced by the stretch factor
@@ -592,21 +591,46 @@ with tab1:
 			bottom = output_height
 
 			# Crop the center of the image
-			cropped_img = img.crop((left, top, right, bottom))
+			cropped_img = image.crop((left, top, right, bottom))
 
 			# Stretch the cropped image to the new width
 			stretched_center = cropped_img.resize((output_width, crop_height))
 
-			# Create a new blank image with the same dimensions as the original
-			img = Image.new("RGB", (output_width, output_height))
+			return stretched_center, output_width, output_height
 
-			return img, stretched_center
-			
+		# Define the new size for the output image
+		# output_width = help_img.width
+		# output_height = help_img.height
 
-		help_img = adapt_stretch(help_img)[0]
+		# # Define how much you want to stretch the center section horizontally
+		# stretch_factor = 1.25  # Increase this value to stretch more
 
-		help_img.paste(adapt_stretch(help_img)[1], (0, 0))
+		# # Calculate crop dimensions (assuming you want to crop from the center)
+		# crop_width = int(output_width / stretch_factor)  # Crop width is reduced by the stretch factor
+		# crop_height = output_height  # Keep the full height
 
+		# # Get the center crop box
+		# left = (output_width - crop_width) / 2
+		# top = 0
+		# right = (output_width + crop_width) / 2
+		# bottom = output_height
+
+		# # Crop the center of the image
+		# cropped_img = help_img.crop((left, top, right, bottom))
+
+		# # Stretch the cropped image to the new width
+		# stretched_center = cropped_img.resize((output_width, crop_height))
+
+		output = find_stretch_dim(help_img)
+		stretched_center = output[0]
+		output_width = output[1]
+		output_height = output[2]
+
+		# Create a new blank image with the same dimensions as the original
+		help_img = Image.new("RGB", (output_width, output_height))
+
+		# Paste the stretched center back into the new image
+		help_img.paste(stretched_center, (0, 0))
 
 
 		# # Define the new size (width, height) for stretching
