@@ -562,7 +562,7 @@ with tab1:
 		# size (1428, 1806)
 
 		# Define the new size (width, height) for stretching
-		new_size = (1428 - 150, 1806)  # Replace with your desired dimensions
+		new_size = (400, 900)  # Replace with your desired dimensions
 
 		# Stretch the image
 		corsica_map = corsica_map.resize(new_size)
@@ -588,7 +588,7 @@ with tab1:
 		combined_img = Image.alpha_composite(corsica_map.convert("RGBA"), help_img)
 
 		# Display the final combined image
-		st.image(combined_img, caption="Overlay of Corsica Map and Elevation Map", width=800)
+		st.image(combined_img, caption="Overlay of Corsica Map and Elevation Map", width=600)
 
 
 		st.image(corsica_map, caption="corsica_map", use_column_width=True)
