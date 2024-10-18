@@ -483,7 +483,7 @@ with tab1:
 	}
 	
 	cosrica_mapheight=600
-	cosrica_mapwidth=600
+	cosrica_mapwidth=700
 
 	# load client 
 	client = Client()
@@ -558,7 +558,7 @@ with tab1:
 		        st.error(f"Request failed: {e}")
 		        return None
 
-		corsica_map = load_image(corsicamap_st_url, width=600)
+		corsica_map = load_image(corsicamap_st_url)
 	
 			
 		help_img = Image.open(BytesIO(help_layermap.content))
