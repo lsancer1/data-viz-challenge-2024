@@ -143,14 +143,16 @@ translations = {
     }
 }
 
+
 # Language selection
 language = st.sidebar.selectbox('Select language:', ['Français', 'English'])
 if language == 'Français':
-    lang_code = 'fr'
-    tab1,  = st.tabs(["Risques sur le réseau electrique aérien"] )
+    lang_code = 'fr'   
 else:
     lang_code = 'en'
-    tab1,  = st.tabs(["Risk on overhead electricity network (poles)"])
+
+# Tab names
+tab1, tab2 = st.tabs([translations[lang_code]['tab1name'], translations[lang_code]['tab2name']])
 
 
 
