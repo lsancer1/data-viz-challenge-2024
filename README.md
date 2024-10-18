@@ -17,7 +17,7 @@ Ce tableau de bord permet de visualiser à la fois des données météorologique
 
 Une vidéo de démonstration est disponible ci dessous :
 
-[![Lien YouTube](https://img.youtube.com/vi/ly5vmLT1q7k/0.jpg)](A FAIRE)
+[![Lien YouTube](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](A FAIRE)
 
 ## Utilisation
 
