@@ -107,18 +107,33 @@ translations = {
         'tab1name': "Temperature Forecast",
         'title1': "Temperature Forecast",
         'tab1options': "Options",
+        'temp_pres_text': "",
+        'temp_risks_header': "",
+        'temp_risks_text': "",
 
         'tab2name': "Wind Forecast",
         'title2': "Wind Forecast",
+        'wind_pres_text': "",
+        'wind_risks_header': "",
+        'wind_risks_text': "",
 
         'tab3name': "Snow Forecast",
         'title3': "Snow precipitation Forecast",
+        'snow_pres_text': "",
+        'snow_risks_header': "",
+        'snow_risks_text': "",
 
         'tab4name': "Rain Forecast",
         'title4': "Rain precipitation Forecast",
+        'rain_pres_text': "",
+        'rain_risks_header': "",
+        'rain_risks_text': "",
 
         'tab5name': "Humidity Forecast",
         'title5': "Humidity level Forecast",
+        'humidity_pres_text': "",
+        'humidity_risks_header': "",
+        'humidity_risks_text': "",
 
 
     },
@@ -126,18 +141,33 @@ translations = {
         'tab1name': "Prévision température",
         'title1': "Prévision de température",
         'tab1options': "Options",
+        'temp_pres_text': "",
+        'temp_risks_header': "",
+        'temp_risks_text': "",
 
         'tab2name': "Prévision vent",
         'title2': "Prévision de la force du vent",
+        'wind_pres_text': "",
+        'wind_risks_header': "",
+        'wind_risks_text': "",
 
         'tab3name': "Prévision neige",
         'title3': "Prévision précipitation de neige",
+        'snow_pres_text': "",
+        'snow_risks_header': "",
+        'snow_risks_text': "",
 
         'tab4name': "Prévision pluie",
         'title4': "Prévision précipitation de pluie",
+        'rain_pres_text': "",
+        'rain_risks_header': "",
+        'rain_risks_text': "",
 
         'tab5name': "Prévision d'humidité",
         'title5': "Prévision du taux d'humidité",
+        'humidity_pres_text': "",
+        'humidity_risks_header': "",
+        'humidity_risks_text': "",
     }
 }
 
@@ -544,8 +574,7 @@ with tab1:
 	###### Layout 
 
 	### First header and text
-	st.header("Exploration")
-	st.markdown("Text to put here")
+	st.markdown(translations[lang_code]['temp_pres_text'])
 
 	### Second plot the combioned image
 	corsicamap_st_url = "https://i.imgur.com/MWch7ZP.png"
@@ -571,7 +600,7 @@ with tab1:
 
 	# Apply transparency (set alpha) to the help image
 	temp_img = temp_img.convert("RGBA")  # Ensure it's in RGBA mode for transparency
-	alpha = 0.45  # Adjust transparency level (0 is fully transparent, 1 is fully opaque)
+	alpha = 0.65  # Adjust transparency level (0 is fully transparent, 1 is fully opaque)
 	temp_img.putalpha(int(255 * alpha))
 
 	# Merge the two images
@@ -579,6 +608,10 @@ with tab1:
 
 	# Display the final combined image
 	st.image(combined_img, caption="Put caption here")
+
+	### Second header and text
+	st.header(translations[lang_code]['temp_risks_header'])
+	st.markdown(translations[lang_code]['temp_risks_text'])
 
 
 
@@ -599,8 +632,7 @@ with tab2:
 	###### Layout 
 
 	### First header and text
-	st.header("Exploration")
-	st.markdown("Text to put here")
+	st.markdown(translations[lang_code]['temp_pres_text'])
 
 	### Second plot the combioned image
 	corsicamap_st_url = "https://i.imgur.com/MWch7ZP.png"
@@ -635,6 +667,9 @@ with tab2:
 	# Display the final combined image
 	st.image(combined_img, caption="Put caption here")
 
+	### Second header and text
+	st.header(translations[lang_code]['temp_risks_header'])
+	st.markdown(translations[lang_code]['temp_risks_text'])
 
 
 
@@ -655,8 +690,7 @@ with tab3:
 	###### Layout 
 
 	### First header and text
-	st.header("Exploration")
-	st.markdown("Text to put here")
+	st.markdown(translations[lang_code]['temp_pres_text'])
 
 	### Second plot the combioned image
 	corsicamap_st_url = "https://i.imgur.com/MWch7ZP.png"
@@ -691,6 +725,10 @@ with tab3:
 	# Display the final combined image
 	st.image(combined_img, caption="Put caption here")
 
+	### Second header and text
+	st.header(translations[lang_code]['temp_risks_header'])
+	st.markdown(translations[lang_code]['temp_risks_text'])
+
 
 
 #############################################################
@@ -710,8 +748,7 @@ with tab4:
 	###### Layout 
 
 	### First header and text
-	st.header("Exploration")
-	st.markdown("Text to put here")
+	st.markdown(translations[lang_code]['temp_pres_text'])
 
 	### Second plot the combioned image
 	corsicamap_st_url = "https://i.imgur.com/MWch7ZP.png"
@@ -746,8 +783,9 @@ with tab4:
 	# Display the final combined image
 	st.image(combined_img, caption="Put caption here")
 
-
-
+	### Second header and text
+	st.header(translations[lang_code]['temp_risks_header'])
+	st.markdown(translations[lang_code]['temp_risks_text'])
 
 
 
@@ -768,8 +806,7 @@ with tab5:
 	###### Layout 
 
 	### First header and text
-	st.header("Exploration")
-	st.markdown("Text to put here")
+	st.markdown(translations[lang_code]['temp_pres_text'])
 
 	### Second plot the combioned image
 	corsicamap_st_url = "https://i.imgur.com/MWch7ZP.png"
@@ -803,6 +840,11 @@ with tab5:
 
 	# Display the final combined image
 	st.image(combined_img, caption="Put caption here")
+
+	### Second header and text
+	st.header(translations[lang_code]['temp_risks_header'])
+	st.markdown(translations[lang_code]['temp_risks_text'])
+
          
 
 

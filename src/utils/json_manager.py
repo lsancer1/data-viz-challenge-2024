@@ -1,10 +1,6 @@
 
 
  # utils 
-
-
-
-
 def extract_rescoordinates(geojson_data):
     """
     *** Autodocstring ***

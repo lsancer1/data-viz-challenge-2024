@@ -15,7 +15,7 @@ translations = {
         'title': "# Bien le bonjour! 👋",
         'sidebar_message': "Veuillez choisir un onglet",
         'description': """
-            Ce tableau de bord permet de visualiser quelques aspects liés aux risques
+            Ce tableau de bord permet de visualiser quelques aspects liés aux risques météorologiques
             en Corse. On a identifié deux risques majeurs :
             - Pollution de l'air (voir Air Quality)
             - Prévions météorologiques et risques (voir Environmental Risks Forecast)
@@ -28,7 +28,7 @@ translations = {
         'title': "# Welcome! 👋",
         'sidebar_message': "Please choose a dataset tab",
         'description': """
-            This dashboard allows you to explore several aspects related to risks
+            This dashboard allows you to explore several aspects related to environmental risks
             in Corsica. We have identified two major risks:
             - Air Quality
             - Environmental Risks Forecast 
