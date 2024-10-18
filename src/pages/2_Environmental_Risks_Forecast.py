@@ -108,12 +108,16 @@ translations = {
         'title1': "Temperature Forecast",
         'tab1options': "Options",
 
+        'tab2name': "Wind Forecast",
+
 
     },
     'fr': {
         'tab1name': "Prévision de température",
         'title1': "Prévision de température",
         'tab1options': "Options",
+
+        'tab2name': "Wind Forecast",
 
     }
 }
@@ -127,7 +131,7 @@ else:
 
 # Tab names
 tab1, tab2 = st.tabs([translations[lang_code]['tab1name'], 
-				translations[lang_code]['tab2name']])
+				    translations[lang_code]['tab2name']])
 
 
 
@@ -537,10 +541,10 @@ with tab1:
 	## Generate and Display the Map
 	#############################################################
 
-	fig = generate_map_tab1(bt_aerien_coord, hta_aerien_coord, htb_aerien_coord, pylones_coord)
+	# fig = generate_map_tab1(bt_aerien_coord, hta_aerien_coord, htb_aerien_coord, pylones_coord)
 
-	# Step 1: Save Plotly figure as an image
-	fig.write_image("plotly_fig.png", format='png')  # Save plotly figure to disk
+	# # Step 1: Save Plotly figure as an image
+	# fig.write_image("plotly_fig.png", format='png')  # Save plotly figure to disk
 
 
 
@@ -599,7 +603,9 @@ with tab1:
 
 
 
-
+with tab2:
+	
+	st.header("Exploration")
 
 		# st.image(corsica_map, caption="corsica_map", use_column_width=True)
 		# st.image(help_img, caption="Elevation Map", use_column_width=True)	
