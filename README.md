@@ -17,7 +17,7 @@ Ce tableau de bord permet de visualiser à la fois des données météorologique
 
 Une vidéo de démonstration est disponible ci dessous :
 
-![Lien Vidéo](https://www.loom.com/share/2eafa4e67d334bccabcd0555c4f8ac01?sid=e77603e3-f17b-42c1-85dd-67340f80504f)
+[Lien Vidéo](https://www.loom.com/share/2eafa4e67d334bccabcd0555c4f8ac01?sid=e77603e3-f17b-42c1-85dd-67340f80504f)
 
 ## Utilisation
 
@@ -31,17 +31,17 @@ Il est aussi possible de cloner le dépôt et d'utiliser un serveur local.
 Une fois le dépôt cloné sur la machine locale il faudra modifier les fichiers (Home.py et les fichiers dans le dossier Pages) en remplaçant la variable _currently_ par _local_ au lieu de _cloud_.
 
 ### Fonctionnement
-![Home](https://data-viz-challenge-2024.streamlit.app/)
+[Home](https://data-viz-challenge-2024.streamlit.app/)
 
 Page d'accueil.
 L'utilisateur chosit sur le menu à gauche la visualisation à observer : "Air Quality", "Environmental Risk Forecast" ou "Electric Network".
 
-![Air Quality](https://data-viz-challenge-2024.streamlit.app/Air_Quality)
+[Air Quality](https://data-viz-challenge-2024.streamlit.app/Air_Quality)
 
 L'utilisateur peut observer les données 2023 ou alors la prévision de qualité d'air dans la Corse.
 Le mode _rax data_ affiche les données brutes et le mode _AQI data_ (pour Air Quality Index) affiche des données avec une estimation du risque pour la population.
 
-![Environmental Risk Forecast](https://data-viz-challenge-2024.streamlit.app/Environmental_Risks_Forecast)
+[Environmental Risk Forecast](https://data-viz-challenge-2024.streamlit.app/Environmental_Risks_Forecast)
 
 L'utilisateur peut observer la prévision météorologique pour les prochaines heures en Corse et particulièrement : le vent, la pluie, l'humidité, la tempétature et la neige.
 Une explication des risques potentiels est aussi affichée.
