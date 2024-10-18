@@ -588,7 +588,7 @@ with tab1:
 		combined_img = Image.alpha_composite(corsica_map.convert("RGBA"), help_img)
 
 		# Display the final combined image
-		st.image(combined_img, caption="Overlay of Corsica Map and Elevation Map", width=800)
+		st.image(combined_img, caption="Overlay of Corsica Map and Elevation Map")
 
 
 		st.image(corsica_map, caption="corsica_map", use_column_width=True)
