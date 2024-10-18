@@ -107,6 +107,7 @@ translations = {
         'tab1name': "Temperature Forecast",
         'title1': "Temperature Forecast",
         'taboptions': "Options",
+        'hour_selection': "Select number of hours from now to display forecast",
 
         'temp_pres_text': "[Explain for when is the forecast]. \n\n "\
          "Explain that this forecast could be dangerous and risks will be listed below \n\n" \
@@ -161,7 +162,8 @@ translations = {
         'tab1name': "Prévision température",
         'title1': "Prévision de température",
         'taboptions': "Options",
-
+        'hour_selection': "Sélectionnez le nombre d'heures séparant de la prévision",
+        
         'temp_pres_text': "[Explain for when is the forecast]. \n\n "\
          "Explain that this forecast could be dangerous and risks will be listed below \n\n" \
          "Explain how to read the map. \n\n" \
@@ -607,7 +609,7 @@ humi_layermap = client.get_wms_map(
 st.sidebar.header(translations[lang_code]['taboptions'])
 
 deltahours_options = [hour for hour in range(6,48,6)]
-selected_hour = st.sidebar.selectbox(translations[lang_code]['hour_selection'], hours_options, index=0)
+selected_hour = st.sidebar.selectbox(translations[lang_code]['hour_selection'], deltahours_options, index=0)
 
 
 # def get_available_hours(selected_data):
