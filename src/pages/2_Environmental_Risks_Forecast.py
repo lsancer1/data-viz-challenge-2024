@@ -106,7 +106,7 @@ translations = {
     'en': {
         'tab1name': "Temperature Forecast",
         'title1': "Temperature Forecast",
-        'tab1options': "Options",
+        'taboptions': "Options",
 
         'temp_pres_text': "[Explain for when is the forecast]. \n\n "\
          "Explain that this forecast could be dangerous and risks will be listed below \n\n" \
@@ -160,7 +160,7 @@ translations = {
     'fr': {
         'tab1name': "Prévision température",
         'title1': "Prévision de température",
-        'tab1options': "Options",
+        'taboptions': "Options",
 
         'temp_pres_text': "[Explain for when is the forecast]. \n\n "\
          "Explain that this forecast could be dangerous and risks will be listed below \n\n" \
@@ -168,7 +168,7 @@ translations = {
          "Explain that if it is empty it means... (some cannot be empty)",
         'temp_risks_header': "Risks linked to high temperature",
         'temp_risks_text': "List risks linked to high temperature",
-        
+
         'tab2name': "Prévision vent",
         'title2': "Prévision de la force du vent",
         'wind_pres_text':  "[Explain for when is the forecast]. \n\n "\
@@ -595,7 +595,33 @@ humi_layermap = client.get_wms_map(
 
 # humi_img = Image.open(BytesIO(humi_layermap.content))
 # st.image(humi_img, caption="Humidity Forecast Map", use_column_width=True)
+  # Function to get available hours
 
+
+
+#############################################################
+## One Common Menu 
+#############################################################
+
+
+st.sidebar.header(translations[lang_code]['taboptions'])
+
+deltahours_options = [hour for hour in range(6,48,6)]
+selected_hour = st.sidebar.selectbox(translations[lang_code]['hour_selection'], hours_options, index=0)
+
+
+# def get_available_hours(selected_data):
+#     times = selected_data.time.values
+#     times_in_hours = [int(pd.to_timedelta(elt).total_seconds()/(60*60)) for elt in times]
+#     hours_options = np.unique(times_in_hours)
+#     hours_options.sort()
+#     return times_in_hours, hours_options
+
+# available_hours, hours_options = get_available_hours(selected_data)
+# selected_hour = st.sidebar.selectbox(translations[lang_code]['hour_selection'], hours_options, index=0)
+
+
+	
 
 #############################################################
 ## Tab1 
@@ -608,8 +634,6 @@ with tab1:
 
 	st.session_state['active_tab'] = translations[lang_code]['tab1name']
 	st.title(translations[lang_code]['title1'])
-
-	st.sidebar.header(translations[lang_code]['tab1options'])
 
 	###### Layout 
 
