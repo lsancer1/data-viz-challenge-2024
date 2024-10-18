@@ -513,6 +513,8 @@ selected_hour = st.sidebar.selectbox(translations[lang_code]['hour_selection'], 
 # Get current time in UTC
 current_time = datetime.utcnow
 
+st.write(datetime)
+
 # Set current time to the nearest past hour (removing minutes and seconds)
 current_time = current_time.replace(minute=0, second=0, microsecond=0)
 
