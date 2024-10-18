@@ -7,8 +7,14 @@
 
 ### LAST guidelines from when I stop and when Alberto take over!
 
-- fnezkfnz*
-- fze
+- Correction of spelling
+- Had text for the forecast tab
+- Duplicate teh Repo, put one in private - remove all commits to the other one
+- Delete last page (DEV ONLY)
+- Create a README
+- Create a Video 
+- Send email -> See DataViz Contact and Instructions 
+- 19H PLEASEEEE
 
 ## October 16th
 

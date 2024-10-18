@@ -34,14 +34,6 @@ from meteofrance_api import MeteoFranceClient
 from meteofrance_api.helpers import readeable_phenomenoms_dict
 from meteofrance_api import client
 
-from hacf_model import CurrentPhenomenons
-from hacf_model import Forecast
-from hacf_model import Full
-from hacf_model import Observation
-from hacf_model import PictureOfTheDay
-from hacf_model import Place
-from hacf_model import Rain
-from hacf_model import WarningDictionary
 import constants
 import csv 
 import requests

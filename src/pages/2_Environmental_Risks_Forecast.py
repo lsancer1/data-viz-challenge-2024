@@ -34,14 +34,6 @@ from meteofrance_api import MeteoFranceClient
 from meteofrance_api.helpers import readeable_phenomenoms_dict
 from meteofrance_api import client
 
-from hacf_model import CurrentPhenomenons
-from hacf_model import Forecast
-from hacf_model import Full
-from hacf_model import Observation
-from hacf_model import PictureOfTheDay
-from hacf_model import Place
-from hacf_model import Rain
-from hacf_model import WarningDictionary
 import constants
 import csv 
 import requests
@@ -104,8 +96,12 @@ TOKEN_URL = st.secrets['MF_TOKEN_URL']
 # Language translations
 translations = {
     'en': {
+    
         'tab1name': "Wind Forecast",
         'title1': "Wind Forecast",
+        'taboptions': "Options",
+        'hour_selection': "Select number of hours from now to display forecast",
+        'im_caption1' : "",
 
         'wind_pres_text': "[Explain for when is the forecast]. \n\n "\
          "Explain that this forecast could be dangerous and risks will be listed below \n\n" \
@@ -114,8 +110,11 @@ translations = {
         'wind_risks_header': "Risks linked to high wind force",
         'wind_risks_text': "Do the list",
 
+
+
         'tab2name': "Rain Forecast",
         'title2': "Rain precipitation Forecast",
+        'im_caption2' : "",
 
         'rain_pres_text': "[Explain for when is the forecast]. \n\n "\
          "Explain that this forecast could be dangerous and risks will be listed below \n\n" \
@@ -124,8 +123,11 @@ translations = {
         'rain_risks_header': "Risks linked to high volume of rain precipitation",
         'rain_risks_text': "Do the list",
 
+
+
         'tab3name': "Humidity Forecast",
         'title3': "Humidity level Forecast",
+        'im_caption3' : "",
 
         'humidity_pres_text': "[Explain for when is the forecast]. \n\n "\
          "Explain that this forecast could be dangerous and risks will be listed below \n\n" \
@@ -134,10 +136,11 @@ translations = {
         'humidity_risks_header': "Risks linked to high humidity rate",
         'humidity_risks_text': "Do the list",
 
+
+
         'tab4name': "Temperature Forecast",
         'title4': "Temperature Forecast",
-        'taboptions': "Options",
-        'hour_selection': "Select number of hours from now to display forecast",
+        'im_caption4' : "",
 
         'temp_pres_text': "[Explain for when is the forecast]. \n\n "\
          "Explain that this forecast could be dangerous and risks will be listed below \n\n" \
@@ -146,8 +149,11 @@ translations = {
         'temp_risks_header': "Risks linked to high temperature",
         'temp_risks_text': "List risks linked to high temperature",
 
+
+
         'tab5name': "Snow Forecast",
         'title5': "Snow precipitation Forecast",
+        'im_caption5' : "",
 
         'snow_pres_text': "[Explain for when is the forecast]. \n\n "\
          "Explain that this forecast could be dangerous and risks will be listed below \n\n" \
@@ -159,8 +165,14 @@ translations = {
     },
 
     'fr': {
+
         'tab1name': "Prévision vent",
         'title1': "Prévision de la force du vent",
+        'taboptions': "Options",
+        'hour_selection': "Select number of hours from now to display forecast",
+        'hour_selection': "Select number of hours from now to display forecast",
+        'im_caption1' : "",
+
         'wind_pres_text':  "[Explain for when is the forecast]. \n\n "\
          "Explain that this forecast could be dangerous and risks will be listed below \n\n" \
          "Explain how to read the map. \n\n" \
@@ -168,8 +180,11 @@ translations = {
         'wind_risks_header': "Risks linked to high wind force",
         'wind_risks_text': "Do the list",
 
+
+
         'tab2name': "Prévision pluie",
         'title2': "Prévision des précipitations de pluie",
+        'im_caption2' : "",
 
         'rain_pres_text': "[Explain for when is the forecast]. \n\n "\
          "Explain that this forecast could be dangerous and risks will be listed below \n\n" \
@@ -178,8 +193,11 @@ translations = {
         'rain_risks_header': "Risks linked to high volume of rain precipitation",
         'rain_risks_text': "Do the list",
 
+
+
         'tab3name': "Prévision d'humidité",
         'title3': "Prévision du taux d'humidité",
+        'im_caption3' : "",
 
         'humidity_pres_text': "[Explain for when is the forecast]. \n\n "\
          "Explain that this forecast could be dangerous and risks will be listed below \n\n" \
@@ -188,10 +206,11 @@ translations = {
         'humidity_risks_header': "Risks linked to high humidity rate",
         'humidity_risks_text': "Do the list",
 
+
+
         'tab4name': "Prévision température",
         'title4': "Prévision de température",
-        'taboptions': "Options",
-        'hour_selection': "Sélectionnez le nombre d'heures séparant de la prévision",
+        'im_caption4' : "",       
 
         'temp_pres_text': "[Explain for when is the forecast]. \n\n "\
          "Explain that this forecast could be dangerous and risks will be listed below \n\n" \
@@ -201,8 +220,10 @@ translations = {
         'temp_risks_text': "List risks linked to high temperature",
 
 
+
         'tab5name': "Prévision neige",
         'title5': "Prévision des précipitations de neige",
+        'im_caption5' : "",       
 
         'snow_pres_text':  "[Explain for when is the forecast]. \n\n "\
          "Explain that this forecast could be dangerous and risks will be listed below \n\n" \
