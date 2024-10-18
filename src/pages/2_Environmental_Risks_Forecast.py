@@ -512,8 +512,7 @@ selected_hour = st.sidebar.selectbox(translations[lang_code]['hour_selection'], 
 
 # Get current time in UTC
 current_time = datetime.utcnow()
-
-st.write(datetime.utcnow())
+# st.write(datetime.utcnow())
 
 # Set current time to the nearest past hour (removing minutes and seconds)
 current_time = current_time.replace(minute=0, second=0, microsecond=0)
@@ -525,18 +524,6 @@ formatted_time = current_time.strftime('%Y-%m-%dT%H:%M:%SZ')
 future_time = current_time + timedelta(hours=selected_hour)
 formatted_future_time = future_time.strftime('%Y-%m-%dT%H:%M:%SZ')
 
-st.write('Time chosen for prediction:',formatted_future_time)
-
-
-# def get_available_hours(selected_data):
-#     times = selected_data.time.values
-#     times_in_hours = [int(pd.to_timedelta(elt).total_seconds()/(60*60)) for elt in times]
-#     hours_options = np.unique(times_in_hours)
-#     hours_options.sort()
-#     return times_in_hours, hours_options
-
-# available_hours, hours_options = get_available_hours(selected_data)
-# selected_hour = st.sidebar.selectbox(translations[lang_code]['hour_selection'], hours_options, index=0)
 
 
 
@@ -658,6 +645,8 @@ with tab1:
 
 	st.session_state['active_tab'] = translations[lang_code]['tab1name']
 	st.title(translations[lang_code]['title1'])
+
+	st.write('Time chosen for prediction:', `formatted_future_time`)
 
 	###### Layout 
 
