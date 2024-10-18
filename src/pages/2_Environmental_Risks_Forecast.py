@@ -512,7 +512,10 @@ deltahours_options = [hour for hour in range(6,48,6)]
 selected_hour = st.sidebar.selectbox(translations[lang_code]['hour_selection'], deltahours_options, index=0)
 
 # Get current time in UTC
-current_time = datetime.utcnow()
+current_time = datetime.utcnow
+
+# Set current time to the nearest past hour (removing minutes and seconds)
+current_time = current_time.replace(minute=0, second=0, microsecond=0)
 
 # Format the time in 'YYYY-MM-DDTHH:mm:ssZ' format
 formatted_time = current_time.strftime('%Y-%m-%dT%H:%M:%SZ')
@@ -521,9 +524,8 @@ formatted_time = current_time.strftime('%Y-%m-%dT%H:%M:%SZ')
 future_time = current_time + timedelta(hours=selected_hour)
 formatted_future_time = future_time.strftime('%Y-%m-%dT%H:%M:%SZ')
 
+st.write('Time chosen for prediction:',formatted_future_time)
 
-# test with a specific time first  regardless of the time selection
-formatted_future_time = "2024-10-18T06:00:00Z"
 
 # def get_available_hours(selected_data):
 #     times = selected_data.time.values
