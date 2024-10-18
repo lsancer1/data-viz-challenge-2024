@@ -1,13 +1,14 @@
 # Logbook
 
-
-
 ## October 18th
 
 - https://stackoverflow.com/questions/22786068/how-to-avoid-http-error-429-too-many-requests-python
 - Fill placeholder correctly now
 
+### LAST guidelines from when I stop and when Alberto take over!
 
+- fnezkfnz*
+- fze
 
 ## October 16th
 
@@ -241,5 +242,5 @@ Pretty basic. The GeoJson files don't have extra information.
 - **09th, 18h30**
 - **11th very short**
 - **16th, 15h30**
-- 17th 18h
-- 18h MONRING
+- **17th 18h**
+- **18h MONRING**
