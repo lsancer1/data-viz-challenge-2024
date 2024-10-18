@@ -7,75 +7,59 @@
 
 [![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://data-viz-challenge-2024.streamlit.app/)
 
+# Projet 
 
-# DataViz Contact and Instructions
+**Nom de l'équipe :** "Les risques corsés" 
 
-**Phase 2** : Concours
+Ce tableau de bord permet de visualiser à la fois des données météorologiques et des données d'un réseau électrique. L'utilisateur peut ainsi naviguer sur des cartes et être en mésure d'analyser les risques potentiels sur la Corse.
 
-• Date : du 2 septembre au 18 octobre midi
-• Lieu : virtuel
-• Objet : les équipes devront produire leur projet et l’envoyer aux adresses e-mail suivantes
-avant l’heure et la date limite de remise des projets (pièce jointe ou lien de téléchargement) :
-chaire-territoires@univ-corse.fr et bisgambiglia_pa@univ-corse.fr, accompagné d’un
-descriptif de 2-6 lignes du livrable. Les candidats devront indiquer s’ils répondent, ou non, à
-l’un des défis suggérés. Pour les rendus dynamiques, type API, etc. un « readme » est également
-demandé ainsi qu’une vidéo de démonstration.
+## Démonstration
 
-[CHALLENGE](https://chaire-territoires.universita.corsica/article.php?id_site=73&id_art=7022&lang=fr)
+Une vidéo de démonstration est disponible ci dessous :
 
+[![Lien YouTube](https://img.youtube.com/vi/ly5vmLT1q7k/0.jpg)](A FAIRE)
 
-# General
+## Utilisation
 
-[Ideas Document](https://docs.google.com/document/d/1goIOnfw7DgGOCrfaB56elmai3LYjU27jQNenf__UQvA/edit)
+### En ligne
 
-## Data
+L'application est disponible sur le site de [StreamLit](https://data-viz-challenge-2024.streamlit.app/).
 
-Supplementary info on what is inside /data/  folder:
+### Hors ligne
 
-### EDF - Mix Energetique 
+Il est aussi possible de cloner le dépôt et d'utiliser un serveur local.
+Une fois le dépôt cloné sur la machine locale il faudra modifier les fichiers (Home.py et les fichiers dans le dossier Pages) en remplaçant la variable _currently_ par _local_ au lieu de _cloud_.
 
-- [eCorsicaWatt](https://opendata-corse.edf.fr/explore/dataset/ecorsicawatt/information/) 
-- [Production d’électricité par filière et coûts de production au pas horaire ](https://opendata-corse.edf.fr/explore/dataset/production-d-electricite-par-filiere-et-couts-de-production-au-pas-horaire/)
-- [Production annuelle d'électricité par filière](https://opendata-corse.edf.fr/explore/dataset/production-annuelle-delectricite-par-filiere/)
-- [Consommation annuelle par commune](https://opendata-corse.edf.fr/explore/dataset/consommation-annuelle-par-commune0/)
-- [Emissions annuelles de CO2](https://opendata-corse.edf.fr/explore/dataset/emissions-annuelles-de-c02/)
-- [Capacités d'accueil du réseau](https://opendata-corse.edf.fr/explore/dataset/capacites-reseau/)
-- Actions d'Efficacité Énergétique -> no url and even the one in F12 doesn't make sense, if we want it we must look for it 
+### Fonctionnement
+![Home]
 
+Page d'accueil.
+L'utilisateur chosit sur le menu à gauche la visualisation à observer : "Air Quality", "Environmental Risk Forecast" ou "Electric Network".
 
-### EDF - Reseaux
+![Air Quality]
 
-- [Lignes basse tension (BT souterrain)](https://opendata-corse.edf.fr/explore/dataset/lignes-basse-tension-bt-souterrain/)
-- [Lignes basse tension (BT aérien)](https://opendata-corse.edf.fr/explore/dataset/lignes-basse-tension-bt-aerien/) 
-- [Lignes haute tension (HTA souterrain)](https://opendata-corse.edf.fr/explore/dataset/lignes-haute-tension-hta-souterrain/)
-- [Lignes haute tension (HTA aérien)](https://opendata-corse.edf.fr/explore/dataset/lignes-haute-tension-hta-aerien/)
-- [Lignes haute tension (HTB souterrain)](https://opendata-corse.edf.fr/explore/dataset/lignes-haute-tension-htb-souterrain/)
-- [Lignes haute tension (HTB aérien)](https://opendata-corse.edf.fr/explore/dataset/lignes-haute-tension-htb-aerien/)
-- [Pylônes HTB](https://opendata-corse.edf.fr/explore/dataset/pylones-htb/) 
-- [Postes sources](https://opendata-corse.edf.fr/explore/dataset/postes-sources/)
-- [Lignes et postes électriques](https://opendata-corse.edf.fr/explore/dataset/lignes-et-postes-electriques/)
+L'utilisateur peut observer les données 2023 ou alors la prévision de qualité d'air dans la Corse.
+Le mode _rax data_ affiche les données brutes et le mode _AQI data_ (pour Air Quality Index) affiche des données avec une estimation du risque pour la population.
 
-### METEO FRANCE 
+![Environmental Risk Forecast]
+L'utilisateur peut observer la prévision météorologique pour les prochaines heures en Corse et particulièrement : le vent, la pluie, l'humidité, la tempétature et la neige.
+Une explication des risques potentiels est aussi affichée.
 
-- [API](https://portail-api.meteofrance.fr/web/en/) (need to create a free account)
--  [Niveaux de Vigilance](http://storage.gra.cloud.ovh.net/v1/AUTH_555bdc85997f4552914346d4550c421e/gra-vigi6-archive_public/) -> But Corsica is just split into 2 regions and then maybe not enough precise predictions
-- Some python ressources:
-  - [Pyhton Client Package](https://github.com/hacf-fr/meteofrance-api?tab=readme-ov-file)
-  - [meteoviz-streamlit-app ](https://github.com/anquetos/meteoviz-streamlit-app)
-  - [smOl query example](https://github.com/bflo/MeteoFranceAPIQuery/blob/main/MeteoFranceAPIQuery.ipynb)
-- [Different datasets main page](https://donneespubliques.meteofrance.fr/?fond=rubrique&id_rubrique=30)
+## Données utilisées
 
-### Copernicus
+- Données météo Arome
+- Données _dust_ Copernicus
+- Lignes hautes tension et postes sources d'[EDF Corse](https://opendata-corse.edf.fr)
 
-- [API calls](https://ads.atmosphere.copernicus.eu/cdsapp#!/dataset/cams-europe-air-quality-forecasts?tab=form
-)
+## Technologies utilisées
 
-# Goals
+- **Visualisation et application** : [Streamlit](https://streamlit.io/)
 
-It is based on what we discussed today 11th of September, we can update / change it if you want.
+- **Python**
 
-- **(1)** Create an offline (no update with data stream) dashboard representing Corsica with its electricity network (from json data) and ONE natural hazard. Show whenever the electricity network is endangered. User could choose to display/hide the different types of networks nodes (Basse Tension / Haute Tension / Aerien / Souterrain - that shouldn't be a risk if we keep wind as natural hazards) and the natural hazards through buttons and so on.
-- **(2)** Same, offline, but with Electricity Network + SEVERAL Natural Hazards
-- **(3 - optional)** Retrieve data in real time using either Meteo France API or Copernicus API.  
-- In parallel we can explore other possibilities of projects and do data exploration. 
+## Membres de l'équipe
+
+- **Lucas Sancéré** : Ingénieur et doctorant en bioinformatique
+
+- **Alberto Alonso Pinar** : Ingénieur et doctorant en physique
 
