@@ -483,7 +483,7 @@ with tab1:
 	}
 	
 	cosrica_mapheight=600
-	cosrica_mapwidth=700
+	cosrica_mapwidth=720
 
 	# load client 
 	client = Client()
