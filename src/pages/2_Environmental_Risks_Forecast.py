@@ -160,6 +160,7 @@ translations = {
         'tab5name': "Snow Forecast",
         'title5': "Snow precipitation Forecast",
         'im_caption5' : "",
+        'snow_risks_header': "Risks linked to snow",
         'snow_pres_text': "The forecast time window is shown just above. Risks are explained below the picture. \n\n "\
          "Snow forecast is of great importance to determine potential risks for mountainous areas. \n\n" \
         "The forecast presents contours of snow : the snow is constant along a line and the value of the snow is shown over the line. \n\n",
