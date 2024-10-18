@@ -598,28 +598,6 @@ with tab1:
 
 			return stretched_center, output_width, output_height
 
-		# Define the new size for the output image
-		# output_width = help_img.width
-		# output_height = help_img.height
-
-		# # Define how much you want to stretch the center section horizontally
-		# stretch_factor = 1.25  # Increase this value to stretch more
-
-		# # Calculate crop dimensions (assuming you want to crop from the center)
-		# crop_width = int(output_width / stretch_factor)  # Crop width is reduced by the stretch factor
-		# crop_height = output_height  # Keep the full height
-
-		# # Get the center crop box
-		# left = (output_width - crop_width) / 2
-		# top = 0
-		# right = (output_width + crop_width) / 2
-		# bottom = output_height
-
-		# # Crop the center of the image
-		# cropped_img = help_img.crop((left, top, right, bottom))
-
-		# # Stretch the cropped image to the new width
-		# stretched_center = cropped_img.resize((output_width, crop_height))
 
 		output = find_stretch_dim(help_img)
 		stretched_center = output[0]
