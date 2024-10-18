@@ -103,7 +103,7 @@ translations = {
         'hour_selection': "Select number of hours from now to display forecast",
         'im_caption1' : "",
 
-        'wind_pres_text': "The forecast time window is shown just above.\n\n" \
+        'wind_pres_text': "The forecast time window is shown just above. Risks are explained below the picture. \n\n" \
           "Wind forecasts are crucial for determining potential risks to infrastructure (such as ports and electrical lines) as well as people's safety.\n\n" \
           "The forecast presents contours of wind velocity: the wind is constant along a line, and the value of the wind in meters per second is displayed over the line.",
         'wind_risks_header': "Risks linked to high wind force",
@@ -116,7 +116,7 @@ translations = {
         'title2': "Rain precipitation Forecast",
         'im_caption2' : "",
 
-        'rain_pres_text': "The forecast time window is shown just above. \n\n "\
+        'rain_pres_text': "The forecast time window is shown just above. Risks are explained below the picture. \n\n "\
          "Rain forecast is of great importance to determine potential risks for infrastructures (ports for example) but also people's safety \n\n" \
          "The forecast presents contours of rain quantity: the rain is constant along a line and the value of the rain is shown over the line. \n\n",
         'rain_risks_header': "Risks linked to rain intensity",
@@ -130,7 +130,7 @@ translations = {
         'title3': "Humidity level Forecast",
         'im_caption3' : "",
 
-        'humidity_pres_text': "The forecast time window is shown just above. \n\n "\
+        'humidity_pres_text': "The forecast time window is shown just above. Risks are explained below the picture. \n\n "\
          "Humidity forecast allows to determine water concentration in the atmosphere. \n\n" \
          "The forecast presents contours of humidity : the humidity is constant along a line and the value of the humidity in percentage is shown over the line. \n\n",
         'humidity_risks_header': "Risks linked to humidity",
@@ -144,7 +144,7 @@ translations = {
         'title4': "Temperature Forecast",
         'im_caption4' : "",
 
-        'temp_pres_text': "The forecast time window is shown just above. \n\n "\
+        'temp_pres_text': "The forecast time window is shown just above. Risks are explained below the picture. \n\n "\
          "Temperature forecast is of great importance to determine potential risks for landscapes (in case of a fire propagation for example) but also for people's safety \n\n" \
         "The forecast presents contours of temperature : the temperature is constant along a line and the value of the temperature in degrees Celsius is shown over the line. \n\n",
         
@@ -160,7 +160,7 @@ translations = {
         'tab5name': "Snow Forecast",
         'title5': "Snow precipitation Forecast",
         'im_caption5' : "",
-        'snow_pres_text': "The forecast time window is shown just above. \n\n "\
+        'snow_pres_text': "The forecast time window is shown just above. Risks are explained below the picture. \n\n "\
          "Snow forecast is of great importance to determine potential risks for mountainous areas. \n\n" \
         "The forecast presents contours of snow : the snow is constant along a line and the value of the snow is shown over the line. \n\n",
         'snow_risks_text': "Heavy snowfall (more than 10 cm in 24 hours): Increases the risk of structural damage to buildings, especially those with flat roofs, as well as road accidents due to low visibility and slippery conditions. \n\n "\
