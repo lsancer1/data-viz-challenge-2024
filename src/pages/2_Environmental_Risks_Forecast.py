@@ -521,6 +521,10 @@ formatted_time = current_time.strftime('%Y-%m-%dT%H:%M:%SZ')
 future_time = current_time + timedelta(hours=selected_hour)
 formatted_future_time = future_time.strftime('%Y-%m-%dT%H:%M:%SZ')
 
+
+# test with a specific time first  regardless of the time selection
+formatted_future_time = "2024-10-18T06:00:00Z"
+
 # def get_available_hours(selected_data):
 #     times = selected_data.time.values
 #     times_in_hours = [int(pd.to_timedelta(elt).total_seconds()/(60*60)) for elt in times]
@@ -662,6 +666,10 @@ with tab1:
 
 	corsica_map = load_image(corsicamap_st_url)
 	# size (1428, 1806)
+
+	print(temp_layermap.status_code)
+	print(temp_layermap.headers.get('Content-Type'))
+
 		
 	temp_img = Image.open(BytesIO(temp_layermap.content))	
 
