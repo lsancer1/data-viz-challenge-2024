@@ -559,7 +559,13 @@ with tab1:
 		        return None
 
 		corsica_map = load_image(corsicamap_st_url)
-		st.markdown(corsica_map.size)
+		# size (1428, 1806)
+
+		# Define the new size (width, height) for stretching
+		new_size = (1428 - 150, 1806)  # Replace with your desired dimensions
+
+		# Stretch the image
+		corsica_map = corsica_map.resize(new_size)
 	
 			
 		help_img = Image.open(BytesIO(help_layermap.content))
