@@ -574,30 +574,31 @@ with tab1:
 		output_width = help_img.width
 		output_height = help_img.height
 
-		# Define how much you want to stretch the center section
-		stretch_factor = 1.5  # Increase this value to stretch more
+		# Define how much you want to stretch the center section horizontally
+		stretch_factor = 2.0  # Increase this value to stretch more
 
 		# Calculate crop dimensions (assuming you want to crop from the center)
-		crop_width = int(output_width / 2)
-		crop_height = int(output_height / stretch_factor)
+		crop_width = int(output_width / stretch_factor)  # Crop width is reduced by the stretch factor
+		crop_height = output_height  # Keep the full height
 
 		# Get the center crop box
 		left = (output_width - crop_width) / 2
-		top = (output_height - crop_height) / 2
+		top = 0
 		right = (output_width + crop_width) / 2
-		bottom = (output_height + crop_height) / 2
+		bottom = output_height
 
 		# Crop the center of the image
 		cropped_img = help_img.crop((left, top, right, bottom))
 
-		# Stretch the cropped image to the new height
-		stretched_center = cropped_img.resize((crop_width, output_height))
+		# Stretch the cropped image to the new width
+		stretched_center = cropped_img.resize((output_width, crop_height), Image.ANTIALIAS)
 
 		# Create a new blank image with the same dimensions as the original
-		new_image = Image.new("RGB", (output_width, output_height))
+		help_img = Image.new("RGB", (output_width, output_height))
 
 		# Paste the stretched center back into the new image
-		help_img.paste(stretched_center, (int((output_width - crop_width) / 2), 0))
+		help_img.paste(stretched_center, (0, 0))
+
 
 		# # Define the new size (width, height) for stretching
 		# new_size = (cosrica_mapwidth + 50, cosrica_mapheight)  # Replace with your desired dimensions
