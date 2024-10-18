@@ -504,6 +504,7 @@ def load_image(url):
 ## One Common Menu to all tabs
 #############################################################
 
+selected_hour = 24 # in case the option is not chosen already
 
 st.sidebar.header(translations[lang_code]['taboptions'])
 
