@@ -460,9 +460,9 @@ with tab1:
 	corsica_bbox_ori =  "43.25,8.15,41.15,10.15"
 
 	miny_corsica="41.3" 
-	minx_corsica="7.9" 
+	minx_corsica="7.8" 
 	maxy_corsica="43.1"
-	maxx_corsica="10" 
+	maxx_corsica="10.1" 
 
 	corsica_bbox_arome = miny_corsica+","+minx_corsica+","+maxy_corsica+","+maxx_corsica 
 	print("corsica_bbox_arome",corsica_bbox_arome)
@@ -563,11 +563,11 @@ with tab1:
 			
 		help_img = Image.open(BytesIO(help_layermap.content))
 
-		# Define the new size (width, height) for stretching
-		new_size = (cosrica_mapwidth + 50, cosrica_mapheight)  # Replace with your desired dimensions
+		# # Define the new size (width, height) for stretching
+		# new_size = (cosrica_mapwidth + 50, cosrica_mapheight)  # Replace with your desired dimensions
 
-		# Stretch the image
-		help_img = help_img.resize(new_size)
+		# # Stretch the image
+		# help_img = help_img.resize(new_size)
 
 		# Resize the help image to match the Corsica map size if needed
 		help_img = help_img.resize(corsica_map.size)
