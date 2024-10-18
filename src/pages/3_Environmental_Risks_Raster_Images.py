@@ -581,7 +581,7 @@ with tab1:
 		combined_img = Image.alpha_composite(corsica_map.convert("RGBA"), help_img)
 
 		# Display the final combined image
-		st.image(combined_img, caption="Overlay of Corsica Map and Elevation Map", use_column_width=True)
+		st.image(combined_img, caption="Overlay of Corsica Map and Elevation Map")
 
 
 		st.image(corsica_map, caption="corsica_map", use_column_width=True)
@@ -593,7 +593,7 @@ with tab1:
 
 		# plotly_img = Image.open("plotly_fig.png") 
 		temp_img = Image.open(BytesIO(temp_layermap.content))		
-		st.image(temp_img, caption="Temperature Forecast Map")
+		st.image(temp_img, caption="Temperature Forecast Map", use_column_width=True)
 
 
 
