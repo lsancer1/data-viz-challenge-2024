@@ -107,8 +107,9 @@ translations = {
         'tab1name': "Temperature Forecast",
         'title1': "Temperature Forecast",
         'tab1options': "Options",
-        'temp_pres_text': "[Explain for when is the forecast]. \n\n \
-         Explain that this forecast could be dangerous and risks will be listed below \n\n \
+
+        'temp_pres_text': "[Explain for when is the forecast]. \n\n Explain \
+         that this forecast could be dangerous and risks will be listed below \n\n \
          Explain how to read the map. \n\n \
          Explain that if it is empty it means... (some cannot be empty)",
         'temp_risks_header': "Risks linked to high temperature",
@@ -116,6 +117,7 @@ translations = {
 
         'tab2name': "Wind Forecast",
         'title2': "Wind Forecast",
+
         'wind_pres_text':  "[Explain for when is the forecast]. \n\n \
          Explain that this forecast could be dangerous and risks will be listed below \n\n \
          Explain how to read the map. \n\n \
@@ -125,6 +127,7 @@ translations = {
 
         'tab3name': "Snow Forecast",
         'title3': "Snow precipitation Forecast",
+
         'snow_pres_text':  "[Explain for when is the forecast]. \n\n \
          Explain that this forecast could be dangerous and risks will be listed below \n\n \
          Explain how to read the map. \n\n \
@@ -134,6 +137,7 @@ translations = {
 
         'tab4name': "Rain Forecast",
         'title4': "Rain precipitation Forecast",
+
         'rain_pres_text': "[Explain for when is the forecast]. \n\n \
          Explain that this forecast could be dangerous and risks will be listed below \n\n \
          Explain how to read the map. \n\n \
@@ -143,6 +147,7 @@ translations = {
 
         'tab5name': "Humidity Forecast",
         'title5': "Humidity level Forecast",
+
         'humidity_pres_text': "[Explain for when is the forecast]. \n\n \
          Explain that this forecast could be dangerous and risks will be listed below \n\n \
          Explain how to read the map. \n\n \
@@ -156,6 +161,7 @@ translations = {
         'tab1name': "Prévision température",
         'title1': "Prévision de température",
         'tab1options': "Options",
+
         'temp_pres_text': "[Explain for when is the forecast]. \n\n \
          Explain that this forecast could be dangerous and risks will be listed below \n\n \
          Explain how to read the map. \n\n \
@@ -173,6 +179,7 @@ translations = {
 
         'tab3name': "Prévision neige",
         'title3': "Prévision précipitation de neige",
+
         'snow_pres_text':  "[Explain for when is the forecast]. \n\n \
          Explain that this forecast could be dangerous and risks will be listed below \n\n \
          Explain how to read the map. \n\n \
@@ -182,6 +189,7 @@ translations = {
 
         'tab4name': "Prévision pluie",
         'title4': "Prévision précipitation de pluie",
+
         'rain_pres_text': "[Explain for when is the forecast]. \n\n \
          Explain that this forecast could be dangerous and risks will be listed below \n\n \
          Explain how to read the map. \n\n \
@@ -191,6 +199,7 @@ translations = {
 
         'tab5name': "Prévision d'humidité",
         'title5': "Prévision du taux d'humidité",
+        
         'humidity_pres_text': "[Explain for when is the forecast]. \n\n \
          Explain that this forecast could be dangerous and risks will be listed below \n\n \
          Explain how to read the map. \n\n \
@@ -630,7 +639,7 @@ with tab1:
 
 	# Apply transparency (set alpha) to the help image
 	temp_img = temp_img.convert("RGBA")  # Ensure it's in RGBA mode for transparency
-	alpha = 0.53  # Adjust transparency level (0 is fully transparent, 1 is fully opaque)
+	alpha = 0.55  # Adjust transparency level (0 is fully transparent, 1 is fully opaque)
 	temp_img.putalpha(int(255 * alpha))
 
 	# Merge the two images
