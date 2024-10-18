@@ -107,33 +107,48 @@ translations = {
         'tab1name': "Temperature Forecast",
         'title1': "Temperature Forecast",
         'tab1options': "Options",
-        'temp_pres_text': "",
-        'temp_risks_header': "",
-        'temp_risks_text': "",
+        'temp_pres_text': "[Explain for when is the forecast]. \n\n \
+         Explain that this forecast could be dangerous and risks will be listed below \n\n \
+         Explain how to read the map. \n\n \
+         Explain that if it is empty it means... (some cannot be empty)",
+        'temp_risks_header': "Risks linked to high temperature",
+        'temp_risks_text': "List risks linked to high temperature",
 
         'tab2name': "Wind Forecast",
         'title2': "Wind Forecast",
-        'wind_pres_text': "",
-        'wind_risks_header': "",
-        'wind_risks_text': "",
+        'wind_pres_text':  "[Explain for when is the forecast]. \n\n \
+         Explain that this forecast could be dangerous and risks will be listed below \n\n \
+         Explain how to read the map. \n\n \
+         Explain that if it is empty it means... (some cannot be empty)",
+        'wind_risks_header': "Risks linked to high wind force",
+        'wind_risks_text': "Do the list",
 
         'tab3name': "Snow Forecast",
         'title3': "Snow precipitation Forecast",
-        'snow_pres_text': "",
-        'snow_risks_header': "",
-        'snow_risks_text': "",
+        'snow_pres_text':  "[Explain for when is the forecast]. \n\n \
+         Explain that this forecast could be dangerous and risks will be listed below \n\n \
+         Explain how to read the map. \n\n \
+         Explain that if it is empty it means... (some cannot be empty)",
+        'snow_risks_header': "Risks linked to high volume of snow precipitation",
+        'snow_risks_text': "Do the list",
 
         'tab4name': "Rain Forecast",
         'title4': "Rain precipitation Forecast",
-        'rain_pres_text': "",
-        'rain_risks_header': "",
-        'rain_risks_text': "",
+        'rain_pres_text': "[Explain for when is the forecast]. \n\n \
+         Explain that this forecast could be dangerous and risks will be listed below \n\n \
+         Explain how to read the map. \n\n \
+         Explain that if it is empty it means... (some cannot be empty)",
+        'rain_risks_header': "Risks linked to high volume of rain precipitation",
+        'rain_risks_text': "Do the list",
 
         'tab5name': "Humidity Forecast",
         'title5': "Humidity level Forecast",
-        'humidity_pres_text': "",
-        'humidity_risks_header': "",
-        'humidity_risks_text': "",
+        'humidity_pres_text': "[Explain for when is the forecast]. \n\n \
+         Explain that this forecast could be dangerous and risks will be listed below \n\n \
+         Explain how to read the map. \n\n \
+         Explain that if it is empty it means... (some cannot be empty)",
+        'humidity_risks_header': "Risks linked to high humidity rate",
+        'humidity_risks_text': "Do the list",
 
 
     },
@@ -141,33 +156,48 @@ translations = {
         'tab1name': "Prévision température",
         'title1': "Prévision de température",
         'tab1options': "Options",
-        'temp_pres_text': "",
-        'temp_risks_header': "",
-        'temp_risks_text': "",
-
+        'temp_pres_text': "[Explain for when is the forecast]. \n\n \
+         Explain that this forecast could be dangerous and risks will be listed below \n\n \
+         Explain how to read the map. \n\n \
+         Explain that if it is empty it means... (some cannot be empty)",
+        'temp_risks_header': "Risks linked to high temperature",
+        'temp_risks_text': "List risks linked to high temperature",
         'tab2name': "Prévision vent",
         'title2': "Prévision de la force du vent",
-        'wind_pres_text': "",
-        'wind_risks_header': "",
-        'wind_risks_text': "",
+        'wind_pres_text':  "[Explain for when is the forecast]. \n\n \
+         Explain that this forecast could be dangerous and risks will be listed below \n\n \
+         Explain how to read the map. \n\n \
+         Explain that if it is empty it means... (some cannot be empty)",
+        'wind_risks_header': "Risks linked to high wind force",
+        'wind_risks_text': "Do the list",
 
         'tab3name': "Prévision neige",
         'title3': "Prévision précipitation de neige",
-        'snow_pres_text': "",
-        'snow_risks_header': "",
-        'snow_risks_text': "",
+        'snow_pres_text':  "[Explain for when is the forecast]. \n\n \
+         Explain that this forecast could be dangerous and risks will be listed below \n\n \
+         Explain how to read the map. \n\n \
+         Explain that if it is empty it means... (some cannot be empty)",
+        'snow_risks_header': "Risks linked to high volume of snow precipitation",
+        'snow_risks_text': "Do the list",
 
         'tab4name': "Prévision pluie",
         'title4': "Prévision précipitation de pluie",
-        'rain_pres_text': "",
-        'rain_risks_header': "",
-        'rain_risks_text': "",
+        'rain_pres_text': "[Explain for when is the forecast]. \n\n \
+         Explain that this forecast could be dangerous and risks will be listed below \n\n \
+         Explain how to read the map. \n\n \
+         Explain that if it is empty it means... (some cannot be empty)",
+        'rain_risks_header': "Risks linked to high volume of rain precipitation",
+        'rain_risks_text': "Do the list",
 
         'tab5name': "Prévision d'humidité",
         'title5': "Prévision du taux d'humidité",
-        'humidity_pres_text': "",
-        'humidity_risks_header': "",
-        'humidity_risks_text': "",
+        'humidity_pres_text': "[Explain for when is the forecast]. \n\n \
+         Explain that this forecast could be dangerous and risks will be listed below \n\n \
+         Explain how to read the map. \n\n \
+         Explain that if it is empty it means... (some cannot be empty)",
+        'humidity_risks_header': "Risks linked to high humidity rate",
+        'humidity_risks_text': "Do the list",
+
     }
 }
 
