@@ -87,14 +87,6 @@ else:
     keptfiles = list(config.dashboard.data.reseaux.keptfiles)
 
 
-#############################################################
-## Token related
-#############################################################
-
-
-APPLICATION_ID = st.secrets['ID_Sancere_2024_09_25']
-TOKEN_URL = st.secrets['MF_TOKEN_URL']
-
 
 
 #############################################################
