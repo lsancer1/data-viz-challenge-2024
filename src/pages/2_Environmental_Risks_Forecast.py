@@ -646,7 +646,7 @@ with tab1:
 	st.session_state['active_tab'] = translations[lang_code]['tab1name']
 	st.title(translations[lang_code]['title1'])
 
-	st.write('Time chosen for prediction:', `formatted_future_time`)
+	st.markdown(f"UTC Time chosen for prediction: `{formatted_future_time}` " )
 
 	###### Layout 
 
