@@ -129,9 +129,9 @@ translations = {
          "Egalement lorsque l'humidité est de plus de 30%, le vent de plus de 30km/h et la température de plus de 30°C" \
          "le réseau électrique est en danger (règle des 30)."  \
          "Vous pouvez explorer les prévisions de risques climatiques sur l'onglet  `Environmental Risks Forecast`. \n\n" \
-         "Les points BT indiquent la localisation des lignes électrique basse tension \n\n" \
-         "Les points HTA indiquent la localisation des lignes électrique haute tension \n\n" \
-  		 "Les points Pylones HTB indiquent la localisation des pylones de lignes électrique très haute tension",
+         "- Les points BT indiquent la localisation des lignes électrique basse tension \n\n" \
+         "- Les points HTA indiquent la localisation des lignes électrique haute tension \n\n" \
+  		 "- Les points Pylones HTB indiquent la localisation des pylones de lignes électrique très haute tension",
 
     }
 }
