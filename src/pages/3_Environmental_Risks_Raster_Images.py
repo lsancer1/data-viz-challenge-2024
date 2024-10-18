@@ -461,7 +461,7 @@ with tab1:
 
 	miny_corsica="41.3" 
 	minx_corsica="7.9" 
-	maxy_corsica="43.2"
+	maxy_corsica="42.2"
 	maxx_corsica="10.2" 
 
 	corsica_bbox_arome = miny_corsica+","+minx_corsica+","+maxy_corsica+","+maxx_corsica 
@@ -559,17 +559,15 @@ with tab1:
 		        return None
 
 		corsica_map = load_image(corsicamap_st_url)
-		st.image(corsica_map, caption="corsica_map", use_column_width=True)	
-			
 		help_img = Image.open(BytesIO(help_layermap.content))
-		st.image(help_img, caption="Elevation Map", use_column_width=True)	
+
 
 		# Resize the help image to match the Corsica map size if needed
 		help_img = help_img.resize(corsica_map.size)
 
 		# Apply transparency (set alpha) to the help image
 		help_img = help_img.convert("RGBA")  # Ensure it's in RGBA mode for transparency
-		alpha = 0.3  # Adjust transparency level (0 is fully transparent, 1 is fully opaque)
+		alpha = 0.45  # Adjust transparency level (0 is fully transparent, 1 is fully opaque)
 		help_img.putalpha(int(255 * alpha))
 
 		# Merge the two images
@@ -579,8 +577,8 @@ with tab1:
 		st.image(combined_img, caption="Overlay of Corsica Map and Elevation Map", use_column_width=True)
 
 
-
-
+		st.image(corsica_map, caption="corsica_map", use_column_width=True)
+		st.image(help_img, caption="Elevation Map", use_column_width=True)	
 
 
 
