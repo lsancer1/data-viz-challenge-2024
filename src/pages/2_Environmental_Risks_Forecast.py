@@ -106,10 +106,11 @@ translations = {
           "Wind forecasts are crucial for determining potential risks to infrastructure (such as ports and electrical lines) as well as people's safety.\n\n" \
           "The forecast presents contours of wind velocity: the wind is constant along a line, and the value of the wind in meters per second is displayed over the line.",
         'wind_risks_header': "Risks linked to high wind force",
-        'wind_risks_text': "Strong winds (above 50 km/h): Increased risk of property damage (fallen trees or damaged roofs) and power outages due to downed power lines. \n\n" \
-       "Severe winds (above 80 km/h): Can result in dangerous flying debris and increase the risk of accidents for pedestrians, vehicles, and cyclists. \n\n" \
-       "Fire conditions (wind above 40 km/h): Increased risk of forest fires spreading rapidly, especially in dry conditions (low humidity). \n\n" \
-       "Coastal areas (wind above 75 km/h): Risk of storm surges and flooding in coastal regions, especially during storms or hurricanes. \n\n",
+        'wind_risks_text': 
+        "Severe winds (above 22 m/s): Can result in dangerous flying debris and increase the risk of accidents for pedestrians, vehicles, and cyclists. \n\n" \
+        "Strong winds (above 14 m/s): Increased risk of property damage (fallen trees or damaged roofs) and power outages due to downed power lines. \n\n" \
+       "Fire conditions (wind above 11 m/s): Increased risk of forest fires spreading rapidly, especially in dry conditions (low humidity). \n\n" \
+       "Coastal areas (wind above 21 m/s): Risk of storm surges and flooding in coastal regions, especially during storms or hurricanes. \n\n",
 
         'tab2name': "Rain Forecast",
         'title2': "Rain precipitation Forecast",
@@ -182,10 +183,10 @@ translations = {
 
         'wind_risks_header': "Risques liés à la force du vent élevé",
         'wind_risks_text': 
-        "Vents violents (au-dessus de 80 km/h) : peuvent entraîner des débris volants dangereux et augmenter le risque d'accidents pour les piétons, les véhicules et les cyclistes. \n\n" \
-        "Vents forts (au-dessus de 50 km/h) : risque accru de dommages matériels (arbres tombés ou toits endommagés) et de coupures de courant dues à la chute de lignes électriques. \n\n" \
-       "Conditions propices aux incendies (vent au-dessus de 40 km/h) : risque accru de propagation rapide des feux de forêt, surtout en cas de conditions sèches (faible humidité). \n\n" \
-       "Zones côtières (vent au-dessus de 75 km/h) : risque de vagues de tempête et d'inondations dans les régions côtières, notamment lors des tempêtes ou des ouragans. \n\n",
+        "Vents violents (au-dessus de 22 m/s) : peuvent entraîner des débris volants dangereux et augmenter le risque d'accidents pour les piétons, les véhicules et les cyclistes. \n\n" \
+        "Vents forts (au-dessus de 14 m/s) : risque accru de dommages matériels (arbres tombés ou toits endommagés) et de coupures de courant dues à la chute de lignes électriques. \n\n" \
+       "Conditions propices aux incendies (vent au-dessus de 11 m/s) : risque accru de propagation rapide des feux de forêt, surtout en cas de conditions sèches (faible humidité). \n\n" \
+       "Zones côtières (vent au-dessus de 21 m/s) : risque de vagues de tempête et d'inondations dans les régions côtières, notamment lors des tempêtes ou des ouragans. \n\n",
 
 
 
