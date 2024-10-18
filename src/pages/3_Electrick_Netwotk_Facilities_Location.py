@@ -135,7 +135,7 @@ translations = {
          " Vous pouvez explorer les prévisions de risques climatiques sur l'onglet  `Environmental Risks Forecast`. \n\n" \
          "- Les points BT indiquent la localisation des lignes électrique basse tension \n\n" \
          "- Les points HTA indiquent la localisation des lignes électrique haute tension \n\n" \
-  		 "- Les points Pylones HTB indiquent la localisation des pylones de lignes électrique très haute tension",
+  		 "- Les points Pylones HTB indiquent la localisation des pylones de lignes électrique très hautetension",
 
   		 'cat_bt':"BT aérien",
   		 'cat_hta':"HTA aérien",
@@ -152,7 +152,8 @@ else:
     lang_code = 'en'
 
 # Tab names
-tab1, tab2 = st.tabs([translations[lang_code]['tab1name'], translations[lang_code]['tab2name']])
+tab1, = st.tabs([translations[lang_code]['tab1name']])
+
 
 
 
