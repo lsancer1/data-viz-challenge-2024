@@ -18,7 +18,8 @@ translations = {
             Ce tableau de bord permet de visualiser quelques aspects liés aux risques
             en Corse. On a identifié deux risques majeurs :
             - Pollution de l'air (voir Air Quality)
-            - Risques du réseau électrique (voir Environmental Risks)
+            - Prévions météorologiques et risques (voir Environmental Risks Forecast)
+            - Localisation des lignes du réseau électrique (voir Electric Network)
 
             👈 Dans la **barre latérale** on peut explorer un peu plus ces aspects!
         """,
@@ -30,7 +31,8 @@ translations = {
             This dashboard allows you to explore several aspects related to risks
             in Corsica. We have identified two major risks:
             - Air Quality
-            - Environmental Risks on Electric Network 
+            - Environmental Risks Forecast 
+            - Location of overhead power lines
 
             👈 In the **sidebar**, you can explore these aspects further!
         """,
