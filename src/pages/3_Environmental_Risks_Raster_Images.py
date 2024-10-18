@@ -600,11 +600,14 @@ with tab1:
 			# Create a new blank image with the same dimensions as the original
 			img = Image.new("RGB", (output_width, output_height))
 
-			# Paste the stretched center back into the new image
-			return img.paste(stretched_center, (0, 0))
+			return img, stretched_center
+			
+
+		help_img = adapt_stretch(help_img)[0]
+
+		help_img.paste(adapt_stretch(help_img)[1], (0, 0))
 
 
-		help_img = adapt_stretch(help_img)
 
 		# # Define the new size (width, height) for stretching
 		# new_size = (cosrica_mapwidth + 50, cosrica_mapheight)  # Replace with your desired dimensions
