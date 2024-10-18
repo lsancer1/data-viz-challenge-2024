@@ -17,7 +17,7 @@ Ce tableau de bord permet de visualiser à la fois des données météorologique
 
 Une vidéo de démonstration est disponible ci dessous :
 
-[![Lien YouTube](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](A FAIRE)
+![Lien YouTube](A FAIRE)
 
 ## Utilisation
 
@@ -42,6 +42,7 @@ L'utilisateur peut observer les données 2023 ou alors la prévision de qualité
 Le mode _rax data_ affiche les données brutes et le mode _AQI data_ (pour Air Quality Index) affiche des données avec une estimation du risque pour la population.
 
 ![Environmental Risk Forecast](https://data-viz-challenge-2024.streamlit.app/Environmental_Risks_Forecast)
+
 L'utilisateur peut observer la prévision météorologique pour les prochaines heures en Corse et particulièrement : le vent, la pluie, l'humidité, la tempétature et la neige.
 Une explication des risques potentiels est aussi affichée.
 
