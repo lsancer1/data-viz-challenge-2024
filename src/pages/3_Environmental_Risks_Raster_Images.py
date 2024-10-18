@@ -549,8 +549,8 @@ with tab1:
 
 		# st.image(corsicamap_st_url, caption="Corsica Map", width=600)
 
-		# # I guess I have to set a delay for imgur before requesting the image again 
-		# time.sleep(1) 
+		# I guess I have to set a delay for imgur before requesting the image again 
+		time.sleep(30) 
 
 		# Function to load an image using Pillow
 		def load_image(url):
