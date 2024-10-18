@@ -591,7 +591,7 @@ with tab1:
 		cropped_img = help_img.crop((left, top, right, bottom))
 
 		# Stretch the cropped image to the new height
-		stretched_center = cropped_img.resize((crop_width, output_height), Image.ANTIALIAS)
+		stretched_center = cropped_img.resize((crop_width, output_height))
 
 		# Create a new blank image with the same dimensions as the original
 		new_image = Image.new("RGB", (output_width, output_height))
