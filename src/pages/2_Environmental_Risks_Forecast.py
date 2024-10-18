@@ -101,7 +101,7 @@ translations = {
         'title1': "Wind Forecast",
         'taboptions': "Options",
         'hour_selection': "Select number of hours from now to display forecast",
-        'im_caption1' : "",
+        'im_caption1' : "Wind Forecast",
 
         'wind_pres_text': "The forecast time window is shown just above. Risks are explained below the picture. \n\n" \
           "Wind forecasts are crucial for determining potential risks to infrastructure (such as ports and electrical lines) as well as people's safety.\n\n" \
@@ -114,7 +114,7 @@ translations = {
 
         'tab2name': "Rain Forecast",
         'title2': "Rain precipitation Forecast",
-        'im_caption2' : "",
+        'im_caption2' : "Rain precipitation Forecast",
 
         'rain_pres_text': "The forecast time window is shown just above. Risks are explained below the picture. \n\n "\
          "Rain forecast is of great importance to determine potential risks for infrastructures (ports for example) but also people's safety \n\n" \
@@ -128,7 +128,7 @@ translations = {
 
         'tab3name': "Humidity Forecast",
         'title3': "Humidity level Forecast",
-        'im_caption3' : "",
+        'im_caption3' : "Humidity level Forecast",
 
         'humidity_pres_text': "The forecast time window is shown just above. Risks are explained below the picture. \n\n "\
          "Humidity forecast allows to determine water concentration in the atmosphere. \n\n" \
@@ -142,7 +142,7 @@ translations = {
 
         'tab4name': "Temperature Forecast",
         'title4': "Temperature Forecast",
-        'im_caption4' : "",
+        'im_caption4' : "Temperature Forecast",
 
         'temp_pres_text': "The forecast time window is shown just above. Risks are explained below the picture. \n\n "\
          "Temperature forecast is of great importance to determine potential risks for landscapes (in case of a fire propagation for example) but also for people's safety \n\n" \
@@ -159,7 +159,7 @@ translations = {
 
         'tab5name': "Snow Forecast",
         'title5': "Snow precipitation Forecast",
-        'im_caption5' : "",
+        'im_caption5' : "Snow precipitation Forecast",
         'snow_risks_header': "Risks linked to snow",
         'snow_pres_text': "The forecast time window is shown just above. Risks are explained below the picture. \n\n "\
          "Snow forecast is of great importance to determine potential risks for mountainous areas. \n\n" \
@@ -176,7 +176,7 @@ translations = {
         'taboptions': "Options",
         'hour_selection': "Select number of hours from now to display forecast",
         'hour_selection': "Select number of hours from now to display forecast",
-        'im_caption1' : "",
+        'im_caption1' : "Prévision de la force du vent",
 
         'wind_pres_text': "La période de prévision est indiquée juste au-dessus. Les risques sont expliqués sous l'image. \n\n" \
           "Les prévisions de vent sont cruciales pour déterminer les risques potentiels pour les infrastructures (comme les ports et les lignes électriques), ainsi que pour la sécurité des personnes.\n\n" \
@@ -194,7 +194,7 @@ translations = {
 
         'tab2name': "Prévision pluie",
         'title2': "Prévision des précipitations de pluie",
-        'im_caption2' : "",
+        'im_caption2' : "Prévision des précipitations de pluie",
 
         'rain_pres_text': "La période de prévision est indiquée juste au-dessus. Les risques sont expliqués sous l'image. \n\n" \
                           "Les prévisions de pluie sont d'une grande importance pour déterminer les risques potentiels pour les infrastructures (comme les ports, par exemple), ainsi que pour la sécurité des personnes. \n\n" \
@@ -210,7 +210,7 @@ translations = {
 
         'tab3name': "Prévision d'humidité",
         'title3': "Prévision du taux d'humidité",
-        'im_caption3' : "",
+        'im_caption3' : "Prévision du taux d'humidité",
 
         'humidity_pres_text': "La période de prévision est indiquée juste au-dessus. Les risques sont expliqués sous l'image. \n\n" \
                               "La prévision de l'humidité permet de déterminer la concentration d'eau dans l'atmosphère. \n\n" \
@@ -225,8 +225,8 @@ translations = {
 
 
         'tab4name': "Prévision température",
-        'title4': "Prévision de température",
-        'im_caption4' : "",       
+        'title4': "Prévision de la température",
+        'im_caption4' : "Prévision de la température",       
         'temp_pres_text': "La période de prévision est indiquée juste au-dessus. Les risques sont expliqués sous l'image. \n\n" \
                           "Les prévisions de température sont d'une grande importance pour déterminer les risques potentiels pour les paysages (en cas de propagation d'incendie, par exemple), mais aussi pour la sécurité des personnes. \n\n" \
                           "La prévision présente des contours de température : la température est constante le long d'une ligne et la valeur de la température en degrés Celsius est affichée sur la ligne. \n\n",
@@ -242,7 +242,7 @@ translations = {
 
         'tab5name': "Prévision neige",
         'title5': "Prévision des précipitations de neige",
-        'im_caption5' : "",       
+        'im_caption5' : "Prévision des précipitations de neige",       
 
         'snow_risks_header': "Risques liés à la neige",
         'snow_pres_text': "La période de prévision est indiquée juste au-dessus. Les risques sont expliqués sous l'image. \n\n" \
