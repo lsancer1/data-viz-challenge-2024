@@ -111,8 +111,14 @@ translations = {
         'tab2name': "Wind Forecast",
         'title2': "Wind Forecast",
 
-        'tab3name': "Snow Precipitation Forecast",
-        'title3': "Snow Precipitation Forecast",
+        'tab3name': "Snow precipitation Forecast",
+        'title3': "Snow precipitation Forecast",
+
+        'tab4name': "Rain precipitation Forecast",
+        'title4': "Rain precipitation Forecast",
+
+        'tab5name': "Humidity level Forecast",
+        'title5': "Humidity level Forecast",
 
 
     },
@@ -127,6 +133,11 @@ translations = {
         'tab3name': "Prévision précipitation de neige",
         'title3': "Prévision précipitation de neige",
 
+        'tab4name': "Prévision précipitation de pluie",
+        'title4': "Prévision précipitation de pluie",
+
+        'tab5name': "Prévision du taux d'humidité",
+        'title5': "Prévision du taux d'humidité",
     }
 }
 
@@ -138,9 +149,11 @@ else:
     lang_code = 'en'
 
 # Tab names
-tab1, tab2, tab3 = st.tabs([translations[lang_code]['tab1name'], 
-				     translations[lang_code]['tab2name'],
-				     translations[lang_code]['tab3name']])
+tab1, tab2, tab3, tab4, tab5 = st.tabs([translations[lang_code]['tab1name'], 
+				    		 translations[lang_code]['tab2name'],
+				    		 translations[lang_code]['tab3name'],
+				    		 translations[lang_code]['tab4name'],
+				    		 translations[lang_code]['tab5name']])
 
 
 
@@ -428,6 +441,7 @@ forecastlayers = {
 "temperature": "TEMPERATURE__SPECIFIC_HEIGHT_LEVEL_ABOVE_GROUND",
 "windspeed": "WIND_SPEED__SPECIFIC_HEIGHT_LEVEL_ABOVE_GROUND",
 "snow":  "TOTAL_SNOW_PRECIPITATION__GROUND_OR_WATER_SURFACE",
+"rain": "_PRECIPITATION__GROUND_OR_WATER_SURFACE",
 "humidity": "RELATIVE_HUMIDITY__SPECIFIC_HEIGHT_LEVEL_ABOVE_GROUND",
 "geom": "GEOMETRIC_HEIGHT__GROUND_OR_WATER_SURFACE",
 }
@@ -471,6 +485,24 @@ snow_layermap = client.get_wms_map(
 	height = str(cosrica_mapheight),
 	width = str(cosrica_mapwidth)
 	)
+
+rain_layermap = client.get_wms_map(		
+    layers = forecastlayers["rain"],
+	bbox = corsica_bbox_arome,
+	height = str(cosrica_mapheight),
+	width = str(cosrica_mapwidth)
+	)
+
+humi_layermap = client.get_wms_map(		
+    layers = forecastlayers["humidity"],
+	bbox = corsica_bbox_arome,
+	height = str(cosrica_mapheight),
+	width = str(cosrica_mapwidth)
+	)
+
+
+
+
 
 # hardcoded parameters for the forecast
 # example_bbox = "37.5,-12,55.4,16"
@@ -655,6 +687,61 @@ with tab3:
 
 	# Merge the two images
 	combined_img = Image.alpha_composite(corsica_map.convert("RGBA"), snow_img)
+
+	# Display the final combined image
+	st.image(combined_img, caption="Put caption here")
+
+
+
+#############################################################
+## Tab5
+#############################################################
+
+
+with tab5:
+
+	####### Tab management 
+	
+	st.session_state['active_tab'] = translations[lang_code]['tab4name']
+	st.title(translations[lang_code]['title4'])
+
+	st.sidebar.header(translations[lang_code]['tab1options'])
+
+	###### Layout 
+
+	### First header and text
+	st.header("Exploration")
+	st.markdown("Text to put here")
+
+	### Second plot the combioned image
+	corsicamap_st_url = "https://i.imgur.com/MWch7ZP.png"
+
+	corsica_map = load_image(corsicamap_st_url)
+	# size (1428, 1806)
+		
+	humi_img = Image.open(BytesIO(humi_layermap.content))	
+
+	output = find_stretch_dim(humi_img)
+	stretched_center = output[0]
+	output_width = output[1]
+	output_height = output[2]
+
+	# Create a new blank image with the same dimensions as the original
+	humi_img = Image.new("RGB", (output_width, output_height))
+
+	# Paste the stretched center back into the new image
+	humi_img.paste(stretched_center, (0, 0))
+
+	# Resize the help image to match the Corsica map size if needed
+	humi_img = humi_img.resize(corsica_map.size)
+
+	# Apply transparency (set alpha) to the help image
+	humi_img = humi_img.convert("RGBA")  # Ensure it's in RGBA mode for transparency
+	alpha = 0.35  # Adjust transparency level (0 is fully transparent, 1 is fully opaque)
+	humi_img.putalpha(int(255 * alpha))
+
+	# Merge the two images
+	combined_img = Image.alpha_composite(corsica_map.convert("RGBA"), humi_img)
 
 	# Display the final combined image
 	st.image(combined_img, caption="Put caption here")
