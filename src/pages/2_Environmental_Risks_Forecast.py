@@ -53,6 +53,7 @@ import time
 from PIL import Image, ImageChops
 from io import BytesIO
 import plotly.io as pio
+from datetime import datetime, timedelta
 
 
 
@@ -163,7 +164,7 @@ translations = {
         'title1': "Prévision de température",
         'taboptions': "Options",
         'hour_selection': "Sélectionnez le nombre d'heures séparant de la prévision",
-        
+
         'temp_pres_text': "[Explain for when is the forecast]. \n\n "\
          "Explain that this forecast could be dangerous and risks will be listed below \n\n" \
          "Explain how to read the map. \n\n" \
@@ -498,6 +499,38 @@ def load_image(url):
 
 
 #############################################################
+## One Common Menu to all tabs
+#############################################################
+
+
+st.sidebar.header(translations[lang_code]['taboptions'])
+
+deltahours_options = [hour for hour in range(6,48,6)]
+selected_hour = st.sidebar.selectbox(translations[lang_code]['hour_selection'], deltahours_options, index=0)
+
+# Get current time in UTC
+current_time = datetime.utcnow()
+
+# Format the time in 'YYYY-MM-DDTHH:mm:ssZ' format
+formatted_time = current_time.strftime('%Y-%m-%dT%H:%M:%SZ')
+
+# Calculate future time
+future_time = current_time + timedelta(hours=selected_hour)
+formatted_future_time = future_time.strftime('%Y-%m-%dT%H:%M:%SZ')
+
+# def get_available_hours(selected_data):
+#     times = selected_data.time.values
+#     times_in_hours = [int(pd.to_timedelta(elt).total_seconds()/(60*60)) for elt in times]
+#     hours_options = np.unique(times_in_hours)
+#     hours_options.sort()
+#     return times_in_hours, hours_options
+
+# available_hours, hours_options = get_available_hours(selected_data)
+# selected_hour = st.sidebar.selectbox(translations[lang_code]['hour_selection'], hours_options, index=0)
+
+
+
+#############################################################
 ## Generate and Display Forecast
 #############################################################
 
@@ -539,7 +572,8 @@ temp_layermap = client.get_wms_map(
     layers = forecastlayers["temperature"],
 	bbox = corsica_bbox_arome,
 	height = str(cosrica_mapheight),
-	width = str(cosrica_mapwidth)
+	width = str(cosrica_mapwidth),
+	time = formatted_future_time
 	)
 
 
@@ -547,7 +581,8 @@ wind_layermap = client.get_wms_map(
     layers = forecastlayers["windspeed"],
 	bbox = corsica_bbox_arome,
 	height = str(cosrica_mapheight),
-	width = str(cosrica_mapwidth)
+	width = str(cosrica_mapwidth),
+	time = formatted_future_time
 	)
 
 
@@ -555,25 +590,25 @@ snow_layermap = client.get_wms_map(
     layers = forecastlayers["snow"],
 	bbox = corsica_bbox_arome,
 	height = str(cosrica_mapheight),
-	width = str(cosrica_mapwidth)
+	width = str(cosrica_mapwidth),
+	time = formatted_future_time
 	)
 
 rain_layermap = client.get_wms_map(		
     layers = forecastlayers["rain"],
 	bbox = corsica_bbox_arome,
 	height = str(cosrica_mapheight),
-	width = str(cosrica_mapwidth)
+	width = str(cosrica_mapwidth),
+	time = formatted_future_time
 	)
 
 humi_layermap = client.get_wms_map(		
     layers = forecastlayers["humidity"],
 	bbox = corsica_bbox_arome,
 	height = str(cosrica_mapheight),
-	width = str(cosrica_mapwidth)
+	width = str(cosrica_mapwidth),
+	time = formatted_future_time
 	)
-
-
-
 
 
 # hardcoded parameters for the forecast
@@ -600,30 +635,6 @@ humi_layermap = client.get_wms_map(
   # Function to get available hours
 
 
-
-#############################################################
-## One Common Menu 
-#############################################################
-
-
-st.sidebar.header(translations[lang_code]['taboptions'])
-
-deltahours_options = [hour for hour in range(6,48,6)]
-selected_hour = st.sidebar.selectbox(translations[lang_code]['hour_selection'], deltahours_options, index=0)
-
-
-# def get_available_hours(selected_data):
-#     times = selected_data.time.values
-#     times_in_hours = [int(pd.to_timedelta(elt).total_seconds()/(60*60)) for elt in times]
-#     hours_options = np.unique(times_in_hours)
-#     hours_options.sort()
-#     return times_in_hours, hours_options
-
-# available_hours, hours_options = get_available_hours(selected_data)
-# selected_hour = st.sidebar.selectbox(translations[lang_code]['hour_selection'], hours_options, index=0)
-
-
-	
 
 #############################################################
 ## Tab1 
@@ -693,8 +704,6 @@ with tab2:
 	st.session_state['active_tab'] = translations[lang_code]['tab2name']
 	st.title(translations[lang_code]['title2'])
 
-	st.sidebar.header(translations[lang_code]['tab1options'])
-
 	###### Layout 
 
 	### First header and text
@@ -750,8 +759,6 @@ with tab3:
 	
 	st.session_state['active_tab'] = translations[lang_code]['tab3name']
 	st.title(translations[lang_code]['title3'])
-
-	st.sidebar.header(translations[lang_code]['tab1options'])
 
 	###### Layout 
 
@@ -809,8 +816,6 @@ with tab4:
 	st.session_state['active_tab'] = translations[lang_code]['tab4name']
 	st.title(translations[lang_code]['title4'])
 
-	st.sidebar.header(translations[lang_code]['tab1options'])
-
 	###### Layout 
 
 	### First header and text
@@ -866,8 +871,6 @@ with tab5:
 	
 	st.session_state['active_tab'] = translations[lang_code]['tab5name']
 	st.title(translations[lang_code]['title5'])
-
-	st.sidebar.header(translations[lang_code]['tab1options'])
 
 	###### Layout 
 
